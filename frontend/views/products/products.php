@@ -4,19 +4,20 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-product">
     <div class="site-cat">
-        <img src="images/u.jpg" alt="">
+        <img src="<?= \yii\helpers\Url::to('@web/images/u.jpg' )?>" alt="">
     </div>
     <div class="products">
         <div class="filter">
             <div class="all-categories">
                 <h2>Categories</h2>
                 <ul class="middle_cat">
+                    <li><a href="<?= \yii\helpers\Url::to(['/products/']) ?>">All</a></li>
                     <?php
                     if (!empty($categories)) {
                         foreach ($categories as $cat) {
                             ?>
                             <li>
-                                <a href=""><?= $cat['title'] ?></a>
+                                <a href="<?= \yii\helpers\Url::to(['/products/'.$cat['slug']]) ?>"><?= $cat['title'] ?></a>
                             </li>
                             <?php
                         }
@@ -57,3 +58,4 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+

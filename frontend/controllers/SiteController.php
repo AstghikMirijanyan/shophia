@@ -220,31 +220,31 @@ class SiteController extends Controller
         return $this->render('customer');
     }
 
-    public function actionProducts()
-    {
-        $categories = Categories::find()->orderBy(['title' => 4])->asArray()->all();
-        $products = Products::find()->orderBy(['title' => 4])->asArray()->all();
-        return $this->render('products', [
-            'products' => $products,
-            'categories' => $categories
-        ]);
+//    public function actionProducts()
+//    {
+//        $categories = Categories::find()->orderBy(['title' => 4])->asArray()->all();
+//        $products = Products::find()->orderBy(['title' => 4])->asArray()->all();
+//        return $this->render('products', [
+//            'products' => $products,
+//            'categories' => $categories
+//        ]);
+//
+//
+//    }
 
-
-    }
-
-    public function actionProduct($id){
-
-        $product = Products::findOne($id);
-        if(!empty($product)){
-            return $this->render('product',
-                ['product'=>$product,
-
-            ]);
-        }
-
-        throw new NotFoundHttpException('');
-
-    }
+//    public function actionProduct($id){
+//
+//        $product = Products::findOne($id);
+//        if(!empty($product)){
+//            return $this->render('product',
+//                ['product'=>$product,
+//
+//            ]);
+//        }
+//
+//        throw new NotFoundHttpException('');
+//
+//    }
 
     public function actionCategories()
     {

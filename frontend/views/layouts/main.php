@@ -32,8 +32,11 @@ AppAsset::register($this);
     <header>
         <div class="top_bar">
             <div class="bar_call">
-                <img src="images/phone.png" alt="phone">
-                <a href="tel:+001555801" class="header-phone_link">Call +001 555 801</a>
+                <img src="<?= \yii\helpers\Url::to('@web/images/phone.png' )?>" alt="phone">
+                <a href="tel:+001555801" class="header-phone_link">Call
+                    <?php
+                    echo \frontend\widgets\info\InfoWidget::widget(['action' => 'phone']);
+                    ?></a>
             </div>
             <div class="middle"></div>
 
@@ -68,7 +71,6 @@ AppAsset::register($this);
             </div>
         </div>
         <div class="menu">
-<!--            <div class="menu_shop">-->
                 <nav>
                 <?php
 
@@ -84,23 +86,16 @@ AppAsset::register($this);
                 ]);
                 ?>
                 </nav>
-<!--                    <a href="" class="menu_link">Home</a>-->
-<!--                    <a href="" class="menu_link">Shop</a>-->
-<!--                    <a href="" class="menu_link">Categories</a>-->
-<!--                    <a href="" class="menu_link">Pages</a>-->
 
-<!--            </div>-->
             <div class="title_shop">
-                <a href=""><img src="images/Shophia.png" alt="logo"></a>
+                <a href="<?= \yii\helpers\Url::to('@web/site/index' )?>"><img src="<?= \yii\helpers\Url::to('@web/images/Shophia.png' )?>" alt="logo"></a>
             </div>
             <div class="shop_tr">
                 <div class="arrow"></div>
             </div>
 
             <div class="action_shop">
-                <div class="shopping_cart">
-                    <a href=""><img src="images/shopping-cart.png" alt="cart"></a>
-                </div>
+                <?= \frontend\widgets\cart\Cart::widget();?>
                 <div class="shopping_lang">
                     <select name="currency" class="currency_select">
                         <option value="" class="currency_item">EN</option>
@@ -120,6 +115,10 @@ AppAsset::register($this);
         </div>
         <!--END HEADER-->
     </header>
+<!--    --><?//= Breadcrumbs::widget([
+//        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+//    ]) ?>
+<!--    --><?//= Alert::widget() ?>
     <?=  $content ?>
     <!--FOOTER-->
     <footer>
@@ -191,13 +190,17 @@ AppAsset::register($this);
                 © 2017 Shopia Fashion Store Shopify.
                 <br> All Rights Reserved. Ecommerce Software by Shopify.
                 <br> Designed by MoccaLabs.com
+                <br>
+                <a><?php
+                echo \frontend\widgets\info\InfoWidget::widget(['action' => 'email']);
+                ?></a>
             </div>
             <div class="footer-bot__cards">
                 <nav>
-                    <a href=""><img src="images/Visa.png" alt=""></a>
-                    <a href=""><img src="images/Mastercard.png" alt=""></a>
-                    <a href=""><img src="images/American-express.png" alt=""></a>
-                    <a href=""><img src="images/Discover.png" alt=""></a>
+                    <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/visa.png' )?>" alt=""></a>
+                    <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/mastercard.png' )?>" alt=""></a>
+                    <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/american-express-logo.png' )?>" alt=""></a>
+                    <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/discover-paying-card.png' )?>" alt=""></a>
                 </nav>
             </div>
         </div>

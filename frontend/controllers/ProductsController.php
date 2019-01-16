@@ -1,127 +1,65 @@
 <?php
-
 namespace frontend\controllers;
 
-use Yii;
+
+use frontend\models\Categories;
 use frontend\models\Products;
-use frontend\models\ProductsControls;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use Yii;
 
-/**
- * ProductsController implements the CRUD actions for Products model.
- */
+
 class ProductsController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
-    /**
-     * Lists all Products models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new ProductsControls();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    public function actionIndex(){
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+        $categories = Categories::find()->asArray()->all();
+        $products = Products::find()->orderBy(['title'=>4]);
 
-    /**
-     * Displays a single Products model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+        if(!empty(\Yii::$app->request->get('slug'))){
+            $cat_slug = Yii::$app->request->get('slug');
+            $category = Categories::findOne(['slug'=>$cat_slug]);
+            if(!empty($category)){
 
-    /**
-     * Creates a new Products model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Products();
+                $products = $products->where(['cat_id' => $category->id]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
-        return $this->render('create', [
-            'model' => $model,
+        $products = $products->asArray()->all();
+        return $this->render('products',[
+            'products' => $products,
+            'categories' => $categories
         ]);
     }
 
-    /**
-     * Updates an existing Products model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+    public function actionCategory($slug){
+
+        $category = Categories::findOne(['slug' => $slug]);
+        if(!empty($category)){
+
+            $data = Categories::find()->with(['categoryProducts','brands'])->where(['id'=>$category->id])->asArray()->one();
+            return $this->render('category',[
+               'result' => $data
+            ]);
+
+        }else{
+            throw new NotFoundHttpException('Category not found');
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
-    /**
-     * Deletes an existing Products model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+    public function actionProduct($id){
 
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Products model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Products the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Products::findOne($id)) !== null) {
-            return $model;
+        $product = Products::findOne($id);
+        if(!empty($product)){
+            return $this->render('product',['product'=>$product]);
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('');
+
     }
+
 }
