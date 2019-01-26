@@ -33,7 +33,7 @@ AppAsset::register($this);
         <div class="top_bar">
             <div class="bar_call">
                 <img src="<?= \yii\helpers\Url::to('@web/images/phone.png') ?>" alt="phone">
-                <a href="tel:+001555801" class="header-phone_link">Call
+                <a href="tel:+37493747123" class="header-phone_link">Call
                     <?php
                     echo \frontend\widgets\info\InfoWidget::widget(['action' => 'phone']);
                     ?></a>
@@ -42,16 +42,15 @@ AppAsset::register($this);
 
             <div class="bar_mySelf">
                 <!--TOP MENU-->
-
                 <?php
                 $menuItems = [
-                    ['label' => 'Customer Service', 'url' => ['customer']],
-                    ['label' => 'About', 'url' => ['about']],
-                    ['label' => 'Contact', 'url' => ['contact']],
+                    ['label' => 'Customer Service', 'url' => ['/customer']],
+                    ['label' => 'About', 'url' => ['/about']],
+                    ['label' => 'Contact', 'url' => ['/contact']],
                 ];
                 if (Yii::$app->user->isGuest) {
-                    $menuItems[] = ['label' => 'Signup', 'url' => ['signup']];
-                    $menuItems[] = ['label' => 'Login', 'url' => ['login']];
+                    $menuItems[] = ['label' => 'Signup', 'url' => ['/signup']];
+                    $menuItems[] = ['label' => 'Login', 'url' => ['/login']];
                 } else {
                     $menuItems[] = '<li>'
                         . Html::beginForm(['/site/logout'], 'post')
@@ -75,10 +74,10 @@ AppAsset::register($this);
                 <?php
 
                 $menuItems = [
-                    ['label' => 'Home', 'url' => ['index']],
-                    ['label' => 'Shop', 'url' => ['products']],
-                    ['label' => 'Categories', 'url' => ['categories']],
-                    ['label' => 'Pages', 'url' => ['pages']],
+                    ['label' => 'Home', 'url' => ['/index']],
+                    ['label' => 'Shop', 'url' => ['/products']],
+                    ['label' => 'Categories', 'url' => ['/categories']],
+                    ['label' => 'Blog', 'url' => ['/blog']],
                 ];
                 echo Nav::widget([
                     'options' => ['class' => 'menu_shop'],
@@ -96,27 +95,22 @@ AppAsset::register($this);
             </div>
 
             <div class="action_shop">
-                <?= \frontend\widgets\cart\Cart::widget(); ?>
-                <div class="shopping_lang">
-                    <select name="currency" class="currency_select">
-                        <option value="" class="currency_item">EN</option>
-                        <option value="" class="currency_item">RU</option>
-                        <option value="" class="currency_item">AM</option>
-                    </select>
+                <div class="shopping_search">
+                    <form action="" class="search_form" method="post">
+                        <div>
+                            <input name="search" type="search" placeholder="  search..." class="search_input">
+                            <div class="btn_search">
+                                <img src="<?= \yii\helpers\Url::to('@web/images/search (1).png') ?>" alt="">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <!--<div class="shopping_search">-->
-                <!--<form action="" method="post">-->
-                <!--&lt;!&ndash;<input type="search">&ndash;&gt;-->
-                <!--<button class="search_btn"><img src="images/magnifying-glass.png" name="submit" alt="search">-->
-                <!--</button>-->
-                <!--</form>-->
-                <!--</div>-->
-
+                <?= \frontend\widgets\cart\Cart::widget(); ?>
             </div>
         </div>
         <!--END HEADER-->
     </header>
-    <!--    --><? //= Breadcrumbs::widget([
+    <!--    --><?php //= Breadcrumbs::widget([
     //        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     //    ]) ?>
     <!--    --><? //= Alert::widget() ?>

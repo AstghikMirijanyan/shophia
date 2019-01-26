@@ -13,6 +13,8 @@ use Yii;
  * @property string $image
  * @property string $slug
  * @property int $cat_id
+ *
+ * @property Categories $cat
  */
 class Brands extends \yii\db\ActiveRecord
 {
@@ -34,6 +36,7 @@ class Brands extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['cat_id'], 'integer'],
             [['title', 'image', 'slug'], 'string', 'max' => 120],
+            [['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['cat_id' => 'id']],
         ];
     }
 
@@ -50,5 +53,13 @@ class Brands extends \yii\db\ActiveRecord
             'slug' => 'Slug',
             'cat_id' => 'Cat ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCat()
+    {
+        return $this->hasOne(Categories::className(), ['id' => 'cat_id']);
     }
 }

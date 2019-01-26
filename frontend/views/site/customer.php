@@ -1,13 +1,7 @@
 <?php
-
-/* @var $this yii\web\View */
-
-use yii\helpers\Html;
-
-$this->title = 'Customer Service';
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="">
-
-    <code><?= __FILE__ ?></code>
-</div>
+/**
+ * Created by PhpStorm.
+ * User: Gasparyan
+ * Date: 22.01.2019
+ * Time: 12:29
+ */

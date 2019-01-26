@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\Products;
+use frontend\models\Brands;
 use frontend\models\Categories;
 use frontend\models\ContactForm;
 
@@ -74,7 +75,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $feature = Products::find()->where(['is_feature'=>'1'])->orderBy(['id'=>SORT_DESC])->limit(8)->asArray()->all();
+
+        $style = Products::find()->where(['for_stylish'=>'1'])->orderBy(['id'=>SORT_DESC])->limit(6)->asArray()->all();
+        $brands = Brands::find()->orderBy(['title' => 4])->asArray()->all();
+
+
+        return $this->render('index',[
+            'brands' => $brands,
+            'style' => $style,
+            'feature'=>$feature
+        ]);
     }
 
     /**
@@ -219,32 +230,6 @@ class SiteController extends Controller
     {
         return $this->render('customer');
     }
-
-//    public function actionProducts()
-//    {
-//        $categories = Categories::find()->orderBy(['title' => 4])->asArray()->all();
-//        $products = Products::find()->orderBy(['title' => 4])->asArray()->all();
-//        return $this->render('products', [
-//            'products' => $products,
-//            'categories' => $categories
-//        ]);
-//
-//
-//    }
-
-//    public function actionProduct($id){
-//
-//        $product = Products::findOne($id);
-//        if(!empty($product)){
-//            return $this->render('product',
-//                ['product'=>$product,
-//
-//            ]);
-//        }
-//
-//        throw new NotFoundHttpException('');
-//
-//    }
 
     public function actionCategories()
     {

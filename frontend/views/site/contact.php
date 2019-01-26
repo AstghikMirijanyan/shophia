@@ -13,12 +13,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
 
-    <p>
-        If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-    </p>
+    <div class="site-cat">
+        <img src="<?= \yii\helpers\Url::to('@web/images/contact.jpg' )?>" alt="">
+    </div>
 
-    <div class="row">
-        <div class="col-lg-5">
+    <div class="contact_row">
+        <div class="contact_map"></div>
+        <div class="col-contact">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
@@ -34,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                    <?= Html::submitButton('Submit', ['class' => 'contact_submit', 'name' => 'contact-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

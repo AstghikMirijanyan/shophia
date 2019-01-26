@@ -5,7 +5,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 
-$this->title = 'SHOPHIA';
+$this->title = 'Shophia';
 ?>
 <div class="content">
     <div class="fromSlider">
@@ -103,66 +103,32 @@ $this->title = 'SHOPHIA';
     </div>
     <!--COLLECTION-->
     <div class="collection">
+        <?php if (!empty($style)) {
+        foreach ($style as $st) {
+        ?>
         <div class="middle_collection">
+                    <div class="small_collection">
 
-            <div class="hide_coll">
-                <a href="">
-                    <div class="plus"></div>
-                </a>
+                        <img src="<?= \yii\helpers\Url::to('@web/images/stylishImages/collectionOne.png') ?>"
+                             class="coll_image"
+                             alt="">
 
-                    <div class="plus_btn"> <a href="">SHOP NOW </a></div>
+                    </div>
+                    <div class="hide_coll">
 
-            </div>
-            <div class="small_collection">
-                <img src="<?= \yii\helpers\Url::to('@web/images/stylishImages/collectionOne.png') ?>" class="coll_image"
-                     alt="">
-            </div>
+                       <a href="" class="plus_btn">
+                       <?php
+                       echo $st['title'];
+                       ?>
+                       </a>
 
-            <div class="small_collection">
-                <div class="hide_coll">
-                    <a href="">
-                        <div class="plus"></div>
-                    </a>
-                    <div class="plus_btn"> <a href="">SHOP NOW </a></div>
-                </div>
-                <img src="<?= \yii\helpers\Url::to('@web/images/stylishImages/collectionTwo.png') ?>" class="coll_image"
-                     alt="">
-            </div>
+                    </div>
         </div>
-        <div class="middle_collection">
-            <div class="collection_center">
-                <img src="<?= \yii\helpers\Url::to('@web/images/stylishImages/collectionCenter.png') ?>"
-                     class="coll_image" alt="">
+            <?php
 
-            </div>
-            <div class="hide_collBig">
-                <div class="plus_btn"> <a href="">SHOP NOW </a></div>
-            </div>
+        }
+        } ?>
 
-        </div>
-        <div class="middle_collection">
-
-            <div class="small_collection">
-                <div class="hide_coll">
-                    <a href="">
-                        <div class="plus"></div>
-                    </a>
-                    <div class="plus_btn"> <a href="">SHOP NOW </a></div>
-                </div>
-                <img src="<?= \yii\helpers\Url::to('@web/images/stylishImages/collectionTree.png') ?>"
-                     class="coll_image" alt="">
-            </div>
-            <div class="small_collection">
-                <div class="hide_coll">
-                    <a href="">
-                        <div class="plus"></div>
-                    </a>
-                    <div class="plus_btn"> <a href="">SHOP NOW </a></div>
-                </div>
-                <img src="<?= \yii\helpers\Url::to('@web/images/stylishImages/collection5.png') ?>" class="coll_image"
-                     alt="">
-            </div>
-        </div>
     </div>
     <div class="handPicked">
         <div class="middle_handPicked line_handPicked">
@@ -183,55 +149,18 @@ $this->title = 'SHOPHIA';
     </div>
     <!--SUMMER COLLECTION-->
     <div class="summer_collection">
-        <div class="middle_summer_collection">
+        <?php
+        foreach ($feature as $feat){
+            ?>
+            <div class="middle_summer_collection">
             <img src="<?= \yii\helpers\Url::to('@web/images/summer1.jpg') ?>" alt="">
             <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
+                <div class="br_a"><a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['id']]) ?>"> $<?= $feat['price']?> <br>+ADD TO CART</a></div>
             </div>
         </div>
-
-        <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer2.png') ?>" alt="">
-            <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
-            </div>
-        </div>
-        <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer3.jpg') ?>" alt="">
-            <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
-            </div>
-        </div>
-        <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer4.png') ?>" alt="">
-            <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
-            </div>
-        </div>
-        <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer5.png') ?>" alt="">
-            <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
-            </div>
-        </div>
-        <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer6.png') ?>" alt="">
-            <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
-            </div>
-        </div>
-        <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer7.png') ?>" alt="">
-            <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
-            </div>
-        </div>
-        <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer.png') ?>" alt="">
-            <div class="add_brand">
-                <div class="br_a"><a href="">+ADD TO CART</a></div>
-            </div>
-        </div>
+        <?php
+        }
+        ?>
     </div>
     <div class="handPicked">
         <div class="middle_handPicked line_handPicked">
@@ -254,22 +183,31 @@ $this->title = 'SHOPHIA';
     <!--BRANDS-->
     <div class="brand">
         <div class="middle_brand">
-            <img src="<?= \yii\helpers\Url::to('@web/images/brands1.png') ?>" alt="">
+            <?php
+
+            foreach ($brands as $brand) {
+                ?>
+                <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"><img
+                            src="<?= \yii\helpers\Url::to('@web/images/brands1.png') ?>" alt=""></a>
+
+                <?php
+            }
+            ?>
         </div>
         <div class="middle_brand">
-            <img src="<?= \yii\helpers\Url::to('@web/images/brands2.png') ?>" alt="">
+            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands2.png') ?>" alt=""></a>
         </div>
         <div class="middle_brand">
-            <img src="<?= \yii\helpers\Url::to('@web/images/brands3.png') ?>" alt="">
+            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands3.png') ?>" alt=""></a>
         </div>
         <div class="middle_brand">
-            <img src="<?= \yii\helpers\Url::to('@web/images/brands4.png') ?>" alt="">
+            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands4.png') ?>" alt=""></a>
         </div>
         <div class="middle_brand">
-            <img src="<?= \yii\helpers\Url::to('@web/images/brands5.png') ?>" alt="">
+            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands5.png') ?>" alt=""></a>
         </div>
         <div class="middle_brand">
-            <img src="<?= \yii\helpers\Url::to('@web/images/brands6.png') ?>" alt="">
+            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands6.png') ?>" alt=""></a>
         </div>
     </div>
     <div class="handPicked">
@@ -280,12 +218,12 @@ $this->title = 'SHOPHIA';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2>Customers Says</h2></div>
+            <div class="title_handPicked"><h2>Blog</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
         </div>
-        <div class="middle_handPicked line_handPicked" >
+        <div class="middle_handPicked line_handPicked">
             <hr class="reg_hr">
         </div>
     </div>

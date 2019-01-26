@@ -4,7 +4,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-product">
     <div class="site-cat">
-        <img src="<?= \yii\helpers\Url::to('@web/images/u.jpg' )?>" alt="">
+        <img src="<?= \yii\helpers\Url::to('@web/images/u.jpg') ?>" alt="">
     </div>
     <div class="products">
         <div class="filter">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         foreach ($categories as $cat) {
                             ?>
                             <li>
-                                <a href="<?= \yii\helpers\Url::to(['/products/'.$cat['slug']]) ?>"><?= $cat['title'] ?></a>
+                                <a href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
                             </li>
                             <?php
                         }
@@ -30,6 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="midlle-filter"></div>
         </div>
         <div class="middle-products">
+            <div class="brands_prod">
+                <?php if (!empty($brands)) {
+                    foreach ($brands as $brand){
+                        ?>
+                        <ul class="brands_ul">
+                            <li>
+                                <a href="<?= \yii\helpers\Url::to(['/categories/' . $brand['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/brands2.png') ?>" alt=""></a>
+                            </li>
+                        </ul>
+                        <?php
+                    }
+                } ?>
+            </div>
             <?php
             if (!empty($products)) {
                 foreach ($products as $pr) {

@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use frontend\models\Categories;
 use frontend\models\Products;
+use frontend\models\Brands;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use Yii;
@@ -16,6 +17,17 @@ class ProductsController extends Controller
 
         $categories = Categories::find()->asArray()->all();
         $products = Products::find()->orderBy(['title'=>4]);
+        $brands = Brands::find()->asArray()->all();
+
+
+        if (!empty(\Yii::$app->request->get('slug'))){
+            $brand_slug = Yii::$app->request->get('slug');
+            $brand = Brands::findOne(['slug' => $brand_slug]);
+            if (!empty($brand)){
+              $brands = $brands->where(['id' => $brand->id]);
+            }
+
+        }
 
         if(!empty(\Yii::$app->request->get('slug'))){
             $cat_slug = Yii::$app->request->get('slug');
@@ -30,7 +42,8 @@ class ProductsController extends Controller
         $products = $products->asArray()->all();
         return $this->render('products',[
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'brands' => $brands
         ]);
     }
 
