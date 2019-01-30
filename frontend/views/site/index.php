@@ -153,7 +153,7 @@ $this->title = 'Shophia';
         foreach ($feature as $feat){
             ?>
             <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/summer1.jpg') ?>" alt="">
+            <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$feat['image']) ?>" alt="">
             <div class="add_brand">
                 <div class="br_a"><a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['id']]) ?>"> $<?= $feat['price']?> <br>+ADD TO CART</a></div>
             </div>

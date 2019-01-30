@@ -53,9 +53,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         <a href="<?php echo \yii\helpers\Url::to(['/product/' . $pr['id']]) ?>"
                            class="block-product-name"> <?= $pr['title']; ?></a>
                         <?php
+
+                        ?>
+                        <span class="block-product-price"><?= $pr['price'] ?></span>
+                        <?php
                         if (!empty($pr['sale_price'])) {
                             ?>
-                            <span class="block-product-price"><?= $pr['price'] ?></span>
+
                             <span class="block-product-sale_price"><?= $pr['sale_price'] ?></span>
                             <?php
                         }

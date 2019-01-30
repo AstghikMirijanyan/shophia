@@ -290,7 +290,7 @@ h1 {
 .collection {
     width: 94%;
     float: left;
-    height: 825px;
+    height: auto;
     margin-left: 40px;
     margin-bottom: 40px;
 
@@ -330,6 +330,7 @@ h1 {
     margin-left: 20px;
     float: left;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 .middle_summer_collection>img{
     width: 100%;
@@ -391,7 +392,7 @@ h1 {
 
 
 
-.hide_collBig:hover {
+.hide_coll:hover {
     background: rgba(127, 130, 135, 0.57);
     border: none;
 }
@@ -955,9 +956,7 @@ li > .slick-active {
 .text-btn:hover {
     background: black;
 }
-.plus_btn{
-    display: none;
-}
+
 .hide_coll:hover .plus_btn {
     display: block;
     margin-left: 120px;
@@ -975,12 +974,14 @@ li > .slick-active {
     text-decoration: none;
 }
 
-.plus_btn:hover {
+.hide_coll:hover .plus_btn:hover {
     background: #f09d66;
     cursor: pointer;
 }
 
-
+.plus_btn{
+    display: none;
+}
 
 .middle_summer_collection:hover {
     box-shadow: 7px 13px 33px -2px rgba(0, 0, 0, 0.75);
