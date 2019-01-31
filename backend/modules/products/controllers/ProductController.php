@@ -69,15 +69,26 @@ class ProductController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            $imgFile = UploadedFile::getInstance($model, "image");
+            $transaction = Yii::$app->db->transaction;
 
-            $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
-            $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
-            $path = $imgPath . $imgName;
-            if($imgFile->saveAs($path)){
-                $model->image = $imgName;
-                $model->update(false);
+            try{
+                $imgFile = UploadedFile::getInstance($model, "image");
+
+                $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+                $path = $imgPath . $imgName;
+                if($imgFile->saveAs($path)){
+                    $model->image = $imgName;
+                    $model->update(false);
+                    $transaction->commit();
+                }else{
+                    $transaction->rollBack();
+                }
+            }catch (\Exception $exception){
+                $transaction->rollBack();
             }
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -98,49 +109,38 @@ class ProductController extends Controller
         $model = $this->findModel($id);
 
         $old_image = $model->image;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            //TODO add transaction
             $transaction = Yii::$app->db->transaction;
-            $imgFile = UploadedFile::getInstance($model, "image");
 
-            if (!empty($imgFile)) {
-                $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
-//                $image_name = (uniqid('logo').$imgFile->baseName.date('dHis') ). '.' . $imgFile->extension;
+            try{
 
-                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
-                $model->image = $imgName;
-                $path = $imgPath . $imgName;
-                if($imgFile->saveAs($path)){
-                    $model->save(false);
-                       if (!empty($old_image)){
-                           unlink($imgPath.$old_image);
-                       }
-                    //TODO check if has old image and delete that old image
-                    //TODO transaction commit
+                $imgFile = UploadedFile::getInstance($model, "image");
+                if (!empty($imgFile)) {
+                    $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
+                    $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+                    $model->image = $imgName;
+                    $path = $imgPath . $imgName;
+                    if($imgFile->saveAs($path)){
+                        $model->save(false);
+                        if (!empty($old_image)){
+                            unlink($imgPath.$old_image);
+                            $transaction->commit();
+                        }
+
+                    }else{
+                        $transaction->rollBack();
+                    }
+
                 }else{
-                    // rollback
+                    $model->image = $old_image;
+                    $model->save(false);
                 }
 
-            }else{
-                $model->image = $old_image;
-                $model->save(false);
+            }catch (\Exception $exception){
+                $transaction->rollBack();
             }
-
-
-//            $session = Yii::$app->session;
-//
-//            $cookies = Yii::$app->response->cookies;
-//
-//// add a new cookie to the response to be sent
-//            $cookies->add(new \yii\web\Cookie([
-//                'name' => 'language',
-//                'value' => 'zh-CN',
-//            ]));
-//
-//            $session->setFlash('some_key','Update successfully done!');
-
-
 
             return $this->redirect(['index']);
         }
