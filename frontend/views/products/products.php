@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php
                     if (!empty($categories)) {
                         foreach ($categories as $cat) {
+
                             ?>
                             <li>
                                 <a href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
@@ -36,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ?>
                         <ul class="brands_ul">
                             <li>
-                                <a href="<?= \yii\helpers\Url::to(['/categories/' . $brand['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/brands2.png') ?>" alt=""></a>
+                                <a href="<?= \yii\helpers\Url::to(['/category/' . $brand['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/brands2.png') ?>" alt=""></a>
                             </li>
                         </ul>
                         <?php

@@ -2,7 +2,8 @@
 namespace frontend\controllers;
 
 
-use frontend\models\Categories;
+
+use common\models\Categories;
 use frontend\models\Products;
 use frontend\models\Brands;
 use yii\web\Controller;
@@ -32,6 +33,7 @@ class ProductsController extends Controller
         if(!empty(\Yii::$app->request->get('slug'))){
             $cat_slug = Yii::$app->request->get('slug');
             $category = Categories::findOne(['slug'=>$cat_slug]);
+
             if(!empty($category)){
 
                 $products = $products->where(['cat_id' => $category->id]);
@@ -42,7 +44,7 @@ class ProductsController extends Controller
         $products = $products->asArray()->all();
         return $this->render('products',[
             'products' => $products,
-            'categories' => $categories,
+            'category' => $categories,
             'brands' => $brands
         ]);
     }

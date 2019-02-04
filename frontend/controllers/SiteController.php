@@ -76,14 +76,13 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $feature = Products::find()->where(['is_feature'=>'1'])->orderBy(['id'=>SORT_DESC])->limit(8)->asArray()->all();
-
-        $style = Products::find()->where(['for_stylish'=>'1'])->orderBy(['id'=>SORT_DESC])->limit(6)->asArray()->all();
+        $category = \common\models\Categories::find()->orderBy(['title' => 4])->asArray()->all();
         $brands = Brands::find()->orderBy(['title' => 4])->asArray()->all();
 
 
         return $this->render('index',[
             'brands' => $brands,
-            'style' => $style,
+            'categories' => $category,
             'feature'=>$feature
         ]);
     }
@@ -234,8 +233,8 @@ class SiteController extends Controller
     public function actionCategories()
     {
         $categories = Categories::find()->orderBy(['title' => 4])->asArray()->all();
-        return $this->render('categories', [
-            'categories' => $categories
+        return $this->render('category', [
+            'category' => $categories
         ]);
 
 

@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string $title
  * @property string $content
- * @property int $image
+ * @property string $image
  * @property string $slug
  *
  * @property Products[] $products
@@ -31,10 +31,10 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'image', 'slug'], 'required'],
+            [['title',  'slug'], 'required'],
             [['content'], 'string'],
-            [['image'], 'integer'],
-            [['title', 'slug'], 'string', 'max' => 120],
+            [['image'], 'string'],
+            [['title', 'image','slug'], 'string', 'max' => 120],
         ];
     }
 
@@ -44,11 +44,11 @@ class Categories extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'image' => 'Image',
-            'slug' => 'Slug',
+            'id' => Yii::t('app', 'ID'),
+            'title' => Yii::t('app', 'Title'),
+            'content' => Yii::t('app', 'Content'),
+            'image' => Yii::t('app', 'Image'),
+            'slug' => Yii::t('app', 'Slug'),
         ];
     }
 

@@ -15,10 +15,23 @@ return [
         'products' => [
             'class' => 'backend\modules\products\Module',
         ],
+        'categories' => [
+            'class' => 'backend\modules\categories\Module',
+        ],
+        'brands' => [
+            'class' => 'backend\modules\brands\Module',
+        ],
+        'slider' => [
+            'class' => 'backend\modules\slider\Module',
+        ],
+        'blog' => [
+            'class' => 'backend\modules\blog\Module',
+        ],
     ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+//            'baseUrl' => '/admin'
         ],
         'assetManager' => [
             'bundles' => [

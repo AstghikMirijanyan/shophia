@@ -76,7 +76,7 @@ AppAsset::register($this);
                 $menuItems = [
                     ['label' => 'Home', 'url' => ['/index']],
                     ['label' => 'Shop', 'url' => ['/products']],
-                    ['label' => 'Categories', 'url' => ['/categories']],
+                    ['label' => 'Categories', 'url' => ['/category']],
                     ['label' => 'Blog', 'url' => ['/blog']],
                 ];
                 echo Nav::widget([

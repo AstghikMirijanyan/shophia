@@ -33,6 +33,10 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Products', 'icon' => 'dashboard', 'url' => ['/products/product']],
+                    ['label' => 'Categories', 'icon' => 'dashboard', 'url' => ['/categories/category']],
+                    ['label' => 'Brands', 'icon' => 'dashboard', 'url' => ['/brands/brand']],
+                    ['label' => 'Slider', 'icon' => 'dashboard', 'url' => ['/slider/slider']],
+                    ['label' => 'Blog', 'icon' => 'dashboard', 'url' => ['/blog/blog']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Some tools',

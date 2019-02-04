@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'raw',
+                'filter'=> '',
                 'value' => function($model){
                     return Html::img(\yii\helpers\Url::to('@image/products/'.$model->image),['width' => '100px','class'=>'img']);
                 }
@@ -54,3 +55,5 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
     <?php Pjax::end(); ?>
 </div>
+
+

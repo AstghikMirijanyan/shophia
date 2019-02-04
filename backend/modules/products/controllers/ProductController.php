@@ -2,9 +2,11 @@
 
 namespace backend\modules\products\controllers;
 
+use common\models\Categories;
 use Yii;
 use common\models\Products;
 use backend\modules\products\models\ProductSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -66,34 +68,29 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Products();
+        $categories = Categories::find()->asArray()->all();
+
+        $categories = ArrayHelper::map($categories,'id','title');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $imgFile = UploadedFile::getInstance($model, "image");
 
-            $transaction = Yii::$app->db->transaction;
+            if (!empty($imgFile)) {
 
-            try{
-                $imgFile = UploadedFile::getInstance($model, "image");
-
-                $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
+                $imgPath = Yii::getAlias("@frontend") . "/web/images/products/";
                 $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+
                 $path = $imgPath . $imgName;
                 if($imgFile->saveAs($path)){
                     $model->image = $imgName;
                     $model->update(false);
-                    $transaction->commit();
-                }else{
-                    $transaction->rollBack();
                 }
-            }catch (\Exception $exception){
-                $transaction->rollBack();
             }
-
-
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('create', [
             'model' => $model,
+            'categories' => $categories
         ]);
     }
 
@@ -108,38 +105,36 @@ class ProductController extends Controller
     {
         $model = $this->findModel($id);
 
-        $old_image = $model->image;
+        $categories = Categories::find()->asArray()->all();
+        $categories = ArrayHelper::map($categories,'id','title');
 
+        $old_image = $model->image;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            $transaction = Yii::$app->db->transaction;
+            $transaction = Yii::$app->db->beginTransaction();
+            $imgFile = UploadedFile::getInstance($model, "image");
 
-            try{
+            if (!empty($imgFile)) {
+                $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
 
-                $imgFile = UploadedFile::getInstance($model, "image");
-                if (!empty($imgFile)) {
-                    $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
-                    $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+                $path = $imgPath . $imgName;
+                if($imgFile->saveAs($path)){
                     $model->image = $imgName;
-                    $path = $imgPath . $imgName;
-                    if($imgFile->saveAs($path)){
-                        $model->save(false);
-                        if (!empty($old_image)){
-                            unlink($imgPath.$old_image);
-                            $transaction->commit();
-                        }
-
-                    }else{
-                        $transaction->rollBack();
+                    $model->update(false);
+                    if(!empty($old_photo)){
+                        unlink($imgPath.$old_photo);
                     }
+                    $transaction->commit();
 
                 }else{
-                    $model->image = $old_image;
-                    $model->save(false);
+
+                    $transaction->rollBack();
                 }
 
-            }catch (\Exception $exception){
-                $transaction->rollBack();
+            }else{
+                $model->image = $old_image;
+                $model->save(true,['image']);
             }
 
             return $this->redirect(['index']);
@@ -147,6 +142,7 @@ class ProductController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'categories' => $categories
         ]);
     }
 

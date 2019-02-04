@@ -92,7 +92,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h1>FOR STYLISH</h1></div>
+            <div class="title_handPicked"><h2>FOR STYLISH</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -103,22 +103,22 @@ $this->title = 'Shophia';
     </div>
     <!--COLLECTION-->
     <div class="collection">
-        <?php if (!empty($style)) {
-        foreach ($style as $st) {
+        <?php if (!empty($categories)) {
+        foreach ($categories as $category) {
+
         ?>
         <div class="middle_collection">
                     <div class="small_collection">
 
-                        <img src="<?= \yii\helpers\Url::to('@web/images/stylishImages/collectionOne.png') ?>"
-                             class="coll_image"
-                             alt="">
+                        <img src="<?= \yii\helpers\Url::to('@web/images/uploads/categories/'.$category['image']) ?>" alt="">
+
 
                     </div>
                     <div class="hide_coll">
 
                        <a href="" class="plus_btn">
                        <?php
-                       echo $st['title'];
+                       echo $category['title'];
                        ?>
                        </a>
 
