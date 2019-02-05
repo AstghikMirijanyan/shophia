@@ -29,7 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'content:ntext',
-            'image',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'filter'=> '',
+                'value' => function($model){
+                    return Html::img(\yii\helpers\Url::to('@image/products/'.$model->image),['width' => '100px','class'=>'img']);
+                }
+            ] ,
             'slug',
             //'cat_id',
 

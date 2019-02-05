@@ -87,7 +87,6 @@ class CategoryController extends Controller
             }
 
             $model->save(false);
-            //die();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

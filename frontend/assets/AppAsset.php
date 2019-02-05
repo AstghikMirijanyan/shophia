@@ -15,11 +15,16 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/style.css',
         'css/slick.css',
+        'css/animate.css'
     ];
     public $js = [
         'js/jquery.min.js',
+
         'js/slick.js',
+
         'js/script.js',
+
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

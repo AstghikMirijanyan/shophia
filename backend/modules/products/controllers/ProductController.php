@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * ProductController implements the CRUD actions for Products model.
+ * InfoController implements the CRUD actions for Products model.
  */
 class ProductController extends Controller
 {

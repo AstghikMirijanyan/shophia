@@ -27,6 +27,12 @@ return [
         'blog' => [
             'class' => 'backend\modules\blog\Module',
         ],
+        'info' => [
+            'class' => 'backend\modules\info\Module',
+        ],
+        'pages' => [
+            'class' => 'backend\modules\pages\Module',
+        ],
     ],
     'components' => [
         'request' => [

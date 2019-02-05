@@ -149,6 +149,7 @@ button {
     width: 93%;
     margin: 0 auto;
     float: left;
+    margin-top: 20px;
     height: 140px;
     margin-left: 55px;
 }
@@ -358,6 +359,7 @@ h1 {
 
 .add_brand:hover {
     border-bottom: 50px solid #f0975d;
+
 }
 
 .br_a {
@@ -369,6 +371,9 @@ h1 {
 .br_a > a {
     color: white;
     text-decoration: none;
+}
+.br_a:hover{
+
 }
 
 .middle_summer_collection img {
@@ -409,14 +414,17 @@ h1 {
 .middle_brand {
     width: 15%;
     height: 100px;
-    margin-left: 18px;
+    /*margin-left: 18px;*/
     float: left;
 
+
 }
+
 
 .middle_brand img {
     width: 90%;
     height: 90%;
+    background-size: cover;
 }
 
 .customers {
@@ -714,8 +722,8 @@ li > .slick-active {
 .slickslider > img {
     width: 100%;
     height: 100%;
-    /*object-fit: cov/er;*/
-    background-size: cover;
+    object-fit: cover;
+    /*background-size: cover;*/
 }
 
 .slick-dots li .slick-active button {
@@ -738,8 +746,10 @@ li > .slick-active {
 }
 
 .logout {
-    margin-top: -10px;
+    margin-top: -5px;
     color: #393939;
+    font-size: 11px;
+    text-transform: uppercase;
 }
 
 .bar_mySelf_ul > li > a {
@@ -961,7 +971,7 @@ li > .slick-active {
 .hide_coll:hover .plus_btn {
     display: block;
     margin-left: 150px;
-    margin-top: 260px;
+    margin-top: 290px;
     width: 100px;
     height: 48px;
     padding-top: 15px;
@@ -1354,9 +1364,12 @@ input[type=search] {
     float: left;
 
 }
+.brand{
+    overflow: hidden;
+}
 .brands_prod {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 30px;
     width: 100%;
     height: 50px;
     float: left;
@@ -1374,8 +1387,8 @@ input[type=search] {
 }
 .brands_ul>li:hover{
 
-    -webkit-box-shadow: 10px 10px 34px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 34px -6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 34px -6px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 10px 10px 34px -6px rgba(176, 176, 176, 0.75);
     box-shadow: 10px 10px 34px -6px rgba(0,0,0,0.75);
 }
 .brands_ul>li>a>img{

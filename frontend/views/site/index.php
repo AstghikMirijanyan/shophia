@@ -116,7 +116,7 @@ $this->title = 'Shophia';
                     </div>
                     <div class="hide_coll">
 
-                       <a href="" class="plus_btn">
+                       <a href="" class="plus_btn animated bounceInUp">
                        <?php
                        echo $category['title'];
                        ?>
@@ -181,34 +181,20 @@ $this->title = 'Shophia';
         </div>
     </div>
     <!--BRANDS-->
-    <div class="brand">
-        <div class="middle_brand">
-            <?php
+    <div class="brand brand_carousel">
+        <?php foreach ($brands as $brand)
 
-            foreach ($brands as $brand) {
-                ?>
-                <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"><img
-                            src="<?= \yii\helpers\Url::to('@web/images/brands1.png') ?>" alt=""></a>
-
-                <?php
-            }
+        {
             ?>
-        </div>
-        <div class="middle_brand">
-            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands2.png') ?>" alt=""></a>
-        </div>
-        <div class="middle_brand">
-            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands3.png') ?>" alt=""></a>
-        </div>
-        <div class="middle_brand">
-            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands4.png') ?>" alt=""></a>
-        </div>
-        <div class="middle_brand">
-            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands5.png') ?>" alt=""></a>
-        </div>
-        <div class="middle_brand">
-            <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/brands6.png') ?>" alt=""></a>
-        </div>
+            <div class="middle_brand">
+
+                <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>">
+                    <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/'.$brand['image']) ?>" alt="">
+                </a>
+            </div>
+        <?php
+        }?>
+
     </div>
     <div class="handPicked">
         <div class="middle_handPicked line_handPicked">

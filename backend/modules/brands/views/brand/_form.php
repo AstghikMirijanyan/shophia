@@ -15,12 +15,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?php
+    if(!empty($model->image)){
+        echo Html::img(['/images/'.$model->image],['width' => '100px']);
+    }
+    ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->fileInput() ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cat_id')->textInput() ?>
+    <?= $form->field($model, 'cat_id')->dropDownList($categories,['prompt' => 'please select category']); ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

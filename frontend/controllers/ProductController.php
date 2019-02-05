@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProductController implements the CRUD actions for Products model.
+ * InfoController implements the CRUD actions for Products model.
  */
 class ProductController extends Controller
 {

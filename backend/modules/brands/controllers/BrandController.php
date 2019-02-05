@@ -2,12 +2,15 @@
 
 namespace backend\modules\brands\controllers;
 
+use common\models\Categories;
 use Yii;
 use common\models\Brands;
 use backend\modules\brands\models\BrandSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BrandController implements the CRUD actions for Brands model.
@@ -65,13 +68,29 @@ class BrandController extends Controller
     public function actionCreate()
     {
         $model = new Brands();
+        $categories = Categories::find()->asArray()->all();
+
+        $categories = ArrayHelper::map($categories,'id','title');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $imgFile = UploadedFile::getInstance($model, "image");
+
+            if (!empty($imgFile)) {
+
+                $imgPath = Yii::getAlias("@frontend") . "/web/images/uploads/brands/";
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+
+                $path = $imgPath . $imgName;
+                if($imgFile->saveAs($path)){
+                    $model->image = $imgName;
+                    $model->update(false);
+                }
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('create', [
             'model' => $model,
+            'categories' => $categories
         ]);
     }
 
@@ -86,14 +105,47 @@ class BrandController extends Controller
     {
         $model = $this->findModel($id);
 
+        $categories = Categories::find()->asArray()->all();
+        $categories = ArrayHelper::map($categories,'id','title');
+
+        $old_image = $model->image;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+            $transaction = Yii::$app->db->beginTransaction();
+            $imgFile = UploadedFile::getInstance($model, "image");
+
+            if (!empty($imgFile)) {
+                $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/brands/';
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+
+                $path = $imgPath . $imgName;
+                if($imgFile->saveAs($path)){
+                    $model->image = $imgName;
+                    $model->update(false);
+                    if(!empty($old_photo)){
+                        unlink($imgPath.$old_photo);
+                    }
+                    $transaction->commit();
+
+                }else{
+
+                    $transaction->rollBack();
+                }
+
+            }else{
+                $model->image = $old_image;
+                $model->save(true,['image']);
+            }
+
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'categories' => $categories
         ]);
     }
+
 
     /**
      * Deletes an existing Brands model.

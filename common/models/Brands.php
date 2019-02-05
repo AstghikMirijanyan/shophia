@@ -30,7 +30,7 @@ class Brands extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'image', 'slug'], 'required'],
+            [['title', 'content', 'slug'], 'required'],
             [['content'], 'string'],
             [['cat_id'], 'integer'],
             [['title', 'image', 'slug'], 'string', 'max' => 120],
