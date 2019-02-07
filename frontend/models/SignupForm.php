@@ -39,7 +39,7 @@ class SignupForm extends Model
     /**
      * Signs user up.
      *
-     * @return User|null the saved model or null if saving fails
+     * @return User|null the saved models or null if saving fails
      */
     public function signup()
     {

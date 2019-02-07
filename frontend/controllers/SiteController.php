@@ -12,8 +12,8 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\Products;
-use frontend\models\Brands;
-use frontend\models\Categories;
+use common\models\Brands;
+use common\models\Categories;
 use frontend\models\ContactForm;
 
 /**
@@ -129,7 +129,9 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+
         $model = new ContactForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
@@ -144,6 +146,13 @@ class SiteController extends Controller
             ]);
         }
     }
+
+    /**
+     * Displays contact page.
+     *
+     * @return mixed
+     */
+
 
     /**
      * Displays about page.
@@ -163,6 +172,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {

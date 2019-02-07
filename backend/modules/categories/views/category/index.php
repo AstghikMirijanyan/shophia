@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'title',
             'content:ntext',
             [
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'filter'=> '',
                 'value' => function($model){
-                    return Html::img(\yii\helpers\Url::to('@image/products/'.$model->image),['width' => '100px','class'=>'img']);
+                    return Html::img(\yii\helpers\Url::to('@home/images/uploads/categories/'.$model->image),['width' => '100px','class'=>'img']);
                 }
             ] ,
             'slug',

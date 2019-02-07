@@ -6,12 +6,13 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\Products */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="products-form">
     <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput() ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
@@ -21,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?php
     if(!empty($model->image)){
-        echo Html::img(['/images/'.$model->image],['width' => '100px']);
+        echo Html::img(\yii\helpers\Url::to('@home/images/uploads/products/'.$model->image),['width' => '100px','class'=>'img']);
     }
     ?>
 
@@ -29,13 +30,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sku')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cat_id')->dropDownList($categories,['prompt' => 'please select category']); ?>
+<!--    --><?//= $form->field($model, 'cat_id')->dropDownList($categories,['prompt' => 'please select category']); ?>
 <!--    --><?//= $form->field($model, 'brand_id')->dropDownList($brands,['prompt' => 'please select brand']); ?>
 
 
     <?= $form->field($model, 'is_new')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+<!--    --><?//= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'is_feature')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
 

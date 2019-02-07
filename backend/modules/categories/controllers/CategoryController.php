@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * CategoryController implements the CRUD actions for Categories model.
+ * CategoryController implements the CRUD actions for Categories models.
  */
 class CategoryController extends Controller
 {
@@ -38,7 +38,6 @@ class CategoryController extends Controller
     {
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -46,10 +45,10 @@ class CategoryController extends Controller
     }
 
     /**
-     * Displays a single Categories model.
+     * Displays a single Categories models.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionView($id)
     {
@@ -59,7 +58,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Creates a new Categories model.
+     * Creates a new Categories models.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -76,9 +75,7 @@ class CategoryController extends Controller
                 $imgName = Yii::$app->security->generateRandomString() . '.' . $image->extension;
 
                 $filePath = Yii::getAlias('@frontend').'/web/images/uploads/categories/';
-                if(!is_dir($filePath)){
-                    mkdir($filePath);
-                }
+
 
                 if ($image->saveAs($filePath.$imgName)) {
                     $model->image = $imgName;
@@ -89,18 +86,17 @@ class CategoryController extends Controller
             $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing Categories model.
+     * Updates an existing Categories models.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionUpdate($id)
     {
@@ -142,11 +138,11 @@ class CategoryController extends Controller
     }
 
     /**
-     * Deletes an existing Categories model.
+     * Deletes an existing Categories models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionDelete($id)
     {
@@ -156,11 +152,11 @@ class CategoryController extends Controller
     }
 
     /**
-     * Finds the Categories model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Finds the Categories models based on its primary key value.
+     * If the models is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Categories the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Categories the loaded models
+     * @throws NotFoundHttpException if the models cannot be found
      */
     protected function findModel($id)
     {

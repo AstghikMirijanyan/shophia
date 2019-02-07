@@ -25,6 +25,7 @@ use Yii;
  *
  * @property Cart[] $carts
  * @property Categories $cat
+ * @property Brands $brand
  */
 class Products extends \yii\db\ActiveRecord
 {
@@ -50,6 +51,7 @@ class Products extends \yii\db\ActiveRecord
             [['sku'], 'string', 'max' => 120],
             [['sku'], 'unique'],
             [['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['cat_id' => 'id']],
+            [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brands::className(), 'targetAttribute' => ['brand_id' => 'id']],
         ];
     }
 
@@ -59,21 +61,21 @@ class Products extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'price' => 'Price',
-            'sale_price' => 'Sale Price',
-            'content' => 'Content',
-            'image' => 'Image',
-            'sku' => 'Sku',
-            'cat_id' => 'Category',
-            'brand_id' => 'Brand',
-            'is_new' => 'Is New',
-            'slug' => 'Slug',
-            'is_feature' => 'Is Feature',
-            'available_stock' => 'Available Stock',
-            'quantity' => 'Quantity',
-            'for_stylish' => 'For Stylish',
+            'id' => Yii::t('app', 'ID'),
+            'title' => Yii::t('app', 'Title'),
+            'price' => Yii::t('app', 'Price'),
+            'sale_price' => Yii::t('app', 'Sale Price'),
+            'content' => Yii::t('app', 'Content'),
+            'image' => Yii::t('app', 'Image'),
+            'sku' => Yii::t('app', 'Sku'),
+            'cat_id' => Yii::t('app', 'Cat ID'),
+            'brand_id' => Yii::t('app', 'Brand ID'),
+            'is_new' => Yii::t('app', 'Is New'),
+            'slug' => Yii::t('app', 'Slug'),
+            'is_feature' => Yii::t('app', 'Is Feature'),
+            'available_stock' => Yii::t('app', 'Available Stock'),
+            'quantity' => Yii::t('app', 'Quantity'),
+            'for_stylish' => Yii::t('app', 'For Stylish'),
         ];
     }
 
@@ -91,5 +93,13 @@ class Products extends \yii\db\ActiveRecord
     public function getCat()
     {
         return $this->hasOne(Categories::className(), ['id' => 'cat_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBrand()
+    {
+        return $this->hasOne(Brands::className(), ['id' => 'brand_id']);
     }
 }

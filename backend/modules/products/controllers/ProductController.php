@@ -2,6 +2,7 @@
 
 namespace backend\modules\products\controllers;
 
+use common\models\Brands;
 use common\models\Categories;
 use Yii;
 use common\models\Products;
@@ -13,7 +14,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * InfoController implements the CRUD actions for Products model.
+ * InfoController implements the CRUD actions for Products models.
  */
 class ProductController extends Controller
 {
@@ -68,29 +69,13 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Products();
-        $categories = Categories::find()->asArray()->all();
-
-        $categories = ArrayHelper::map($categories,'id','title');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $imgFile = UploadedFile::getInstance($model, "image");
-
-            if (!empty($imgFile)) {
-
-                $imgPath = Yii::getAlias("@frontend") . "/web/images/products/";
-                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
-
-                $path = $imgPath . $imgName;
-                if($imgFile->saveAs($path)){
-                    $model->image = $imgName;
-                    $model->update(false);
-                }
-            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
         return $this->render('create', [
             'model' => $model,
-            'categories' => $categories
         ]);
     }
 
@@ -105,44 +90,12 @@ class ProductController extends Controller
     {
         $model = $this->findModel($id);
 
-        $categories = Categories::find()->asArray()->all();
-        $categories = ArrayHelper::map($categories,'id','title');
-
-        $old_image = $model->image;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            $transaction = Yii::$app->db->beginTransaction();
-            $imgFile = UploadedFile::getInstance($model, "image");
-
-            if (!empty($imgFile)) {
-                $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
-                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
-
-                $path = $imgPath . $imgName;
-                if($imgFile->saveAs($path)){
-                    $model->image = $imgName;
-                    $model->update(false);
-                    if(!empty($old_photo)){
-                        unlink($imgPath.$old_photo);
-                    }
-                    $transaction->commit();
-
-                }else{
-
-                    $transaction->rollBack();
-                }
-
-            }else{
-                $model->image = $old_image;
-                $model->save(true,['image']);
-            }
-
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'categories' => $categories
         ]);
     }
 
@@ -173,6 +126,6 @@ class ProductController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }

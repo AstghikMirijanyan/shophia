@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "categories".
+ * This is the models class for table "categories".
  *
  * @property int $id
  * @property string $title
@@ -55,8 +55,16 @@ class Categories extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProducts()
+    public function getCategoryProducts()
     {
         return $this->hasMany(Products::className(), ['cat_id' => 'id']);
     }
+
+    public function getBrands()
+    {
+        return $this->hasMany(Brands::className(), ['cat_id' => 'id']);
+    }
 }
+
+
+

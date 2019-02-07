@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use frontend\models\Categories;
 
 /**
- * CategoriesControls represents the model behind the search form of `frontend\models\Categories`.
+ * CategoriesControls represents the models behind the search form of `frontend\models\Categories`.
  */
 class CategoriesControls extends Categories
 {

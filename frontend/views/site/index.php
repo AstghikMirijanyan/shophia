@@ -9,39 +9,14 @@ $this->title = 'Shophia';
 ?>
 <div class="content">
     <div class="fromSlider">
-        <div class="text-block">
-            <div class="text">
-                <div class="middle-text">
-                    <div class="name-text">MID-SEASON</div>
-                    <div class="sale">SALE</div>
-                    <div class="up"><span>UP TO</span></div>
-                    <div class="pr">50% OFF</div>
-                </div>
 
-            </div>
-            <button class="text-btn">SHOP NOW</button>
-        </div>
         <div class="text-block">
             <div class="text">
                 <div class="middle-text">
-                    <div class="name-text">MID-SEASON</div>
-                    <div class="sale">NEW</div>
-                    <div class="up"><span>UP TO</span></div>
-                    <div class="pr">COLLECTION</div>
+
                 </div>
             </div>
-            <button class="text-btn">SHOP NOW</button>
-        </div>
-        <div class="text-block">
-            <div class="text">
-                <div class="middle-text">
-                    <div class="name-text">MID-SEASON</div>
-                    <div class="sale">BEST</div>
-                    <div class="up"><span>UP TO</span></div>
-                    <div class="pr">COLLECTION</div>
-                </div>
-            </div>
-            <button class="text-btn">SHOP NOW</button>
+
         </div>
     </div>
     <!--SLIDER-->
@@ -116,7 +91,7 @@ $this->title = 'Shophia';
                     </div>
                     <div class="hide_coll">
 
-                       <a href="" class="plus_btn animated bounceInUp">
+                       <a href="<?= \yii\helpers\Url::to(['/products/'. $category['slug']. '/' . $brand['slug']]) ?>" class="plus_btn animated bounceInUp">
                        <?php
                        echo $category['title'];
                        ?>

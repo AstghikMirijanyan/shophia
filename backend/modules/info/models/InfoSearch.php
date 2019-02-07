@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use common\models\Info;
 
 /**
- * InfoSearch represents the model behind the search form of `common\models\Info`.
+ * InfoSearch represents the models behind the search form of `common\models\Info`.
  */
 class InfoSearch extends Info
 {
@@ -18,7 +18,7 @@ class InfoSearch extends Info
     {
         return [
             [['id'], 'integer'],
-            [['email', 'phone', 'info', 'currencies', 'title', 'text_terms'], 'safe'],
+            [['type', 'content'], 'safe'],
         ];
     }
 
@@ -46,6 +46,9 @@ class InfoSearch extends Info
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 8,
+            ]
         ]);
 
         $this->load($params);
@@ -61,12 +64,8 @@ class InfoSearch extends Info
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'info', $this->info])
-            ->andFilterWhere(['like', 'currencies', $this->currencies])
-            ->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'text_terms', $this->text_terms]);
+        $query->andFilterWhere(['like', 'type', $this->type])
+            ->andFilterWhere(['like', 'content', $this->content]);
 
         return $dataProvider;
     }

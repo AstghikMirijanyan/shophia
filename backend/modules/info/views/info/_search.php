@@ -20,17 +20,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'email') ?>
+    <?= $form->field($model, 'type') ?>
 
-    <?= $form->field($model, 'phone') ?>
-
-    <?= $form->field($model, 'info') ?>
-
-    <?= $form->field($model, 'currencies') ?>
-
-    <?php // echo $form->field($model, 'title') ?>
-
-    <?php // echo $form->field($model, 'text_terms') ?>
+    <?= $form->field($model, 'content') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

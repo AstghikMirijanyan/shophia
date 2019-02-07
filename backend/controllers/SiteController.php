@@ -70,28 +70,29 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+//        var_dump(Yii::$app->request->post());die;
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            if (Yii::$app->user->identity->is_admin == '1') {
-                return $this->goBack();
-            } else {
+
+            if(Yii::$app->user->identity->is_admin == '1'){
+                return $this->redirect(['index']);
+            }else{
                 Yii::$app->user->logout();
-                return $this->goHome();
+                return $this->redirect('/');
             }
 
-        }  else {
-                $model->password = '';
+        } else {
+            $model->password = '';
 
-                return $this->render('login', [
-                    'model' => $model,
-                ]);
-            }
+            return $this->render('login', [
+                'model' => $model,
+            ]);
         }
-
+    }
 
     /**
      * Logout action.

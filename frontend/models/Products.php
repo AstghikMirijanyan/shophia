@@ -6,7 +6,7 @@ use common\models\Categories;
 use Yii;
 
 /**
- * This is the model class for table "products".
+ * This is the models class for table "products".
  *
  * @property int $id
  * @property string $title

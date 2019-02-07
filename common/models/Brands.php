@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "brands".
+ * This is the models class for table "brands".
  *
  * @property int $id
  * @property string $title
@@ -13,6 +13,9 @@ use Yii;
  * @property string $image
  * @property string $slug
  * @property int $cat_id
+ *
+ * @property Categories $cat
+ * @property Products[] $products
  */
 class Brands extends \yii\db\ActiveRecord
 {
@@ -30,10 +33,11 @@ class Brands extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'slug'], 'required'],
+            [['title', 'content', 'image', 'slug'], 'required'],
             [['content'], 'string'],
             [['cat_id'], 'integer'],
             [['title', 'image', 'slug'], 'string', 'max' => 120],
+            [['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['cat_id' => 'id']],
         ];
     }
 
@@ -50,5 +54,21 @@ class Brands extends \yii\db\ActiveRecord
             'slug' => Yii::t('app', 'Slug'),
             'cat_id' => Yii::t('app', 'Cat ID'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCat()
+    {
+        return $this->hasOne(Categories::className(), ['id' => 'cat_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProducts()
+    {
+        return $this->hasMany(Products::className(), ['brand_id' => 'id']);
     }
 }

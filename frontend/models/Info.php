@@ -5,7 +5,7 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "info".
+ * This is the models class for table "info".
  *
  * @property int $id
  * @property string $email

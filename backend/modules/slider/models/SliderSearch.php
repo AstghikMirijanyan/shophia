@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use common\models\Slider;
 
 /**
- * SliderSearch represents the model behind the search form of `common\models\Slider`.
+ * SliderSearch represents the models behind the search form of `common\models\Slider`.
  */
 class SliderSearch extends Slider
 {
@@ -46,6 +46,9 @@ class SliderSearch extends Slider
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 8,
+            ]
         ]);
 
         $this->load($params);

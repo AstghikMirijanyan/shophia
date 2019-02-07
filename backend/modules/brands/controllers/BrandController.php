@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * BrandController implements the CRUD actions for Brands model.
+ * BrandController implements the CRUD actions for Brands models.
  */
 class BrandController extends Controller
 {
@@ -48,10 +48,10 @@ class BrandController extends Controller
     }
 
     /**
-     * Displays a single Brands model.
+     * Displays a single Brands models.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionView($id)
     {
@@ -61,7 +61,7 @@ class BrandController extends Controller
     }
 
     /**
-     * Creates a new Brands model.
+     * Creates a new Brands models.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -95,11 +95,11 @@ class BrandController extends Controller
     }
 
     /**
-     * Updates an existing Brands model.
+     * Updates an existing Brands models.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionUpdate($id)
     {
@@ -148,11 +148,11 @@ class BrandController extends Controller
 
 
     /**
-     * Deletes an existing Brands model.
+     * Deletes an existing Brands models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionDelete($id)
     {
@@ -162,11 +162,11 @@ class BrandController extends Controller
     }
 
     /**
-     * Finds the Brands model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Finds the Brands models based on its primary key value.
+     * If the models is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Brands the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Brands the loaded models
+     * @throws NotFoundHttpException if the models cannot be found
      */
     protected function findModel($id)
     {

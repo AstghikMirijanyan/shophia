@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'slug') ?>
 
-    <?php // echo $form->field($model, 'cat_id') ?>
+    <?php // echo $form->field($models, 'cat_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * InfoController implements the CRUD actions for Info model.
+ * InfoController implements the CRUD actions for Info models.
  */
 class InfoController extends Controller
 {
@@ -45,10 +45,10 @@ class InfoController extends Controller
     }
 
     /**
-     * Displays a single Info model.
+     * Displays a single Info models.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionView($id)
     {
@@ -58,7 +58,7 @@ class InfoController extends Controller
     }
 
     /**
-     * Creates a new Info model.
+     * Creates a new Info models.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -76,11 +76,11 @@ class InfoController extends Controller
     }
 
     /**
-     * Updates an existing Info model.
+     * Updates an existing Info models.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionUpdate($id)
     {
@@ -96,11 +96,11 @@ class InfoController extends Controller
     }
 
     /**
-     * Deletes an existing Info model.
+     * Deletes an existing Info models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionDelete($id)
     {
@@ -110,11 +110,11 @@ class InfoController extends Controller
     }
 
     /**
-     * Finds the Info model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Finds the Info models based on its primary key value.
+     * If the models is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Info the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Info the loaded models
+     * @throws NotFoundHttpException if the models cannot be found
      */
     protected function findModel($id)
     {

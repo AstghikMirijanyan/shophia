@@ -56,21 +56,7 @@
        $(".search_input").val("");
    });
 
-   //
-   // var owl = $('.owl-carousel');
-   // owl.owlCarousel({
-   //     items:5,
-   //     loop:true,
-   //     autoplay:true,
-   //     autoplayTimeout:1000,
-   //     autoplayHoverPause:true
-   // });
-   // $('.play').on('click',function(){
-   //     owl.trigger('play.owl.autoplay',[1000])
-   // })
-   // $('.stop').on('click',function(){
-   //     owl.trigger('stop.owl.autoplay')
-   // })
+
 
    $('.brand_carousel').slick({
        slidesToShow: 4,

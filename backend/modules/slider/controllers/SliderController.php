@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SliderController implements the CRUD actions for Slider model.
+ * SliderController implements the CRUD actions for Slider models.
  */
 class SliderController extends Controller
 {
@@ -45,10 +45,10 @@ class SliderController extends Controller
     }
 
     /**
-     * Displays a single Slider model.
+     * Displays a single Slider models.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionView($id)
     {
@@ -58,7 +58,7 @@ class SliderController extends Controller
     }
 
     /**
-     * Creates a new Slider model.
+     * Creates a new Slider models.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -76,11 +76,11 @@ class SliderController extends Controller
     }
 
     /**
-     * Updates an existing Slider model.
+     * Updates an existing Slider models.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionUpdate($id)
     {
@@ -96,11 +96,11 @@ class SliderController extends Controller
     }
 
     /**
-     * Deletes an existing Slider model.
+     * Deletes an existing Slider models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionDelete($id)
     {
@@ -110,11 +110,11 @@ class SliderController extends Controller
     }
 
     /**
-     * Finds the Slider model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Finds the Slider models based on its primary key value.
+     * If the models is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Slider the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Slider the loaded models
+     * @throws NotFoundHttpException if the models cannot be found
      */
     protected function findModel($id)
     {

@@ -12,30 +12,28 @@ class InfoWidget extends \yii\bootstrap\Widget
 
         if(!empty($this->action)){
             if($this->action == 'email'){
-                $info = Info::find()->select('email')->asArray()->one();
-                return $info['email'];
+                $info = Info::find()->where(['type'=>'email'])->asArray()->one();
             }elseif($this->action == 'info'){
-                $info = Info::find()->select('info')->asArray()->one();
-                return $info['info'];
+                $info = Info::find()->where(['type'=>'info'])->asArray()->one();
             }elseif($this->action == 'phone'){
-                $info = Info::find()->select('phone')->asArray()->one();
-                return $info['phone'];
-            }elseif($this->action == 'languages'){
-                $languages = Info::find()->select('languages')->asArray()->one();
-                if(!empty($languages)){
-                    $languages_info = "";
-                    $languages_list = explode(',',$languages['languages']);
-                    $languages_info .= '<select class="selection-1" name="time">';
+                $info = Info::find()->where(['type'=>'phone'])->asArray()->one();
+            }elseif($this->action == 'currency'){
+                $currency = Info::find()->where(['type'=>'currency'])->asArray()->one();
+                if(!empty($currency)){
+                    $currency_info = "";
+                    $currency_list = explode(',',$currency['content']);
+                    $currency_info .= '<select class="" name="time">';
 
-                    foreach ($languages_list as $cur){
-                            $languages_info .= "<option>$cur</option>";
+                    foreach ($currency_list as $cur){
+                        $currency_info .= "<option>$cur</option>";
                     }
-                    $languages_info .= "</select>";
-                    return $languages_info;
+                    $currency_info .= "</select>";
+                    return $currency_info;
                 }
-
-
             }
+
+            return $info['content'];
+
         }
 
 

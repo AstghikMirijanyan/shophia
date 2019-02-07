@@ -18,7 +18,6 @@ class AppAsset extends AssetBundle
         'css/animate.css'
     ];
     public $js = [
-        'js/jquery.min.js',
 
         'js/slick.js',
 

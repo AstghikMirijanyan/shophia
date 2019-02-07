@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use common\models\Categories;
 
 /**
- * CategorySearch represents the model behind the search form of `common\models\Categories`.
+ * CategorySearch represents the models behind the search form of `common\models\Categories`.
  */
 class CategorySearch extends Categories
 {
@@ -46,6 +46,9 @@ class CategorySearch extends Categories
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 8,
+            ]
         ]);
 
         $this->load($params);

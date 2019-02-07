@@ -12,10 +12,14 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-        'modules' => [
+        'products' => [
             'class' => 'frontend\modules\products\Module',
         ],
+        'blog' => [
+            'class' => 'frontend\modules\blog\Module',
+        ],
     ],
+
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -49,11 +53,11 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                'products' => 'products/index/',
-                'products/<slug:\w+>' => 'products/index',
-                'category/<slug:\w+>' => 'products/category',
-                'brand/<slug:\w+>' => 'products/brand',
-                'product/<id:\d>' => 'products/product',
+                'blog' => 'blog/blog/index',
+                'article/<slug>' => 'blog/blog/article',
+                'products' => '/products/products',
+                'products/<slug>' => 'products/products/',
+                'products/<slug>/<brand>' => 'products/products/',
                 '<action>' => 'site/<action>'
             ],
         ],

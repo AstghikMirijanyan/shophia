@@ -6,7 +6,7 @@ use Yii;
 use yii\behaviors\SluggableBehavior;
 
 /**
- * This is the model class for table "blog".
+ * This is the models class for table "blog".
  *
  * @property int $id
  * @property string $title

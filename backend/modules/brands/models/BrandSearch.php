@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use common\models\Brands;
 
 /**
- * BrandSearch represents the model behind the search form of `common\models\Brands`.
+ * BrandSearch represents the models behind the search form of `common\models\Brands`.
  */
 class BrandSearch extends Brands
 {
@@ -46,6 +46,9 @@ class BrandSearch extends Brands
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 8,
+            ]
         ]);
 
         $this->load($params);

@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="slider-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 

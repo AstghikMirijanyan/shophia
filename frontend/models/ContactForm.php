@@ -6,7 +6,7 @@ use Yii;
 use yii\base\Model;
 
 /**
- * ContactForm is the model behind the contact form.
+ * ContactForm is the models behind the contact form.
  */
 class ContactForm extends Model
 {
@@ -43,7 +43,7 @@ class ContactForm extends Model
     }
 
     /**
-     * Sends an email to the specified email address using the information collected by this model.
+     * Sends an email to the specified email address using the information collected by this models.
      *
      * @param string $email the target email address
      * @return bool whether the email was sent

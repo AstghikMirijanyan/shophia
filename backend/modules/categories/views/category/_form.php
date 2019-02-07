@@ -18,7 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?php
     if(!empty($model->image)){
-        echo Html::img(['/images/'.$model->image],['width' => '100px']);
+        echo Html::img(\yii\helpers\Url::to('@home/images/uploads/categories/'.$model->image),['width' => '100px','class'=>'img']);
+
     }
     ?>
 

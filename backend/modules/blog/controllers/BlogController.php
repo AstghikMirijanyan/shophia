@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BlogController implements the CRUD actions for Blog model.
+ * BlogController implements the CRUD actions for Blog models.
  */
 class BlogController extends Controller
 {
@@ -45,10 +45,10 @@ class BlogController extends Controller
     }
 
     /**
-     * Displays a single Blog model.
+     * Displays a single Blog models.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionView($id)
     {
@@ -58,7 +58,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Creates a new Blog model.
+     * Creates a new Blog models.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -76,11 +76,11 @@ class BlogController extends Controller
     }
 
     /**
-     * Updates an existing Blog model.
+     * Updates an existing Blog models.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionUpdate($id)
     {
@@ -96,11 +96,11 @@ class BlogController extends Controller
     }
 
     /**
-     * Deletes an existing Blog model.
+     * Deletes an existing Blog models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionDelete($id)
     {
@@ -110,11 +110,11 @@ class BlogController extends Controller
     }
 
     /**
-     * Finds the Blog model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Finds the Blog models based on its primary key value.
+     * If the models is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Blog the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Blog the loaded models
+     * @throws NotFoundHttpException if the models cannot be found
      */
     protected function findModel($id)
     {

@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CommentController implements the CRUD actions for Comments model.
+ * CommentController implements the CRUD actions for Comments models.
  */
 class CommentController extends Controller
 {
@@ -45,10 +45,10 @@ class CommentController extends Controller
     }
 
     /**
-     * Displays a single Comments model.
+     * Displays a single Comments models.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionView($id)
     {
@@ -58,7 +58,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Creates a new Comments model.
+     * Creates a new Comments models.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -76,11 +76,11 @@ class CommentController extends Controller
     }
 
     /**
-     * Updates an existing Comments model.
+     * Updates an existing Comments models.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionUpdate($id)
     {
@@ -96,11 +96,11 @@ class CommentController extends Controller
     }
 
     /**
-     * Deletes an existing Comments model.
+     * Deletes an existing Comments models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException if the models cannot be found
      */
     public function actionDelete($id)
     {
@@ -110,11 +110,11 @@ class CommentController extends Controller
     }
 
     /**
-     * Finds the Comments model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Finds the Comments models based on its primary key value.
+     * If the models is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Comments the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return Comments the loaded models
+     * @throws NotFoundHttpException if the models cannot be found
      */
     protected function findModel($id)
     {

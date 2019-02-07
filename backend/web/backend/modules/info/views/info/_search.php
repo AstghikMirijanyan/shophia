@@ -28,9 +28,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'currencies') ?>
 
-    <?php // echo $form->field($model, 'title') ?>
+    <?php // echo $form->field($models, 'title') ?>
 
-    <?php // echo $form->field($model, 'text_terms') ?>
+    <?php // echo $form->field($models, 'text_terms') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

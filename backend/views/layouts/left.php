@@ -8,7 +8,7 @@
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>Astghik Mirijanyan</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -37,6 +37,8 @@
                     ['label' => 'Brands', 'icon' => 'dashboard', 'url' => ['/brands/brand']],
                     ['label' => 'Slider', 'icon' => 'dashboard', 'url' => ['/slider/slider']],
                     ['label' => 'Blog', 'icon' => 'dashboard', 'url' => ['/blog/blog']],
+                    ['label' => 'Info', 'icon' => 'dashboard', 'url' => ['/info/info']],
+                    ['label' => 'Pages', 'icon' => 'dashboard', 'url' => ['/pages/page']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Some tools',

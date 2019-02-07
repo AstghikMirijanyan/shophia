@@ -6,7 +6,7 @@ use frontend\behaviors\CustomBlameableBehavior;
 use Yii;
 
 /**
- * This is the model class for table "comments".
+ * This is the models class for table "comments".
  *
  * @property int $id
  * @property string $comment

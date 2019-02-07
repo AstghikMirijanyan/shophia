@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "pages".
+ * This is the models class for table "pages".
  *
  * @property int $id
  * @property string $slug
@@ -41,11 +41,11 @@ class Pages extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'slug' => 'Slug',
-            'description' => 'Description',
-            'larg_image' => 'Larg Image',
-            'small_image' => 'Small Image',
+            'id' => Yii::t('app', 'ID'),
+            'slug' => Yii::t('app', 'Slug'),
+            'description' => Yii::t('app', 'Description'),
+            'larg_image' => Yii::t('app', 'Larg Image'),
+            'small_image' => Yii::t('app', 'Small Image'),
         ];
     }
 }

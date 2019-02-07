@@ -9,7 +9,7 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
- * User model
+ * User models
  *
  * @property integer $id
  * @property string $username
@@ -156,7 +156,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates password hash from password and sets it to the model
+     * Generates password hash from password and sets it to the models
      *
      * @param string $password
      */
