@@ -30,13 +30,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sku')->textInput(['maxlength' => true]) ?>
 
-<!--    --><?//= $form->field($model, 'cat_id')->dropDownList($categories,['prompt' => 'please select category']); ?>
-<!--    --><?//= $form->field($model, 'brand_id')->dropDownList($brands,['prompt' => 'please select brand']); ?>
+    <?= $form->field($model, 'cat_id')->dropDownList($categories,['prompt' => 'please select category']); ?>
+    <?= $form->field($model, 'brand_id')->dropDownList($brands,['prompt' => 'please select brand']); ?>
 
 
     <?= $form->field($model, 'is_new')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
 
-<!--    --><?//= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'is_feature')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
 

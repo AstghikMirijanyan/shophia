@@ -163,7 +163,7 @@ $this->title = 'Shophia';
             ?>
             <div class="middle_brand">
 
-                <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>">
+                <a href="<?= \yii\helpers\Url::to(['/products/'.  $brand['slug']]) ?>">
                     <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/'.$brand['image']) ?>" alt="">
                 </a>
             </div>

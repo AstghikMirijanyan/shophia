@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\modules\brands\models;
+namespace backend\modules\rules\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Brands;
+use common\models\Rules;
 
 /**
- * BrandSearch represents the model behind the search form of `common\models\Brands`.
+ * RulesSearch represents the model behind the search form of `common\models\Rules`.
  */
-class BrandSearch extends Brands
+class RulesSearch extends Rules
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,7 @@ class BrandSearch extends Brands
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['title', 'content', 'image', 'slug'], 'safe'],
+            [['id', 'brand_id', 'cat_id'], 'integer'],
         ];
     }
 
@@ -40,7 +39,7 @@ class BrandSearch extends Brands
      */
     public function search($params)
     {
-        $query = Brands::find();
+        $query = Rules::find();
 
         // add conditions that should always apply here
 
@@ -59,12 +58,9 @@ class BrandSearch extends Brands
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'brand_id' => $this->brand_id,
+            'cat_id' => $this->cat_id,
         ]);
-
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'slug', $this->slug]);
 
         return $dataProvider;
     }

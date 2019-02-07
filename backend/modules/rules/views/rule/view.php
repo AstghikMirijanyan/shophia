@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Brands */
+/* @var $model common\models\Rules */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Brands', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Rules', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="brands-view">
+<div class="rules-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,17 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
-            'content:ntext',
-            [
-                'attribute' => 'image',
-                'format' => 'raw',
-                'filter'=> '',
-                'value' => function($model){
-                    return Html::img(\yii\helpers\Url::to('@home/images/uploads/brands/'.$model->image),['width' => '100px','class'=>'img']);
-                }
-            ] ,
-            'slug',
+            'brand_id',
+            'cat_id',
         ],
     ]) ?>
 

@@ -33,6 +33,9 @@ return [
         'pages' => [
             'class' => 'backend\modules\pages\Module',
         ],
+        'rules' => [
+            'class' => 'backend\modules\rules\Module',
+        ],
     ],
     'components' => [
         'request' => [

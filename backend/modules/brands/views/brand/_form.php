@@ -17,18 +17,18 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
     <?php
     if(!empty($model->image)){
-        echo Html::img(['@home/images/uploads/brands/'.$model->image],['width' => '100px']);
+        echo Html::img(\yii\helpers\Url::to('@home/images/uploads/brands/'.$model->image),['width' => '100px','class'=>'img']);
     }
     ?>
 
     <?= $form->field($model, 'image')->fileInput() ?>
 
+
+
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cat_id')->dropDownList($categories,['prompt' => 'please select category']); ?>
-
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

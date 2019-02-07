@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\brands\models\BrandSearch */
+/* @var $model backend\modules\rules\models\RulesSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="brands-search">
+<div class="rules-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -20,13 +20,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'brand_id') ?>
 
-    <?= $form->field($model, 'content') ?>
-
-    <?= $form->field($model, 'image') ?>
-
-    <?= $form->field($model, 'slug') ?>
+    <?= $form->field($model, 'cat_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

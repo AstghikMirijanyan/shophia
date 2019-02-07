@@ -34,7 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
             'sale_price',
             'content:ntext',
-            'image',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'filter'=> '',
+                'value' => function($model){
+                    return Html::img(\yii\helpers\Url::to('@home/images/uploads/products/'.$model->image),['width' => '100px','class'=>'img']);
+                }
+            ] ,
             'sku',
             'cat_id',
             'brand_id',

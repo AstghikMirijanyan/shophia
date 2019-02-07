@@ -2,18 +2,16 @@
 
 namespace backend\modules\brands\controllers;
 
-use common\models\Categories;
 use Yii;
 use common\models\Brands;
 use backend\modules\brands\models\BrandSearch;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * BrandController implements the CRUD actions for Brands models.
+ * BrandController implements the CRUD actions for Brands model.
  */
 class BrandController extends Controller
 {
@@ -48,10 +46,10 @@ class BrandController extends Controller
     }
 
     /**
-     * Displays a single Brands models.
+     * Displays a single Brands model.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the models cannot be found
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
@@ -61,98 +59,91 @@ class BrandController extends Controller
     }
 
     /**
-     * Creates a new Brands models.
+     * Creates a new Brands model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
         $model = new Brands();
-        $categories = Categories::find()->asArray()->all();
-
-        $categories = ArrayHelper::map($categories,'id','title');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $imgFile = UploadedFile::getInstance($model, "image");
 
-            if (!empty($imgFile)) {
+            $image  = UploadedFile::getInstance($model,'image');
 
-                $imgPath = Yii::getAlias("@frontend") . "/web/images/uploads/brands/";
-                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+            if (!empty($image)) {
 
-                $path = $imgPath . $imgName;
-                if($imgFile->saveAs($path)){
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $image->extension;
+
+                $filePath = Yii::getAlias('@frontend').'/web/images/uploads/brands/';
+
+
+                if ($image->saveAs($filePath.$imgName)) {
                     $model->image = $imgName;
-                    $model->update(false);
                 }
+
             }
+
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        return $this->render('create', [
+        return $this->render('update', [
             'model' => $model,
-            'categories' => $categories
         ]);
     }
 
     /**
-     * Updates an existing Brands models.
+     * Updates an existing Brands model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the models cannot be found
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model_image = $model->image;
 
-        $categories = Categories::find()->asArray()->all();
-        $categories = ArrayHelper::map($categories,'id','title');
-
-        $old_image = $model->image;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            $transaction = Yii::$app->db->beginTransaction();
-            $imgFile = UploadedFile::getInstance($model, "image");
+            $image  = UploadedFile::getInstance($model,'image');
 
-            if (!empty($imgFile)) {
-                $imgPath = Yii::getAlias('@frontend').'/web/images/uploads/brands/';
-                $imgName = Yii::$app->security->generateRandomString() . '.' . $imgFile->extension;
+            if (!empty($image)) {
 
-                $path = $imgPath . $imgName;
-                if($imgFile->saveAs($path)){
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $image->extension;
+
+                $filePath = Yii::getAlias('@frontend').'/web/images/uploads/brands/';
+                if(!is_dir($filePath)){
+                    mkdir($filePath);
+                }
+
+                $path = $filePath . $model_image;
+                if ($image->saveAs($filePath.$imgName)) {
                     $model->image = $imgName;
-                    $model->update(false);
-                    if(!empty($old_photo)){
-                        unlink($imgPath.$old_photo);
+                    if (file_exists($path) && is_file($path)) {
+                        unlink($path);
                     }
-                    $transaction->commit();
-
-                }else{
-
-                    $transaction->rollBack();
                 }
 
             }else{
-                $model->image = $old_image;
-                $model->save(true,['image']);
+                $model->image = $model_image;
             }
 
-            return $this->redirect(['index']);
+            $model->save(false);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'categories' => $categories
         ]);
     }
 
-
     /**
-     * Deletes an existing Brands models.
+     * Deletes an existing Brands model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the models cannot be found
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
@@ -162,11 +153,11 @@ class BrandController extends Controller
     }
 
     /**
-     * Finds the Brands models based on its primary key value.
-     * If the models is not found, a 404 HTTP exception will be thrown.
+     * Finds the Brands model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Brands the loaded models
-     * @throws NotFoundHttpException if the models cannot be found
+     * @return Brands the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
@@ -174,6 +165,6 @@ class BrandController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
