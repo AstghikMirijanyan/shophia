@@ -984,10 +984,32 @@ li > .slick-active {
     font-size: 13px;
     text-decoration: none;
 }
+.middle_cat>li{
+   margin-bottom: 5px;
+    background: rgba(238, 238, 238, 0.13);
+    padding: 5px;
+    border-bottom: 0.2px solid rgba(0, 0, 0, 0.91);
+
+
+}
+.middle_cat>li>a{
+    text-transform: capitalize;
+    margin-left: 8px;
+    color: black;
+}
+.middle_cat>li>a:hover{
+    color: #f09d66;
+}
+.middle_cat>li>a:active{
+    color: #f09d66;
+}
+
 
 .hide_coll:hover .plus_btn:hover {
     background: #f09d66;
     cursor: pointer;
+    font-family: Lato, sans-serif ;
+    font-size: 12px;
 }
 
 .plus_btn{

@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Products */
 
+
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -53,5 +54,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'for_stylish',
         ],
     ]) ?>
+    <table class="table">
+        <thead>
+        <tr>
+        <th>ID</th>
+        <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php  foreach ($model->pictures as $picture){
+           ?>
+            <tr>
+                <td><?= $picture->product_id ?></td>
+                <td><?= Html::img(\yii\helpers\Url::to('@home/images/uploads/products/'.$picture->image),['width' => '100px','class'=>'img']) ?></td>
+            </tr>
+        <?php
+        }?>
 
+        </tbody>
+    </table>
 </div>

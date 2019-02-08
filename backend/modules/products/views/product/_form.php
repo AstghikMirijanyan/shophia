@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
     }
     ?>
 
-    <?= $form->field($model, 'image')->fileInput() ?>
+    <?= $form->field($model, 'image')->fileInput(['multiple'=>true]) ?>
 
     <?= $form->field($model, 'sku')->textInput(['maxlength' => true]) ?>
 

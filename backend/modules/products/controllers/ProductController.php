@@ -4,6 +4,7 @@ namespace backend\modules\products\controllers;
 
 use common\models\Brands;
 use common\models\Categories;
+use common\models\Pictures;
 use Yii;
 use common\models\Products;
 use backend\modules\products\models\ProductSearch;
@@ -71,24 +72,24 @@ class ProductController extends Controller
         $model = new Products();
 
         $categories = Categories::find()->asArray()->all();
-        $categories = ArrayHelper::map($categories,'id','title');
+        $categories = ArrayHelper::map($categories, 'id', 'title');
 
         $brands = Brands::find()->asArray()->all();
-        $brands = ArrayHelper::map($brands,'id','title');
+        $brands = ArrayHelper::map($brands, 'id', 'title');
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            $image  = UploadedFile::getInstance($model,'image');
+            $image = UploadedFile::getInstance($model, 'image');
 
             if (!empty($image)) {
 
                 $imgName = Yii::$app->security->generateRandomString() . '.' . $image->extension;
 
-                $filePath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
+                $filePath = Yii::getAlias('@frontend') . '/web/images/uploads/products/';
 
 
-                if ($image->saveAs($filePath.$imgName)) {
+                if ($image->saveAs($filePath . $imgName)) {
                     $model->image = $imgName;
                 }
 
@@ -104,6 +105,35 @@ class ProductController extends Controller
         ]);
     }
 
+    public function actionMultiple()
+    {
+        $upload = new Pictures();
+        $products = Products::find()->asArray()->all();
+        $products = ArrayHelper::map($products, 'id', 'title');
+        if ($upload->load(Yii::$app->request->post())) {
+            $upload->image = UploadedFile::getInstances($upload, 'image');
+            if ($upload->image && $upload->validate()) {
+
+                $filePath = Yii::getAlias('@frontend') . '/web/images/uploads/products/';
+                foreach ($upload->image as $image) {
+                    $model = new Pictures();
+                    $model->product_id = $upload->product_id;
+                    $model->image = time() . rand(100, 999) . '.' . $image->extension;
+                    if ($model->save(false)) {
+                        $image->saveAs($filePath . $model->image);
+                    }
+
+                }
+                return $this->redirect(['index']);
+            }
+
+        }
+        return $this->render('multiple', [
+            'upload' => $upload,
+            'products' => $products
+        ]);
+    }
+
     /**
      * Updates an existing Products model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -115,35 +145,35 @@ class ProductController extends Controller
     {
 
         $categories = Categories::find()->asArray()->all();
-        $categories = ArrayHelper::map($categories,'id','title');
+        $categories = ArrayHelper::map($categories, 'id', 'title');
 
         $brands = Brands::find()->asArray()->all();
-        $brands = ArrayHelper::map($brands,'id','title');
+        $brands = ArrayHelper::map($brands, 'id', 'title');
         $model = $this->findModel($id);
         $model_image = $model->image;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            $image  = UploadedFile::getInstance($model,'image');
+            $image = UploadedFile::getInstance($model, 'image');
 
             if (!empty($image)) {
 
                 $imgName = Yii::$app->security->generateRandomString() . '.' . $image->extension;
 
-                $filePath = Yii::getAlias('@frontend').'/web/images/uploads/products/';
-                if(!is_dir($filePath)){
+                $filePath = Yii::getAlias('@frontend') . '/web/images/uploads/products/';
+                if (!is_dir($filePath)) {
                     mkdir($filePath);
                 }
 
                 $path = $filePath . $model_image;
-                if ($image->saveAs($filePath.$imgName)) {
+                if ($image->saveAs($filePath . $imgName)) {
                     $model->image = $imgName;
                     if (file_exists($path) && is_file($path)) {
                         unlink($path);
                     }
                 }
 
-            }else{
+            } else {
                 $model->image = $model_image;
             }
 

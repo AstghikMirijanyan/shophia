@@ -1,3 +1,4 @@
+
 <?php
 
 use yii\helpers\Url;
@@ -36,27 +37,25 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="middle-products">
             <div class="brands_prod">
                 <?php if (!empty($brands)) {
-                    foreach ($brands as $brand) {
+                    foreach ($brands as $brand){
                         ?>
                         <ul class="brands_ul">
                             <li>
-                                <?php if (empty($cat_slug)) {
-                                    ?>
-                                    <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"> <img
-                                                src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
-                                                alt=""></a>
+                               <?php if (!empty($cat_slug)){
+                                   ?>
 
+                                   <a href="<?= \yii\helpers\Url::to(['/products/' . $cat_slug .'/'. $brand['slug']]) ?>"> <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/'.$brand['image']) ?>" alt=""></a>
 
-                                    <?php
-                                } else {
+                                   <?php
 
-                                    ?>
-                                    <a href="<?= \yii\helpers\Url::to(['/products/' . $cat_slug . '/' . $brand['slug']]) ?>">
-                                        <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"alt=""></a>
-
-                                    <?php
-
-                                } ?>
+                               }
+                               else{
+                                   ?>
+                                   <a href="<?= \yii\helpers\Url::to(['/products/' .  $brand['slug']]) ?>"> <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/'.$brand['image']) ?>" alt=""></a>
+<?php
+                               }
+                               $cat_slug = '';
+                               ?>
                             </li>
                         </ul>
                         <?php
@@ -73,10 +72,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="block-product">
                         <div class="product-img">
-                            <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $pr['image']) ?>"
-                                 alt="">
+                            <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$pr['image']) ?>" alt="">
                         </div>
-                        <a href="<?php echo \yii\helpers\Url::to(['/product/' . $pr['id']]) ?>"
+                        <a href="<?php echo \yii\helpers\Url::to(['/product/' . $pr['slug']]) ?>"
                            class="block-product-name"> <?= $pr['title']; ?></a>
                         <?php
 
@@ -98,14 +96,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
             <div class="clearfix"></div>
             <?php
-            echo \yii\widgets\LinkPager::widget(
-                [
-                    'pagination' => $pagination,
-                ]);
+        echo \yii\widgets\LinkPager::widget(
+            [
+                'pagination' => $pagination,
+            ]);
 
             \yii\widgets\Pjax::end();
 
-            ?>
+    ?>
 
         </div>
 

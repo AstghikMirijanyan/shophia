@@ -102,4 +102,7 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Brands::className(), ['id' => 'brand_id']);
     }
+    public function getPictures(){
+        return $this->hasMany(Pictures::className(),['product_id'=> 'id']);
+    }
 }
