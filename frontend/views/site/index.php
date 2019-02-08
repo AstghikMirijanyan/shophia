@@ -128,9 +128,9 @@ $this->title = 'Shophia';
         foreach ($feature as $feat){
             ?>
             <div class="middle_summer_collection">
-            <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$feat['image']) ?>" alt="">
+                <a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$feat['image']) ?>" alt=""></a>
             <div class="add_brand">
-                <div class="br_a"><a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['id']]) ?>"> $<?= $feat['price']?> <br>+ADD TO CART</a></div>
+                <div class="br_a"><a href=""> $<?= $feat['price']?> <br>+ADD TO CART</a></div>
             </div>
         </div>
         <?php
@@ -156,6 +156,7 @@ $this->title = 'Shophia';
         </div>
     </div>
     <!--BRANDS-->
+
     <div class="brand brand_carousel">
         <?php foreach ($brands as $brand)
 
@@ -163,7 +164,7 @@ $this->title = 'Shophia';
             ?>
             <div class="middle_brand">
 
-                <a href="<?= \yii\helpers\Url::to(['/products/'.  $brand['slug']]) ?>">
+                <a href="<?php echo \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>">
                     <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/'.$brand['image']) ?>" alt="">
                 </a>
             </div>

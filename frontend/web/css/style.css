@@ -388,7 +388,7 @@ h1 {
 .hide_coll {
     width: 26.5%;
     height: 62%;
-    margin-left: 20px;
+    margin-left: 16.9px;
     margin-top: 20px;
     float: left;
     position: absolute;
@@ -970,7 +970,7 @@ li > .slick-active {
 
 .hide_coll:hover .plus_btn {
     display: block;
-    margin-left: 150px;
+    margin-left: 140px;
     margin-top: 290px;
     width: 100px;
     height: 48px;

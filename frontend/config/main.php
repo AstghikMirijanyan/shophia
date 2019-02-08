@@ -52,13 +52,18 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
+                'category' => 'products/products/category',
+                'brand/<slug:\w+>' => 'products/brand',
+                'product/<slug>' => 'products/products/product',
                 '' => 'site/index',
                 'blog' => 'blog/blog/index',
                 'article/<slug>' => 'blog/blog/article',
                 'products' => '/products/products',
-                'products/<slug>' => 'products/products/',
-                'products/<slug>/<brand>' => 'products/products/',
-                '<action>' => 'site/<action>'
+                'products/<slug>' => 'products/products',
+                'products/<slug>/<brand>' => 'products/products',
+                '<action>' => 'site/<action>',
+                'category/<slug>' => 'products/products/category'
             ],
         ],
 
