@@ -524,7 +524,7 @@ footer {
     margin-top: 124px;
     height: 70px;
     position: absolute;
-    z-index: 10000;
+    z-index: 10;
 
 }
 
@@ -1252,7 +1252,7 @@ li > .slick-active {
 
 .btn_search {
     margin-left: 85%;
-    margin-top: -35px;
+    margin-top: -37px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -1263,8 +1263,9 @@ li > .slick-active {
 }
 
 .btn_search > img {
-    width: 30px;
-    height: 30px;
+    width: 31px;
+    height: 31px;
+    margin-right: 3px;
     background-size: cover;
     background: white;
 

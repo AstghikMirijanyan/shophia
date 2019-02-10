@@ -91,7 +91,7 @@ AppAsset::register($this);
             </nav>
 
             <div class="title_shop">
-                <a href="<?= \yii\helpers\Url::to('@web/site/index') ?>"><img
+                <a href="<?= \yii\helpers\Url::to('/index') ?>"><img
                             src="<?= \yii\helpers\Url::to('@web/images/Shophia.png') ?>" alt="logo"></a>
             </div>
             <div class="shop_tr">
@@ -100,16 +100,18 @@ AppAsset::register($this);
 
             <div class="action_shop">
                 <div class="shopping_search">
-                    <form action="" class="search_form" method="post">
+                    <form action="<?= \yii\helpers\Url::to(['/search'])?>" class="search_form" method="get">
                         <div>
                             <input name="search" type="search" placeholder="  search..." class="search_input">
                             <div class="btn_search">
-                                <img src="<?= \yii\helpers\Url::to('@web/images/search (1).png') ?>" alt="">
+                                <img src="<?= \yii\helpers\Url::to('@web/images/s.png') ?>" alt="">
                             </div>
                         </div>
                     </form>
                 </div>
-                <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>            </div>
+                <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>
+                <span class="header-icons-noti">0</span>
+            </div>
         </div>
         <!--END HEADER-->
     </header>

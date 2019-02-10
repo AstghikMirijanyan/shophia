@@ -50,7 +50,7 @@ class CartController extends \yii\web\Controller
     public function actionShow(){
         $session = \Yii::$app->session;
         $session->open();
-        $session->layout = false;
+        $this->layout = false;
         return $this->render('/cart/index', compact('session'));
     }
 

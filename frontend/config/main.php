@@ -62,14 +62,17 @@ return [
                 'brand/<slug:\w+>' => 'products/brand',
                 'product/<slug>' => 'products/products/product',
                 'products/product/<slug>' => 'products/products/product',
+
                 '' => 'site/index',
                 'blog' => 'blog/blog/index',
                 'carts' => 'carts/cart',
                 'article/<slug>' => 'blog/blog/article',
+                'search'=>'products/products/search',
                 'products' => '/products/products',
                 'products/<slug>' => 'products/products',
                 'products/<slug>/<brand>' => 'products/products',
                 '<action>' => 'site/<action>',
+//                'show' => '/carts/cart/show',
                 'category/<slug>' => 'products/products/category'
             ],
         ],
