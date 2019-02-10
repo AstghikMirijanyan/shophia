@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <?php
 
-            \yii\widgets\Pjax::begin(['enablePushState' => false]);
+//            \yii\widgets\Pjax::begin(['enablePushState' => false]);
 
             if (!empty($products)) {
                 foreach ($products as $pr) {
@@ -74,8 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="product-img">
                             <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$pr['image']) ?>" alt="">
                         </div>
-                        <a href="<?php echo \yii\helpers\Url::to(['/product/' . $pr['slug']]) ?>"
-                           class="block-product-name"> <?= $pr['title']; ?></a>
+                        <a href="<?= \yii\helpers\Url::to(['product/' . $pr['slug']]) ?>"class="block-product-name"> <?= $pr['title'] ?></a>
                         <?php
 
                         ?>
@@ -101,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pagination' => $pagination,
             ]);
 
-            \yii\widgets\Pjax::end();
+//            \yii\widgets\Pjax::end();
 
     ?>
 

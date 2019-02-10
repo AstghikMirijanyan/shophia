@@ -41,12 +41,15 @@ AppAsset::register($this);
             <div class="middle"></div>
 
             <div class="bar_mySelf">
+
+
                 <!--TOP MENU-->
                 <?php
                 $menuItems = [
                     ['label' => 'Customer Service', 'url' => ['/customer']],
                     ['label' => 'About', 'url' => ['/about']],
                     ['label' => 'Contact', 'url' => ['/contact']],
+
                 ];
                 if (Yii::$app->user->isGuest) {
                     $menuItems[] = ['label' => 'Signup', 'url' => ['/signup']];
@@ -70,6 +73,7 @@ AppAsset::register($this);
             </div>
         </div>
         <div class="menu">
+
             <nav>
                 <?php
 
@@ -105,8 +109,7 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div>
-                <?= \frontend\widgets\cart\Cart::widget(); ?>
-            </div>
+                <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>            </div>
         </div>
         <!--END HEADER-->
     </header>
@@ -209,9 +212,21 @@ AppAsset::register($this);
         </div>
         <!--END FOOTER-->
     </footer>
+    <?php
+    \yii\bootstrap\Modal::begin([
+        'header' => '<h2>Cart</h2>',
+        'id' => 'cart',
+        'size' => 'modal-lg',
+        'footer' => '<button type="button" class="flex-c-m" data-dismiss="modal">continue shop</button>
+    <button type="button" class="flex-c-m">chack Out</button>
+    <button type="button" class="flex-c-m confirmation" onclick="clearCart()" >Clear cart</button>'
+    ]);
+    \yii\bootstrap\Modal::end();
+    ?>
 </main>
 
 
 <?php $this->endBody() ?>
+
 
 <?php $this->endPage() ?>

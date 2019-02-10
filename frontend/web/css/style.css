@@ -1357,6 +1357,12 @@ input[type=search] {
     background: #f0975d;
     color: white;
 }
+.del-item{
+    cursor: pointer;
+}
+.cart_btn{
+    margin-top: 10px;
+}
 /*ABOUT*/
 .about_store{
     width: 100%;

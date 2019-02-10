@@ -32,9 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'brand_id',
-            'cat_id',
-
+            [
+                'attribute' => 'cat_id',
+                'value' => function($model){
+                    return \common\models\Categories::find()->where(['id' => $model->cat_id])->one()->title;
+                }
+            ] ,
+            [
+                'attribute' => 'brand_id',
+                'value' => function($model){
+                    return \common\models\Brands::find()->where(['id' => $model->brand_id])->one()->title;
+                }
+            ] ,
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -18,13 +18,18 @@ return [
         'blog' => [
             'class' => 'frontend\modules\blog\Module',
         ],
+        'carts' => [
+            'class' => 'frontend\modules\carts\Module',
+        ],
     ],
 
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => ''
+
         ],
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -56,8 +61,10 @@ return [
                 'category' => 'products/products/category',
                 'brand/<slug:\w+>' => 'products/brand',
                 'product/<slug>' => 'products/products/product',
+                'products/product/<slug>' => 'products/products/product',
                 '' => 'site/index',
                 'blog' => 'blog/blog/index',
+                'carts' => 'carts/cart',
                 'article/<slug>' => 'blog/blog/article',
                 'products' => '/products/products',
                 'products/<slug>' => 'products/products',
