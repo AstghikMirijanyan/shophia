@@ -3,7 +3,7 @@
 
 use yii\helpers\Url;
 
-$this->title = 'SHOP';
+$this->title = 'Shop';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-product">
@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="product-img">
                             <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$pr['image']) ?>" alt="">
                         </div>
-                        <a href="<?= \yii\helpers\Url::to(['product/' . $pr['slug']]) ?>"class="block-product-name"> <?= $pr['title'] ?></a>
+                        <a data-pjax="0" href="<?= \yii\helpers\Url::to(['product/' . $pr['slug']]) ?>"class="block-product-name"> <?= $pr['title'] ?></a>
                         <?php
 
                         ?>

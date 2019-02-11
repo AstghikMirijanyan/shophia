@@ -63,7 +63,9 @@ class ProductsController extends Controller
 
     public function actionSearch(){
         $search = Yii::$app->request->get('search');
-        $query = Products::find()->where(['like', 'title', $search]);
+        $query = Products::find()
+            ->where(['like', 'title', $search]);
+//            ->andWhere(['like', 'description', $search]);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=> 5]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         return $this->render('/products/search',[
