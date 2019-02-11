@@ -25,8 +25,7 @@ $this->title = 'Shophia';
         <div><img src="<?= \yii\helpers\Url::to('@web/images/sliderImages/slidone.png') ?>" alt="slider"></div>
         <div><img src="<?= \yii\helpers\Url::to('@web/images/sliderImages/slide02.jpg') ?>" alt="slider"></div>
         <div>
-            <img src="<?= \yii\helpers\Url::to('@web/images/sliderImages//49263811_681024278965824_3871820800101187584_n.jpg') ?>"
-                 alt="slider"></div>
+            <img src="<?= \yii\helpers\Url::to('@web/images/sliderImages//49263811_681024278965824_3871820800101187584_n.jpg') ?>" alt="slider"></div>
     </div>
     <!--END SLIDER-->
     <div class="support">
@@ -67,7 +66,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2>FOR STYLISH</h2></div>
+            <div class="title_handPicked"><h2 class="wow bounceInRight"  data-wow-duration="3s">FOR STYLISH</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -113,7 +112,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2>Featured Products</h2></div>
+            <div class="title_handPicked"><h2 class="wow bounceInRight"  data-wow-duration="3s">Featured Products</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -127,7 +126,7 @@ $this->title = 'Shophia';
         <?php
         foreach ($feature as $feat){
             ?>
-            <div class="middle_summer_collection">
+            <div class="middle_summer_collection" >
                 <a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$feat['image']) ?>" alt=""></a>
             <div class="add_brand">
                 <div class="br_a"><a href="<?= \yii\helpers\Url::to(['carts/cart/add', 'id'=> $feat['id']])?>" data_id =<?= $feat['id']?> class="add_cart" > $<?= $feat['price']?> <br>+ADD TO CART</a></div>
@@ -146,7 +145,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2>Our Brand</h2></div>
+            <div class="title_handPicked wow bounceInLeft"  data-wow-duration="3s"><h2>OUR BRAND</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -180,7 +179,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2>Blog</h2></div>
+            <div class="title_handPicked wow bounceInRight"  data-wow-duration="3s"><h2>BLOG</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>

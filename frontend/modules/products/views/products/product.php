@@ -1,72 +1,93 @@
-
-
-
-
 <div class="site-cat">
-    <img src="<?= \yii\helpers\Url::to('@web/images/contact.jpg' )?>" alt="">
+    <img src="<?= \yii\helpers\Url::to('@web/images/contact.jpg') ?>" alt="">
 </div>
 
 <div class="one_product">
     <div class="one_product_image">
         <div class="small_images">
-            <?php foreach ($product -> pictures as $picture){
+            <?php foreach ($product->pictures as $picture) {
 
                 ?>
                 <div class="midlle_small_images">
-                    <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$picture->image )?>" alt="">
+                    <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $picture->image) ?>" alt="">
                 </div>
                 <?php
-            }?>
+            } ?>
         </div>
         <div class="larg_image">
-            <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$product->image) ?>"" alt="">
+            <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $product->image) ?>"" alt="">
         </div>
     </div>
     <div class="one_product_image">
-        <div class="product_title">
-            <h3><?= $product->title?></h3>
-            <p><?=  $product->content ?></p>
-        </div>
-        <div class="product_size">
 
-            <select class="" name="size" tabindex="-1" aria-hidden="true">
-                <option>Choose an option</option>
-                <option>Size S</option>
-                <option>Size M</option>
-                <option>Size L</option>
-                <option>Size XL</option>
-            </select>
-            <select class="" name="color" tabindex="-1" aria-hidden="true">
-                <option>Choose an option</option>
-                <option>RED</option>
-                <option>green</option>
-                <option>blue</option>
-                <option>white</option>
-            </select>
-            <div class="flex-r-m flex-w p-t-10">
-                <div class="">
-                    <div class="">
-                        <button class="">
-                            <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-                        </button>
+        <h4 class="product-detail-name m-text16 p-b-13">
+            Boxy T-Shirt with Roll Sleeve Detail
+        </h4>
 
-                        <input class="size8 m-text18 t-center num-product" type="number" name="num-product" value="1">
+        <span class="m-text17">
+					$22
+				</span>
 
-                        <button class="">
-                            <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-                        </button>
+        <p class="s-text8 p-t-10">
+            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+        </p>
+
+        <!--  -->
+
+
+
+            <div class="flex-m flex-w">
+                <div class="container">
+                    <span class="choose">Choose Size</span>
+
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>Select Size</span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <input type="hidden" name="gender">
+                        <ul class="dropdown-menu">
+                            <li id="Size_S">Size S</li>
+                            <li id="Size_M">Size M</li>
+                            <li id="Size_L">Size L</li>
+                            <li id="Size_XL">Size XL</li>
+                        </ul>
                     </div>
 
-                    <div class="">
-
-                        <button class="flex-c-m">
-                            Add to Cart
-                        </button>
-                    </div>
+                    <span class="msg"></span>
                 </div>
             </div>
+
+            <div class="flex-r-m flex-w p-t-10">
+                <div class="w-size16 flex-m flex-w">
+                    <form method="post" action="">
+                        <div class="quantity buttons_added">
+                            <input type="button" value="-" class="minus">
+                            <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty"
+                                   class="input-text qty text" size="4"
+                                   pattern="" inputmode="">
+                            <input type="button" value="+" class="plus">
+                            <div class="size9 trans-0-4 m-t-10 m-b-10">
+                                <!-- Button -->
+                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+
+
+        <div class="p-b-45">
+            <span class="s-text8 m-r-35">SKU: MUG-01</span>
+            <span class="s-text8">Categories: Mug, Design</span>
         </div>
-        <div class="product_sku"></div>
+
+
     </div>
 </div>
 

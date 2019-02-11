@@ -110,7 +110,7 @@ AppAsset::register($this);
                     </form>
                 </div>
                 <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>
-                <span class="header-icons-noti">0</span>
+                <span class="header-icons-noti"><?= $_SESSION['cart.qty']?></span>
             </div>
         </div>
         <!--END HEADER-->
@@ -219,9 +219,21 @@ AppAsset::register($this);
         'header' => '<h2>Cart</h2>',
         'id' => 'cart',
         'size' => 'modal-lg',
-        'footer' => '<button type="button" class="flex-c-m" data-dismiss="modal">continue shop</button>
-    <button type="button" class="flex-c-m">chack Out</button>
-    <button type="button" class="flex-c-m confirmation" onclick="clearCart()" >Clear cart</button>'
+        'footer' => ' <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  data-dismiss="modal">
+                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    Continue shop
+                                </button>
+                            </div>
+                            <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  >
+                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    Chack out
+                                </button>
+                            </div>
+                            <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  onclick="clearCart()">
+                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    Clear Cart
+                                </button>
+                            </div>'
     ]);
     \yii\bootstrap\Modal::end();
     ?>

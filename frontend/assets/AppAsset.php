@@ -15,13 +15,15 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/style.css',
         'css/slick.css',
-        'css/animate.css'
+        'css/animate.css',
+
     ];
     public $js = [
-
+        'js/wow.min.js',
         'js/slick.js',
 
         'js/script.js',
+
 
 
     ];
