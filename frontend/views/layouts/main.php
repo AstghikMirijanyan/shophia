@@ -91,11 +91,11 @@ AppAsset::register($this);
             </nav>
 
             <div class="title_shop">
-                <a href="<?= \yii\helpers\Url::to('/index') ?>"><img
+                <a class="" href="<?= \yii\helpers\Url::to('/index') ?>"><img
                             src="<?= \yii\helpers\Url::to('@web/images/Shophia.png') ?>" alt="logo"></a>
             </div>
             <div class="shop_tr">
-                <div class="arrow"></div>
+                <div class="arrow "></div>
             </div>
 
             <div class="action_shop">
@@ -110,7 +110,11 @@ AppAsset::register($this);
                     </form>
                 </div>
                 <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>
-                <span class="header-icons-noti"><?= $_SESSION['cart.qty']?></span>
+                <span class="header-icons-noti"><?php if (!empty($_SESSION['cart.qty'])){
+                    echo $_SESSION['cart.qty'];
+                    } else {
+                    echo '0';
+                    }?></span>
             </div>
         </div>
         <!--END HEADER-->
@@ -225,9 +229,9 @@ AppAsset::register($this);
                                 </button>
                             </div>
                             <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  >
-                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                <a href=" '.\yii\helpers\Url::to(['/checkout']) .' " class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                                     Chack out
-                                </button>
+                                </a>
                             </div>
                             <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  onclick="clearCart()">
                                 <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">

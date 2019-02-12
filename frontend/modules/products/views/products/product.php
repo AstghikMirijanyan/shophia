@@ -32,11 +32,6 @@
             Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
         </p>
 
-        <!--  -->
-
-
-
-            <div class="flex-m flex-w">
                 <div class="container">
                     <span class="choose">Choose Size</span>
 
@@ -56,22 +51,22 @@
 
                     <span class="msg"></span>
                 </div>
-            </div>
+
 
             <div class="flex-r-m flex-w p-t-10">
                 <div class="w-size16 flex-m flex-w">
                     <form method="post" action="">
                         <div class="quantity buttons_added">
                             <input type="button" value="-" class="minus">
-                            <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty"
+                            <input type="number" step="1" min="1" max="" name="quantity" value="1" id="qty" title="Qty"
                                    class="input-text qty text" size="4"
                                    pattern="" inputmode="">
                             <input type="button" value="+" class="plus">
                             <div class="size9 trans-0-4 m-t-10 m-b-10">
                                 <!-- Button -->
-                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                    Add to Cart
-                                </button>
+                                <a href="" data_id="<?= $product['id']?>" class="add_cart  flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    Add to Cart  aa
+                                </a>
                             </div>
                         </div>
 

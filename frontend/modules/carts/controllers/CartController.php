@@ -17,12 +17,14 @@ class CartController extends \yii\web\Controller
     {
 
         $id = \Yii::$app->request->get('id');
+        $qty = (int)\Yii::$app->request->get('qty');
+        $qty = !$qty ? 1 : $qty;
         $product = Products::findOne($id);
         if (!empty($product)) {
             $session = \Yii::$app->session;
             $session->open();
             $cart = new Cart();
-            $cart->addToCart($product);
+            $cart->addToCart($product, $qty);
             $this->layout = false;
             return $this->render('/cart/index', compact('session'));
 
@@ -52,6 +54,11 @@ class CartController extends \yii\web\Controller
         $session->open();
         $this->layout = false;
         return $this->render('/cart/index', compact('session'));
+    }
+
+    public function actionCheckout(){
+      return  $this->render('/cart/checkout');
+
     }
 
 }

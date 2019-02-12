@@ -130,10 +130,11 @@ function clearCart() {
 
 $('.add_cart').on('click', function (e) {
     e.preventDefault();
-    var id = $(this).attr('data_id');
+    var id = $(this).attr('data_id'),
+    qty = $('#qty').val();
     $.ajax({
         url: 'carts/cart/add',
-        data: {id: id},
+        data: {id: id, qty: qty},
         type: 'GET',
         success: function (res) {
             if (!res) {

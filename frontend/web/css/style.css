@@ -987,10 +987,11 @@ li > .slick-active {
     display: block;
     margin-left: 62px;
     margin-top: 255px;
-    width: 120px;
-    height: 40px;
-    background: black;
+    width: 125px;
     padding-bottom: 5px;
+    height: 45px;
+
+    background: black;
     border: none;
     border-radius: 23px;
     color: white;
@@ -1000,6 +1001,9 @@ li > .slick-active {
     font-size: 11px;
     text-decoration: none;
 
+}
+.pagination > .active {
+    color: black;
 }
 .love{
     display: none;

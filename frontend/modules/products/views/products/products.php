@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <fieldset class="filter-price">
 
                     <div class="price-field">
-                        <input type="range" min="100" max="500" value="100" id="lower">
+                        <input type="range" min="10" max="500" value="10" id="lower">
                         <input type="range" min="100" max="500" value="500" id="upper">
                     </div>
                     <div class="price-wrap">
