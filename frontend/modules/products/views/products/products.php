@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <fieldset class="filter-price">
 
                     <div class="price-field">
-                        <input type="range" min="100" max="500" value="100" id="lower">
+                        <input type="range" min="10" max="500" value="10" id="lower">
                         <input type="range" min="100" max="500" value="500" id="upper">
                     </div>
                     <div class="price-wrap">
@@ -98,7 +98,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 } ?>
             </div>
             <?php
-
+            if (!empty($search)){
+                $search = $products;
+                ?>
+                <?php
+            }
             \yii\widgets\Pjax::begin(['enablePushState' => false]);
 
             if (!empty($products)) {
@@ -110,8 +114,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <a href="" class="love"></a>
                             <a href="" class="love_b"></a>
                             <a href="" class="heart"></a>
-                            <a class="add_cart pr_add animated bounceIn" data-wow-duration="3s"  href="<?= \yii\helpers\Url::to(['carts/cart/add', 'id' => $pr['id']]) ?>"
-                               data_id=<?= $pr['id'] ?>  > <br>+ADD TO CART</a>
+                            <a class="add_cart pr_add animated bounceIn" data-wow-duration="3s"
+                               href="<?= \yii\helpers\Url::to(['carts/cart/add', 'id' => $pr['id']]) ?>"
+                               data_id=<?= $pr['id'] ?>> <br>+ADD TO CART</a>
 
                         </div>
                         <div class="product-img">
@@ -120,7 +125,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                  alt="">
                         </div>
                         <a data-pjax="0" href="<?= \yii\helpers\Url::to(['product/' . $pr['slug']]) ?>"
-                           class="block-product-name"> <h3><?= $pr['title'] ?></h3></a>
+                           class="block-product-name"><h3><?= $pr['title'] ?></h3></a>
                         <?php
 
                         ?>
@@ -132,7 +137,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <span class="block-product-price">Price:<del>  $<?= $pr['price'] ?></del></span>
                             <span class="block-product-sale_price">$<?= $pr['sale_price'] ?></span>
                             <?php
-                        }else{
+                        } else {
                             ?>
                             <span class="block-product-price">Price: $<?= $pr['price'] ?></span>
                             <?php
@@ -142,6 +147,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?php
                 }
+            }else{
+                ?>
+                <div class="">
+                    <h3>No such this product</h3>
+                </div>
+
+            <?php
             }
             ?>
             <div class="clearfix"></div>

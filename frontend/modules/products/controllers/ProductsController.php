@@ -62,35 +62,26 @@ class ProductsController extends Controller
     }
 
     public function actionSearch(){
+        $categories = Categories::find()->asArray()->all();
+        $brands = Brands::find()->asArray()->all();
+
         $search = Yii::$app->request->get('search');
         $query = Products::find()
             ->where(['like', 'title', $search]);
 //            ->andWhere(['like', 'description', $search]);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=> 5]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('/products/search',[
+        return $this->render('/products/products',[
+            'brands' => $brands,
             'products' => $products,
             'pagination' => $pages,
-            'search' => $search
+            'search' => $search,
+            'categories' => $categories
 
         ]);
     }
 
-//    public function actionCategory($slug)
-//    {
-//        $category = Categories::findOne(['slug' => $slug]);
-//        if(!empty($category)){
-//
-//            $data = Categories::find()->with(['categoryProducts','brands'])->where(['id'=>$category->id])->asArray()->one();
-//            return $this->render('category',[
-//                'result' => $data
-//            ]);
-//
-//        }else{
-//            throw new NotFoundHttpException('Category not found');
-//        }
-//
-//    }
+
 
     public function actionProduct($slug)
     {

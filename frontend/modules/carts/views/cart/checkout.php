@@ -1,8 +1,10 @@
 <?php
+use yii\bootstrap\Html;
+
 if (!empty($session['cart'])):
 
     ?>
-    <div class="table-responsive">
+    <div class="table">
         <table class="table table-hover table-striped">
             <thead>
             <tr>
