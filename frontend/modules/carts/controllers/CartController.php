@@ -4,9 +4,14 @@ namespace frontend\modules\carts\controllers;
 
 use common\models\Products;
 use common\models\Cart;
+use common\models\Orders;
+use common\models\OrderItems;
+
 
 class CartController extends \yii\web\Controller
 {
+
+
     public function actionIndex()
     {
         return $this->render('index');
@@ -57,7 +62,12 @@ class CartController extends \yii\web\Controller
     }
 
     public function actionCheckout(){
-      return  $this->render('/cart/checkout');
+        $session = \Yii::$app->session;
+        $session->open();
+        $order = new Orders();
+      return  $this->render('/cart/checkout',
+          compact('session')
+      );
 
     }
 
