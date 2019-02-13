@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Slider */
 
 $this->title = Yii::t('app', 'Create Slider');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Sliders'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Sliders'), 'slug' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="slider-create">

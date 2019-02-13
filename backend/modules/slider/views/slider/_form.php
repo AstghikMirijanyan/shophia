@@ -12,9 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->fileInput(['multiple'=>true]) ?>
 
-    <?= $form->field($model, 'url')->textarea(['rows' => 6]) ?>
+<!--    --><?//= $form->field($model, 'slug')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 

@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image') ?>
 
-    <?= $form->field($model, 'url') ?>
+    <?= $form->field($model, 'slug') ?>
 
     <?= $form->field($model, 'text') ?>
 

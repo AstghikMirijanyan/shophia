@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-about">
 
     <div class="site-cat">
-        <img src="<?= \yii\helpers\Url::to('@web/images/about.jpg') ?>" alt="">
+        <img src="<?= \yii\helpers\Url::to('@web/images/photo-1515678916313-2263ebfad5cb.jpg') ?>" alt="">
     </div>
     <div class="about_store">
         <div class="postare_store">

@@ -66,7 +66,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="wow bounceInRight"  data-wow-duration="3s">FOR STYLISH</h2></div>
+            <div class="title_handPicked"><h2 class="wow bounceInRight"  data-wow-duration="3s">CATEGORIES</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -145,7 +145,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked wow bounceInLeft"  data-wow-duration="3s"><h2>OUR BRAND</h2></div>
+            <div class="title_handPicked" ><h2 class="wow bounceInLeft"  data-wow-duration="3s">OUR BRAND</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>

@@ -11,10 +11,12 @@ $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
+    <div class="content">
+    <div class="site-cat">
+        <img src="<?= \yii\helpers\Url::to('@web/images/about.jpg') ?>" alt="">
+    </div>
 
-    <p>Please fill out the following fields to signup:</p>
 
-    <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
@@ -24,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                <div class="form-group btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+                    <?= Html::submitButton('Signup', ['class' => 'flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4', 'name' => 'signup-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
         </div>
-    </div>
+
 </div>

@@ -3,14 +3,15 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the models class for table "slider".
  *
  * @property int $id
  * @property string $image
- * @property string $url
  * @property string $text
+ * @property string $slug
  */
 class Slider extends \yii\db\ActiveRecord
 {
@@ -21,6 +22,16 @@ class Slider extends \yii\db\ActiveRecord
     {
         return 'slider';
     }
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+                'ensureUnique' => true,
+            ]
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -29,7 +40,7 @@ class Slider extends \yii\db\ActiveRecord
     {
         return [
             [['image'], 'required'],
-            [['url', 'text'], 'string'],
+            [['slug', 'text'], 'string'],
             [['image'], 'string', 'max' => 255],
         ];
     }

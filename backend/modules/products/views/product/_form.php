@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'is_new')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+<!--    --><?//= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'is_feature')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
 

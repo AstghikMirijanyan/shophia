@@ -18,7 +18,7 @@ class SliderSearch extends Slider
     {
         return [
             [['id'], 'integer'],
-            [['image', 'url', 'text'], 'safe'],
+            [['image', 'slug', 'text'], 'safe'],
         ];
     }
 
@@ -53,11 +53,11 @@ class SliderSearch extends Slider
 
         $this->load($params);
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
+//        if (!$this->validate()) {
+//            // uncomment the following line if you do not want to return any records when validation fails
+//            // $query->where('0=1');
+//            return $dataProvider;
+//        }
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -65,7 +65,7 @@ class SliderSearch extends Slider
         ]);
 
         $query->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'url', $this->url])
+            ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'text', $this->text]);
 
         return $dataProvider;

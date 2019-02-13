@@ -129,6 +129,7 @@ AppAsset::register($this);
     //        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     //    ]) ?>
     <!--    --><? //= Alert::widget() ?>
+
     <?= $content ?>
     <!--FOOTER-->
     <footer>
@@ -189,8 +190,8 @@ AppAsset::register($this);
                         </div>
                         <form action="" class="sub_form" method="post">
                             <div>
-                                <input name="email" type="text" placeholder="Enter Your Email Address">
-                                <input name="submit" type="submit" value="SUBSCRIBE">
+                                <input name="email" class="inp" type="text" placeholder="Enter Your Email Address">
+                                <input name="submit" class="sub" type="submit" value="SUBSCRIBE">
                             </div>
                         </form>
                     </div>

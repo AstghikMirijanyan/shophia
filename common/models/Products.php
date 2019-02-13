@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "products".
@@ -37,13 +38,24 @@ class Products extends \yii\db\ActiveRecord
         return 'products';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+               'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+                'ensureUnique' => true,
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['title', 'sku', 'slug', 'available_stock', 'quantity'], 'required'],
+            [['title', 'sku', 'available_stock', 'quantity'], 'required'],
             [['price', 'sale_price'], 'number'],
             [['content', 'is_new', 'is_feature', 'for_stylish'], 'string'],
             [['cat_id', 'brand_id', 'available_stock', 'quantity'], 'integer'],
