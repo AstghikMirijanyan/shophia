@@ -90,7 +90,7 @@ $this->title = 'Shophia';
                     </div>
                     <div class="hide_coll">
 
-                       <a href="<?= \yii\helpers\Url::to(['/products/'. $category['slug']. '/' . $brand['slug']]) ?>" class="plus_btn animated bounceInUp">
+                       <a href="<?= \yii\helpers\Url::to(['/products/'. $category['slug'] ]) ?>" class="plus_btn animated bounceInUp">
                        <?php
                        echo $category['title'];
                        ?>

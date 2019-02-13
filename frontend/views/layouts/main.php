@@ -110,7 +110,8 @@ AppAsset::register($this);
                     </form>
                 </div>
                 <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>
-                <span class="header-icons-noti"><?= $_SESSION['cart.qty']?></span>
+                <span class="header-icons-noti">0</span>
+<!--                <span class="header-icons-noti">--><?//= $_SESSION['cart.qty']?><!--</span>-->
             </div>
         </div>
         <!--END HEADER-->

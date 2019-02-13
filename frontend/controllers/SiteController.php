@@ -11,7 +11,7 @@ use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\Products;
+use common\models\Products;
 use common\models\Brands;
 use common\models\Categories;
 use frontend\models\ContactForm;
