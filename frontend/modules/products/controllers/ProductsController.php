@@ -15,16 +15,16 @@ use Yii;
 class ProductsController extends Controller
 {
 
-    public function actionIndex($slug = "",$brand = "")
+    public function actionIndex($slug = "", $brand = "")
     {
 
         $categories = Categories::find()->asArray()->all();
         $products = Products::find()->orderBy(['title' => 4]);
         $brands = Brands::find()->asArray()->all();
 
-        $brands_items =  Brands::find()->asArray()->all();
-        if(!empty($brands_items)){
-            $brands_items = Brands::findOne(['slug'=>$slug]);
+        $brands_items = Brands::find()->asArray()->all();
+        if (!empty($brands_items)) {
+            $brands_items = Brands::findOne(['slug' => $slug]);
             if (!empty($brands_items)) {
                 $products = $products->where(['brand_id' => $brands_items->id]);
             }
@@ -39,8 +39,8 @@ class ProductsController extends Controller
                     ->innerJoin('rules as bc', 'bc.brand_id = b.id')
                     ->where(['bc.cat_id' => $category->id])->asArray()->all();
                 $products = $products->where(['cat_id' => $category->id]);
-                if(!empty($brand)){
-                    $brand_item = Brands::findOne(['slug'=>$brand]);
+                if (!empty($brand)) {
+                    $brand_item = Brands::findOne(['slug' => $brand]);
                     if (!empty($brand_item)) {
                         $products = $products->andWhere(['brand_id' => $brand_item->id]);
                     }
@@ -61,17 +61,17 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function actionSearch(){
+    public function actionSearch()
+    {
         $categories = Categories::find()->asArray()->all();
         $brands = Brands::find()->asArray()->all();
 
         $search = Yii::$app->request->get('search');
         $query = Products::find()
             ->where(['like', 'title', $search]);
-//            ->andWhere(['like', 'description', $search]);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=> 5]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 5]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('/products/products',[
+        return $this->render('/products/products', [
             'brands' => $brands,
             'products' => $products,
             'pagination' => $pages,
@@ -81,6 +81,18 @@ class ProductsController extends Controller
         ]);
     }
 
+    public function actionRange()
+    {
+        $one = Yii::$app->request->get('min');
+        $two = Yii::$app->request->get('max');
+
+        $price = Yii::$app->request->get('price');
+        $products_pr = Products::find()->where(['between', 'price', $one, $two])->all();
+        return $this->render('/products/products', [
+            'products_pr' => $products_pr,
+            'price' => $price
+        ]);
+    }
 
 
     public function actionProduct($slug)

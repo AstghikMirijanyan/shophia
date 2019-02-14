@@ -80,7 +80,7 @@ AppAsset::register($this);
                 $menuItems = [
                     ['label' => 'Home', 'url' => ['/index']],
                     ['label' => 'Shop', 'url' => ['/products']],
-                    ['label' => 'Categories', 'url' => ['/category']],
+//                    ['label' => 'Categories', 'url' => ['/category']],
                     ['label' => 'Blog', 'url' => ['/blog']],
                 ];
                 echo Nav::widget([
@@ -98,7 +98,7 @@ AppAsset::register($this);
                 <div class="arrow "></div>
             </div>
 
-            <div class="action_shop"id="search_note">
+            <div class="action_shop" id="search_note">
                 <div class="shopping_search" >
 
                     <form action="<?= \yii\helpers\Url::to(['/search'])?>" class="search_form" method="get">
@@ -110,6 +110,9 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div>
+                <button class="wishlist_btn"><a href="<?= \yii\helpers\Url::to('/wishlist')?>">
+
+                        <img src="<?= \yii\helpers\Url::to('@web/images/like (1).png' )?>" alt="wishlist"></a></button>
                 <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>
 
                 <span class="header-icons-noti">0</span>
@@ -128,7 +131,7 @@ AppAsset::register($this);
     <!--    --><?php //= Breadcrumbs::widget([
     //        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     //    ]) ?>
-    <!--    --><? //= Alert::widget() ?>
+<!--        --><?//= Alert::widget() ?>
 
     <?= $content ?>
     <!--FOOTER-->
@@ -145,7 +148,6 @@ AppAsset::register($this);
                         <li><a href="#">Bags &amp; Accessories</a></li>
                         <li><a href="#">TopBrands</a></li>
                         <li><a href="#">Sale &amp; Special Offers</a></li>
-                        <li><a href="#">Lookbook</a></li>
                     </ul>
                 </div>
                 <div class="shop">
@@ -155,9 +157,6 @@ AppAsset::register($this);
                         <li><a href="#">Customer Service</a></li>
                         <li><a href="#">New Collection</a></li>
                         <li><a href="#">Best Sellers</a></li>
-                        <li><a href="#">Manufacturers</a></li>
-                        <li><a href="#">Privacy policy</a></li>
-                        <li><a href="#">Terms & condition</a></li>
                         <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
@@ -248,6 +247,7 @@ AppAsset::register($this);
     ]);
     \yii\bootstrap\Modal::end();
     ?>
+
 </main>
 
 

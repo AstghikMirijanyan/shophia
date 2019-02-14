@@ -21,6 +21,10 @@ return [
         'carts' => [
             'class' => 'frontend\modules\carts\Module',
         ],
+
+        'wishlist' => [
+            'class' => 'frontend\modules\wishlist\Module',
+        ],
     ],
 
     'components' => [
@@ -65,6 +69,7 @@ return [
 
                 '' => 'site/index',
                 'blog' => 'blog/blog/index',
+                'wishlist' => 'wishlist/wishlist/index',
                 'carts' => 'carts/cart',
                 'checkout'=>'carts/cart/checkout',
                 'article/<slug>' => 'blog/blog/article',

@@ -40,7 +40,9 @@ class BlogController extends Controller
             }])->where(['id' => $blog->id])->asArray()->one();
 
 
-            return $this->render('blog',['article' => $article,'comment' => $comment]);
+            return $this->render('blog',
+                ['article' => $article,
+                    'comment' => $comment]);
         }
     }
 

@@ -96,8 +96,9 @@ header {
     width: 30%;
     height: auto;
     margin-top: 9px;
-    margin-left: 100px;
+    margin-left: 85px;
     padding: 28px;
+
 }
 
 .action_shop img {
@@ -1033,9 +1034,14 @@ li > .slick-active {
     border-bottom: 80px solid rgba(90, 90, 90, 0.23);
     border-right: 80px solid transparent;
 }
+.love>img{
+    margin-left: 45px;
+    margin-top: 10px;
+}
 .love_b{
     margin-top: -12px;
     float: left;
+
     margin-left: 190px;
     width: 0;
     height: 0;
@@ -1359,18 +1365,26 @@ li > .slick-active {
     padding-top: 12px;
     height: 40px;
 }
+.wishlist_btn{
+    margin-right: 20px;
 
+
+
+}
 .shopping_search {
-    width: 70%;
+    width: 60%;
     height: auto;
     margin-top: 12px;
     margin-right: 45px;
     float: left;
 
 }
+.love>img:hover{
+    background: red;
+}
 
 .btn_search {
-    margin-left: 85%;
+    margin-left: 80%;
     margin-top: -37px;
     width: 30px;
     height: 30px;
@@ -1486,6 +1500,7 @@ input[type=search] {
 
 .cart_btn {
     margin-top: 10px;
+    margin-right: 5px;
 }
 
 .col-lg-5{
@@ -1530,9 +1545,7 @@ input[type=search] {
     float: left;
 
 }
-.content{
-    background-image: url("../images/crossword.png");
-}
+
 
 .brand {
     overflow: hidden;

@@ -149,6 +149,22 @@ $('.add_cart').on('click', function (e) {
         }
     })
 });
+//Wishlist function
+$('.add-to-wishlist').on('click', function (e) {
+    e.preventDefault();
+    var id = $(this).attr('data-id');
+    $.ajax({
+        url :'wishlist/wishlist/add',
+        type:'GET',
+        data:{id : id},
+        success:function(data){
+            $('.popup').html(data);
+        }
+    })
+});
+
+
+
 
 function wcqib_refresh_quantity_increments() {
     jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function(a, b) {
@@ -227,5 +243,6 @@ $("#search_note").on("pjax:end", function() {
         container:"#notes"
     });
 });
+
 
 new WOW().init();
