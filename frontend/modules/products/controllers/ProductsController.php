@@ -48,6 +48,19 @@ class ProductsController extends Controller
             }
         }
 
+        $min = Yii::$app->request->get('min', false);
+        $max = Yii::$app->request->get('max', false);
+
+        if ($min !== false && $max !== false) {
+            $products = $products->andWhere(['between', 'price', $min, $max]);
+        }
+
+        $search = Yii::$app->request->get('search');
+        if($search){
+            $products = Products::find()->andwhere(['like', 'title', $search]);
+        }
+
+
         $pagination = new Pagination(['totalCount' => $products->count(), 'pageSize' => 9]);
         $products = $products->offset($pagination->offset)->limit($pagination->limit)->asArray()->all();
 
@@ -56,41 +69,9 @@ class ProductsController extends Controller
             'categories' => $categories,
             'cat_slug' => $slug,
             'brands' => $brands,
+            'search' => $search,
             'pagination' => $pagination,
             'brands_items' => $brands_items
-        ]);
-    }
-
-    public function actionSearch()
-    {
-        $categories = Categories::find()->asArray()->all();
-        $brands = Brands::find()->asArray()->all();
-
-        $search = Yii::$app->request->get('search');
-        $query = Products::find()
-            ->where(['like', 'title', $search]);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 5]);
-        $products = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('/products/products', [
-            'brands' => $brands,
-            'products' => $products,
-            'pagination' => $pages,
-            'search' => $search,
-            'categories' => $categories
-
-        ]);
-    }
-
-    public function actionRange()
-    {
-        $one = Yii::$app->request->get('min');
-        $two = Yii::$app->request->get('max');
-
-        $price = Yii::$app->request->get('price');
-        $products_pr = Products::find()->where(['between', 'price', $one, $two])->all();
-        return $this->render('/products/products', [
-            'products_pr' => $products_pr,
-            'price' => $price
         ]);
     }
 

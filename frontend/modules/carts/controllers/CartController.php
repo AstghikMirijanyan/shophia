@@ -12,51 +12,62 @@ class CartController extends \yii\web\Controller
 {
     public function beforeAction($action)
     {
-        if(\Yii::$app->user->isGuest){
+        if (\Yii::$app->user->isGuest) {
             return $this->redirect('/login');
         }
         return parent::beforeAction($action);
     }
 
 
-    public function actionAddCart(){
+    public function actionAdd()
+    {
 
         $id = \Yii::$app->request->get('id');
         $qty = \Yii::$app->request->get('qty');
-
-        if(\Yii::$app->user->isGuest){
-            return json_encode(['error' => 'Please Login to your account to be able to add products!']);
-        }else{
-            if(!empty($id) && !empty($qty)){
+        $qty = !$qty ? 1 : $qty;
+        if (\Yii::$app->user->isGuest) {
+            return \Yii::$app->session->setFlash('ERROR', 'Please Login');
+        } else {
+            if (!empty($id) && !empty($qty)) {
                 $user = \Yii::$app->user->id;
                 $product = Products::findOne($id);
-                if(!empty($product)){
+                if (!empty($product)) {
                     $errors = [];
-                    $cart = Cart::findOne(['product_id'=>$product->id,'user_id'=>$user]);
-                    if(!empty($cart)){
-                        $cart ->quantity += $qty;
+                    $cart = Cart::findOne(['product_id' => $product->id, 'user_id' => $user]);
+                    if (!empty($cart)) {
+                        $cart->quantity += $qty;
                         $cart->save(false);
-                    }else{
+                    } else {
                         $new_cart = new Cart();
                         $new_cart->product_id = $product->id;
                         $new_cart->quantity = $qty;
                         $new_cart->user_id = $user;
-                        if(!$new_cart->save()){
+                        if (!$new_cart->save()) {
                             $errors[] = $new_cart->errors;
                         }
                     }
+                    $this->layout = false;
+//                    $cart_data = Cart::findAll( ['user_id' => $user])->all();
 
-                    return json_encode(['success' => true,'errors' => $errors]);
+                    return $this->render('/cart/index', [
+                        'cart' => $cart
+                    ]);
 
                 }
             }
         }
     }
 
-//    public function actionIndex()
-//    {
-//        return $this->render('index');
-//    }
+    public function actionCheckout()
+    {
+        $id = \Yii::$app->user->id;
+
+        $cart = Cart::find()->with('product')->where(['user_id'=>$id])->asArray()->all();
+        return $this->render('checkout',[
+            'cart' => $cart
+        ]);
+
+    }
 //
 //
 //    public function actionAdd()

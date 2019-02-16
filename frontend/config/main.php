@@ -73,14 +73,14 @@ return [
                 'carts' => 'carts/cart',
                 'checkout'=>'carts/cart/checkout',
                 'article/<slug>' => 'blog/blog/article',
-                'search'=>'products/products/search',
+                'search'=>'products/products',
                 'products/product/carts/cart/<action:\w+>' => 'carts/cart/<action>',
                 'products' => '/products/products',
                 'products/<slug>' => 'products/products',
                 'products/<slug>/<brand>' => 'products/products',
                 '<action>' => 'site/<action>',
 //                'show' => '/carts/cart/show',
-                'category/<slug>' => 'products/products/category'
+//                'category/<slug>' => 'products/products/category'
             ],
         ],
 

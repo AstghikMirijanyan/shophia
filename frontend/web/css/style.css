@@ -1380,7 +1380,8 @@ li > .slick-active {
 
 }
 .love>img:hover{
-    background: red;
+    /*padding: -5px;*/
+    background: url("../images/like.png");
 }
 
 .btn_search {
@@ -1930,6 +1931,27 @@ span.choose {
     float: left;
     margin-left: 20px;
 
+}
+.check{
+    margin-bottom: 50px;
+}
+.continue{
+   margin-left:  1000px;
+}
+.modal-footer{
+    width: 50%;
+    margin-left: 250px;
+}
+/*.check_quantity{*/
+    /*background: yellow;*/
+    /*width: 30%;*/
+    /*margin-left: 80px;*/
+
+/*}*/
+.table{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 50px;
 
 }
 .dropdown .dropdown-menu li {

@@ -122,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </a>
                             <a href="" class="heart"></a>
                             <a class="add_cart pr_add animated bounceIn" data-wow-duration="3s"
-                               href="<?= \yii\helpers\Url::to(['carts/cart/add', 'id' => $pr['id']]) ?>"
+                               href="<?= \yii\helpers\Url::to(['carts/cart/add'])?>" data-id =<?= $pr['id']?>"
                                data_id=<?= $pr['id'] ?>> <br>+ADD TO CART</a>
 
                         </div>

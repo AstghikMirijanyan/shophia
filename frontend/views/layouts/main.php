@@ -80,7 +80,6 @@ AppAsset::register($this);
                 $menuItems = [
                     ['label' => 'Home', 'url' => ['/index']],
                     ['label' => 'Shop', 'url' => ['/products']],
-//                    ['label' => 'Categories', 'url' => ['/category']],
                     ['label' => 'Blog', 'url' => ['/blog']],
                 ];
                 echo Nav::widget([
@@ -99,9 +98,9 @@ AppAsset::register($this);
             </div>
 
             <div class="action_shop" id="search_note">
-                <div class="shopping_search" >
+                <div class="shopping_search">
 
-                    <form action="<?= \yii\helpers\Url::to(['/search'])?>" class="search_form" method="get">
+                    <form action="<?= \yii\helpers\Url::to(['/search']) ?>" class="search_form" method="get">
                         <div>
                             <input name="search" type="search" placeholder="  search..." class="search_input">
                             <div class="btn_search">
@@ -110,19 +109,21 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div>
-                <button class="wishlist_btn"><a href="<?= \yii\helpers\Url::to('/wishlist')?>">
-
-                        <img src="<?= \yii\helpers\Url::to('@web/images/like (1).png' )?>" alt="wishlist"></a></button>
-                <button class="cart_btn" onclick="return getCart()"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png' )?>" alt="cart"></button>
+                <button class="wishlist_btn">
+                    <a href="<?= \yii\helpers\Url::to('/wishlist') ?>">
+                        <img src="<?= \yii\helpers\Url::to('@web/images/like (1).png') ?>" alt="wishlist"></a></button>
+                <button class="cart_btn" >
+<!--                    onclick="return getCart()-->
+                    <a href="/checkout"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png') ?>" alt="cart"></a>
+                    </button>
 
                 <span class="header-icons-noti">0</span>
-<!--                <span class="header-icons-noti">--><?//= $_SESSION['cart.qty']?><!--</span>-->
 
-                <span class="header-icons-noti"><?php if (!empty($_SESSION['cart.qty'])){
-                    echo $_SESSION['cart.qty'];
+                <span class="header-icons-noti"><?php if (!empty($_SESSION['cart.qty'])) {
+                        echo $_SESSION['cart.qty'];
                     } else {
-                    echo '0';
-                    }?></span>
+                        echo '0';
+                    } ?></span>
 
             </div>
         </div>
@@ -131,7 +132,7 @@ AppAsset::register($this);
     <!--    --><?php //= Breadcrumbs::widget([
     //        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     //    ]) ?>
-<!--        --><?//= Alert::widget() ?>
+    <!--        --><? //= Alert::widget() ?>
 
     <?= $content ?>
     <!--FOOTER-->
@@ -226,7 +227,7 @@ AppAsset::register($this);
     </footer>
     <?php
     \yii\bootstrap\Modal::begin([
-        'header' => '<h2>Cart</h2>',
+        'header' => '<h2>Product successfully added to your cart</h2>',
         'id' => 'cart',
         'size' => 'modal-lg',
         'footer' => ' <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  data-dismiss="modal">
@@ -235,14 +236,9 @@ AppAsset::register($this);
                                 </button>
                             </div>
                             <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  >
-                                <a href=" '.\yii\helpers\Url::to(['/checkout']) .' "  class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" onclick="getCart()">
-                                    Chack out
+                                <a href=" ' . \yii\helpers\Url::to(['/checkout']) . ' "  class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    View cart
                                 </a>
-                            </div>
-                            <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"  onclick="clearCart()">
-                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                    Clear Cart
-                                </button>
                             </div>'
     ]);
     \yii\bootstrap\Modal::end();

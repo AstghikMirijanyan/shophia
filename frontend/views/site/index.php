@@ -129,7 +129,8 @@ $this->title = 'Shophia';
             <div class="middle_summer_collection" >
                 <a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$feat['image']) ?>" alt=""></a>
             <div class="add_brand">
-                <div class="br_a"><a href="<?= \yii\helpers\Url::to(['carts/cart/add', 'id'=> $feat['id']])?>" data_id =<?= $feat['id']?> class="add_cart" > $<?= $feat['price']?> <br>+ADD TO CART</a></div>
+                <div class="br_a"><a href="<?= \yii\helpers\Url::to(['carts/cart/add'])?>" data-id =<?= $feat['id']?>" class="add_cart" > $<?= $feat['price']?> <br>+ADD TO CART</a></div>
+
             </div>
         </div>
         <?php

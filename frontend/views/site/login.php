@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-login">
 
     <div class="site-cat">
-        <img src="<?= \yii\helpers\Url::to('@web/images/gravel.png' )?>" alt="">
+        <img src="<?= \yii\helpers\Url::to('@web/images/about_pos.jpg' )?>" alt="">
     </div>
 
         <div class="col-lg-5">

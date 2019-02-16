@@ -19,17 +19,12 @@ class WishlistController extends \yii\web\Controller
         return parent::beforeAction($action);
     }
 
-//    public function actionIndex()
-//    {
-//        return $this->render('index');
-//    }
-
     public function actionAdd($id)
     {
         $id = \Yii::$app->request->get('id');
 
         if(\Yii::$app->user->isGuest){
-            return ;
+            return \Yii::$app->session->setFlash('ERROR', 'Please Login');
        }else{
             if(!empty($id)){
                 $user = \Yii::$app->user->id;

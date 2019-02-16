@@ -25,27 +25,6 @@ $(window).on('load', function () {
 
 $('.fromSlider .text-block').eq(0).addClass('active').fadeIn(1000);
 
-setInterval('blockAnimate();', 4000);
-
-function blockAnimate() {
-    var length = $('.fromSlider .text-block').length - 1;
-    $('.fromSlider .text-block').each(function (index) {
-        if ($(this).hasClass('active') && index != length) {
-            $(this).removeClass('active').fadeOut(1000).next('.text-block').addClass('active').fadeIn(1000);
-            return false;
-        } else if (index == length) {
-            $(this).removeClass('active').fadeOut(1000);
-            $('.fromSlider .text-block').eq(0).addClass('active').fadeIn(1000);
-            return false;
-        }
-    });
-};
-
-
-$(".cart_btn").click(function () {
-    $(".header-cart").toggle(300);
-});
-
 
 $(".btn_search").click(function () {
     if ($('.search_input.active').length && $(".search_input").val() !== '') {
@@ -56,11 +35,6 @@ $(".btn_search").click(function () {
         $(".search_input").val("");
     }
 });
-
-// function addCart(id){
-//
-//     $('.shopping_cart').modal();
-// }
 
 
 $('.brand_carousel').slick({
@@ -130,18 +104,16 @@ function clearCart() {
 
 $('.add_cart').on('click', function (e) {
     e.preventDefault();
-    var id = $(this).attr('data_id'),
+    var id = $(this).attr('data-id');
+        var qty = 1,
     qty = $('#qty').val();
     $.ajax({
         url: 'carts/cart/add',
         data: {id: id, qty: qty},
         type: 'GET',
-        success: function (res) {
-            if (!res) {
-                alert('no such this product');
+        success: function (data) {
 
-            }
-            showCart(res);
+            showCart(data);
 
         },
         error: function () {
@@ -238,11 +210,11 @@ lowerSlider.oninput = function () {
     document.querySelector('#one').value=this.value
 };
 
-$("#search_note").on("pjax:end", function() {
-    $.pjax.reload({
-        container:"#notes"
-    });
-});
+// $("#search_note").on("pjax:end", function() {
+//     $.pjax.reload({
+//         container:"#notes"
+//     });
+// });
 
 
 new WOW().init();
