@@ -48,36 +48,40 @@ function showCart(cart) {
     $('#cart .modal-body').html(cart);
     $('#cart').modal();
 }
+//
+// function getCart() {
+//     $.ajax({
+//         url: 'carts/cart/show',
+//         type: 'GET',
+//         success: function (res) {
+//             if (!res) {
+//                 alert("ERROR");
+//             }
+//             showCart(res);
+//         },
+//         error: function () {
+//             alert('No Cart');
+//         }
+//
+//     });
+// }
 
-function getCart() {
-    $.ajax({
-        url: 'carts/cart/show',
-        type: 'GET',
-        success: function (res) {
-            if (!res) {
-                alert("ERROR");
-            }
-            showCart(res);
-        },
-        error: function () {
-            alert('No Cart');
-        }
 
-    });
-}
 
-$('#cart .modal-body').on('click', '.del-item', function () {
+$('.table').on('click', '.del-item', function () {
     var id = $(this).attr('data-id');
     $.ajax({
-        url: 'carts/cart/delete',
+        url: 'carts/cart/remove',
         data: {id: id},
         type: 'GET',
         success: function (res) {
-            if (!res) {
-                alert('no shuch this product');
+            if (res){
+                $('data-id').remove();
+            } else {
+                alert('product remove');
             }
-            showCart(res);
         },
+
         error: function () {
             alert('ERROR');
         }

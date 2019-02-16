@@ -1,4 +1,11 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Gasparyan
+ * Date: 16.02.2019
+ * Time: 20:08
+ */
+
 
 use yii\bootstrap\Html;
 use yii\helpers\Url;
@@ -22,7 +29,6 @@ if (!empty($cart)):
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Total</th>
-                <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
             </tr>
             </thead>
             <tbody>
@@ -35,46 +41,37 @@ if (!empty($cart)):
                     <td>
                         <img src="<?= yii\helpers\Url::to('@web/images/uploads/products/' . $item['product']['image']) ?>"
                              style="width: 50px"</td>
-                    <td><h3><a href="<?= Url::to(['/products/product/'.$item['product']['slug']])?>"><?= $item['product']['title'] ?></a></h3></td>
+                    <td><h3>
+                            <a href="<?= Url::to(['/products/product/' . $item['product']['slug']]) ?>"><?= $item['product']['title'] ?></a>
+                        </h3></td>
                     <td>
-                        <form method="post" action="">
-                            <div class="quantity buttons_added check_quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="number" step="1" min="1" max="" name="quantity"
-                                       value="<?= $item['quantity'] ?>" id="qty" title="Qty"
-                                       class="input-text qty text" size="4"
-                                       pattern="" inputmode="">
-                                <input type="button" value="+" class="plus">
-                                <div class="size9 trans-0-4 m-t-10 m-b-10">
-                                </div>
-                            </div>
-
-                        </form>
+                        <?= $item['quantity'] ?>
                     </td>
 
                     <td><?= $item['product']['price'] ?></td>
-                    <?php  $total =  $item['product']['price'] * $item['quantity']?>
+                    <?php $total = $item['product']['price'] * $item['quantity'] ?>
                     <td><?= $total ?></td>
-                    <td><span data-id="<?= $item['id'] ?>" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></td>
+                    <td><span data-id="<?= $item['id'] ?>" class="glyphicon glyphicon-remove text-danger del-item"
+                              aria-hidden="true"></td>
                 </tr>
 
             <?php endforeach; ?>
             <tr>
-                <td colspan="4">Тotal price:</td>
-                <td><?= count($cart) + $item['quantity'] - 1?></td>
+                <td colspan="3">Тotal price:</td>
+                <td><?= count($cart) + $item['quantity'] - 1 ?></td>
             </tr>
             <tr>
-                <td colspan="4">PRICE:</td>
+                <td colspan="3">PRICE:</td>
                 <td> <?= $sum += $total ?></td>
             </tr>
             </tbody>
         </table>
         <hr class="reg_hr">
         <?php $form = ActiveForm::begin() ?>
-        <?= $form->field($order,  'name')?>
-        <?= $form->field($order, 'email')?>
-        <?= $form->field($order, 'phone')?>
-        <?= $form->field($order, 'address')?>
+        <?= $form->field($order, 'name') ?>
+        <?= $form->field($order, 'email') ?>
+        <?= $form->field($order, 'phone') ?>
+        <?= $form->field($order, 'address') ?>
 
         <?= Html::submitButton('checkout', ['class' => 'btn btn-success']) ?>
 

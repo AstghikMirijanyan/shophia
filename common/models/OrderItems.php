@@ -44,18 +44,18 @@ class OrderItems extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'orders_id' => 'Orders ID',
-            'product_id' => 'Product ID',
-            'title' => 'Title',
-            'price' => 'Price',
-            'qty_item' => 'Qty Item',
-            'sum_item' => 'Sum Item',
-        ];
-    }
+//    public function attributeLabels()
+//    {
+//        return [
+//            'id' => 'ID',
+//            'orders_id' => 'Orders ID',
+//            'product_id' => 'Product ID',
+//            'title' => 'Title',
+//            'price' => 'Price',
+//            'qty_item' => 'Qty Item',
+//            'sum_item' => 'Sum Item',
+//        ];
+//    }
 
     /**
      * @return \yii\db\ActiveQuery

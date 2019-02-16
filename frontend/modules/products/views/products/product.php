@@ -64,8 +64,8 @@
                             <input type="button" value="+" class="plus">
                             <div class="size9 trans-0-4 m-t-10 m-b-10">
                                 <!-- Button -->
-                                <a href="" data_id="<?= $product['id']?>" class="add_cart  flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                    Add to Cart  aa
+                                <a href="<?= \yii\helpers\Url::to(['carts/cart/add'])?>" data-id =<?= $product['id']?> class="add_cart  flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    Add to Cart
                                 </a>
                             </div>
                         </div>

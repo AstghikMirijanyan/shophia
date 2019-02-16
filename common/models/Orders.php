@@ -3,6 +3,9 @@
 namespace common\models;
 
 use Yii;
+use \yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use \yii\db\Exception;
 
 /**
  * This is the model class for table "orders".
@@ -32,16 +35,31 @@ class Orders extends \yii\db\ActiveRecord
         return 'orders';
     }
 
+//    public function behaviors()
+//    {
+//        return [
+//            [
+//                'class' => TimestampBehavior::className(),
+//                'attributes' => [
+//                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+//                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+//                ]
+//            ]
+//
+//        ];
+//    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'qty', 'total', 'name', 'email', 'phone', 'address', 'user_id'], 'required'],
+            [['name', 'email', 'phone', 'address', 'user_id'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['qty', 'user_id'], 'integer'],
             [['total'], 'number'],
+            [['email'], 'email'],
             [['status'], 'string'],
             [['name', 'email', 'phone', 'address'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
@@ -54,12 +72,12 @@ class Orders extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'qty' => 'Qty',
-            'total' => 'Total',
-            'status' => 'Status',
+//            'id' => 'ID',
+//            'created_at' => 'Created At',
+//            'updated_at' => 'Updated At',
+//            'qty' => 'Qty',
+//            'total' => 'Total',
+//            'status' => 'Status',
             'name' => 'Name',
             'email' => 'Email',
             'phone' => 'Phone',

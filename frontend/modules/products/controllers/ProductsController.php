@@ -6,6 +6,7 @@ namespace frontend\modules\products\controllers;
 use common\models\Categories;
 use common\models\Products;
 use common\models\Brands;
+use common\models\Wishlist;
 use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -59,8 +60,8 @@ class ProductsController extends Controller
         if($search){
             $products = Products::find()->andwhere(['like', 'title', $search]);
         }
-
-
+        $user = \Yii::$app->user->id;
+        $wishlist = Wishlist::find()->where(['user_id' => $user])->asArray()->all();
         $pagination = new Pagination(['totalCount' => $products->count(), 'pageSize' => 9]);
         $products = $products->offset($pagination->offset)->limit($pagination->limit)->asArray()->all();
 
@@ -71,7 +72,8 @@ class ProductsController extends Controller
             'brands' => $brands,
             'search' => $search,
             'pagination' => $pagination,
-            'brands_items' => $brands_items
+            'brands_items' => $brands_items,
+            'wishlist' => $wishlist
         ]);
     }
 
