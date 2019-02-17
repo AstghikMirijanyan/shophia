@@ -36,6 +36,12 @@ return [
         'rules' => [
             'class' => 'backend\modules\rules\Module',
         ],
+        'orders' => [
+            'class' => 'backend\modules\orders\Module',
+        ],
+        'orderitems' => [
+            'class' => 'backend\modules\orderitems\Module',
+        ],
     ],
     'components' => [
         'request' => [

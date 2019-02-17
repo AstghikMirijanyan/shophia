@@ -33,6 +33,7 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Products', 'icon' => 'dashboard', 'url' => ['/products/product']],
+                    ['label' => 'Orders', 'icon' => 'dashboard', 'url' => ['/orders/order']],
                     ['label' => 'Categories', 'icon' => 'yelp', 'url' => ['/categories/category']],
                     ['label' => 'Brands', 'icon' => 'angellist', 'url' => ['/brands/brand']],
                     ['label' => 'Slider', 'icon' => 'sliders', 'url' => ['/slider/slider']],

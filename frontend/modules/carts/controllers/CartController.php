@@ -112,6 +112,7 @@ class CartController extends \yii\web\Controller
             $cart = Cart::findOne($id);
             if (!empty($cart)) {
                 $cart->delete();
+
                 return true;
             }
         }

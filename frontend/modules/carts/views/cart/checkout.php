@@ -61,7 +61,7 @@ if (!empty($cart)):
             <?php endforeach; ?>
             <tr>
                 <td colspan="4">Тotal price:</td>
-                <td><?= count($cart) + $item['quantity'] - 1?></td>
+                <td><?= count($cart) + $item['quantity']?></td>
             </tr>
             <tr>
                 <td colspan="4">PRICE:</td>
