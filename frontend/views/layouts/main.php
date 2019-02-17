@@ -59,13 +59,15 @@ AppAsset::register($this);
                         . Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
                             'Logout (' . Yii::$app->user->identity->username . ')',
-                            ['class' => 'btn btn-link logout']
+                            ['class' => 'btn btn-link logout'],
+                           ['linkOptions' => ['class' => 'myCssClass']]
                         )
                         . Html::endForm()
                         . '</li>';
                 }
                 echo Nav::widget([
                     'options' => ['class' => 'bar_mySelf_ul'],
+
                     'items' => $menuItems,
                 ]);
 
@@ -85,6 +87,7 @@ AppAsset::register($this);
                 echo Nav::widget([
                     'options' => ['class' => 'menu_shop'],
                     'items' => $menuItems,
+
                 ]);
                 ?>
             </nav>
@@ -208,13 +211,13 @@ AppAsset::register($this);
                 <br> All Rights Reserved. Ecommerce Software by Shopify.
                 <br> Designed by MoccaLabs.com
                 <br>
-                <a><?php
+                <a style="color: #d9bf8f; text-decoration: none"><?php
                     echo \frontend\widgets\info\InfoWidget::widget(['action' => 'email']);
                     ?></a>
             </div>
             <div class="footer-bot__cards">
                 <nav>
-                    <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/visa.png') ?>" alt=""></a>
+                    <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/visa (1).png') ?>" alt=""></a>
                     <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/mastercard.png') ?>" alt=""></a>
                     <a href=""><img src="<?= \yii\helpers\Url::to('@web/images/american-express-logo.png') ?>"
                                     alt=""></a>

@@ -127,6 +127,15 @@ $this->title = 'Shophia';
         foreach ($feature as $feat){
             ?>
             <div class="middle_summer_collection" >
+
+                <div class="index_heart">
+                    <a class="add-to-wishlist wish" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $feat['id'] ?>>
+                        <img src="<?= \yii\helpers\Url::to('@web/images/heart.png') ?>" alt="">
+                    </a>
+                </div>
+
+
+
                 <a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$feat['image']) ?>" alt=""></a>
             <div class="add_brand">
                 <div class="br_a"><a href="<?= \yii\helpers\Url::to(['carts/cart/add'])?>" data-id =<?= $feat['id']?>" class="add_cart" > $<?= $feat['price']?> <br>+ADD TO CART</a></div>

@@ -75,17 +75,26 @@ if (!empty($cart)):
         <?= $form->field($order, 'email')?>
         <?= $form->field($order, 'phone')?>
         <?= $form->field($order, 'address')?>
-
-        <?= Html::submitButton('checkout', ['class' => 'btn btn-success']) ?>
+        <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10 continue">
+        <?= Html::submitButton('checkout', ['class' => 'flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4']) ?>
+        </div>
 
         <?php $form = ActiveForm::end() ?>
-        <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10 continue">
+        <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+            <a href="<?= \yii\helpers\Url::to(['/products']) ?> "
+               class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 cont">
+                Continue shop
+            </a>
+        </div>
+        <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
             <a href="<?= \yii\helpers\Url::to(['/products']) ?> "
                class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                Continue shop
+                Delete all
             </a>
         </div>
     </div>
 <?php else: ?>
-    <h3>cart empty</h3>
+    <div class="cart-result">
+        <h2>Cart empty</h2>
+    </div>
 <?php endif; ?>

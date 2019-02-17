@@ -18,39 +18,40 @@
             <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $product->image) ?>"" alt="">
         </div>
     </div>
+
     <div class="one_product_image">
 
         <h4 class="product-detail-name m-text16 p-b-13">
-            Boxy T-Shirt with Roll Sleeve Detail
+           <?= $product->title?>
         </h4>
 
-        <span class="m-text17">
-					$22
+        <span class="m-text17">$
+					<?= $product->price?>
 				</span>
 
         <p class="s-text8 p-t-10">
-            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+           <?= $product['content']?>
         </p>
-
-                <div class="container">
-                    <span class="choose">Choose Size</span>
-
-                    <div class="dropdown">
-                        <div class="select">
-                            <span>Select Size</span>
-                            <i class="fa fa-chevron-left"></i>
-                        </div>
-                        <input type="hidden" name="gender">
-                        <ul class="dropdown-menu">
-                            <li id="Size_S">Size S</li>
-                            <li id="Size_M">Size M</li>
-                            <li id="Size_L">Size L</li>
-                            <li id="Size_XL">Size XL</li>
-                        </ul>
-                    </div>
-
-                    <span class="msg"></span>
-                </div>
+<!---->
+<!--                <div class="container">-->
+<!--                    <span class="choose">Choose Size</span>-->
+<!---->
+<!--                    <div class="dropdown">-->
+<!--                        <div class="select">-->
+<!--                            <span>Select Size</span>-->
+<!--                            <i class="fa fa-chevron-left"></i>-->
+<!--                        </div>-->
+<!--                        <input type="hidden" name="gender">-->
+<!--                        <ul class="dropdown-menu">-->
+<!--                            <li id="Size_S">Size S</li>-->
+<!--                            <li id="Size_M">Size M</li>-->
+<!--                            <li id="Size_L">Size L</li>-->
+<!--                            <li id="Size_XL">Size XL</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!---->
+<!--                    <span class="msg"></span>-->
+<!--                </div>-->
 
 
             <div class="flex-r-m flex-w p-t-10">
@@ -78,7 +79,7 @@
 
 
         <div class="p-b-45">
-            <span class="s-text8 m-r-35">SKU: MUG-01</span>
+            <span class="s-text8 m-r-35">SKU: <?= $product->sku?></span>
             <span class="s-text8">Categories: Mug, Design</span>
         </div>
 

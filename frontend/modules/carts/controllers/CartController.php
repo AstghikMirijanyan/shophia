@@ -69,14 +69,17 @@ class CartController extends \yii\web\Controller
             $order->user_id = $id;
             if ($order->save(false)) {
                 $this->saveOrederItems($cart, $order->id);
-//                $cart->delete();
-                \Yii::$app->mailer->compose('order')
+                \Yii::$app->mailer->compose('order',['cart' => $cart])
                     ->setFrom(['astghik.mirijanyan@gmail.com' => 'Shophia.com'])
                     ->setTo($order->email)
-                    ->setSubject('shop')
-                    ->setTextBody('body')
+                    ->setSubject('Shop')
                     ->send();
-                return $this->refresh();
+                foreach ($cart as $item){
+                    $user_id = $item['user_id'];
+                    Cart::deleteAll(['user_id' => $user_id]);
+                    return $this->refresh();
+                }
+
             } else {
                 \Yii::$app->session->setFlash('ERROR', 'YOUR ERROR');
             }
@@ -112,22 +115,28 @@ class CartController extends \yii\web\Controller
                 return true;
             }
         }
-//        $cart->update();
+
     }
 
-//
 
-    public function actionDelete()
-    {
-        $cart = Cart::find()->asArray()->all();
-        foreach ($cart as $key => $value) {
-
-            $value->delete();
-
+    public function actionDelete() {
+        if (\Yii::$app->request->isAjax) {
+            $product_id = \Yii::$app->request->get('product_id');
+            if (!empty($product_id)) {
+                Cart::deleteAll(['product_id' => $product_id]);
+            }
+            $this->redirect('carts/checkout');
         }
-        return true;
+        if (\Yii::$app->request->get('user')) {
+            $user_id = \Yii::$app->request->get('user');
+            if (!empty( $user_id)) {
+                Cart::deleteAll(['user_id' => $user_id]);
+            }
 
+            $this->redirect('carts/checkout');
+        }
     }
+
 
 
 }

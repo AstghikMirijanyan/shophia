@@ -14,6 +14,7 @@ main {
 
 }
 
+
 header {
     width: 100%;
     float: left;
@@ -299,6 +300,9 @@ h1 {
     font-style: italic;
     margin: 30px 0;
 }
+.brand{
+    margin-left: 20px;
+}
 
 .collection {
     width: 94%;
@@ -363,6 +367,7 @@ h1 {
     position: absolute;
     height: 0;
     width: 16%;
+    cursor: pointer;
     text-align: center;
     color: white;
     font-size: 15px;
@@ -374,6 +379,30 @@ h1 {
 
 .add_brand:hover {
     border-bottom: 50px solid #f0975d;
+
+}
+.brand {
+    width: 92%;
+    float: left;
+    height: 120px;
+    margin-left: 70px;
+}
+.middle_summer_collection:hover .index_heart{
+    display: block;
+}
+.index_heart{
+    display: none;
+    width: 22px;
+    height: 22px;
+    z-index: 10;
+    position: absolute;
+    margin-left: 255px;
+}
+.wish:hover{
+    background-image: url("../images/like.png");
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 
 }
 
@@ -414,12 +443,12 @@ h1 {
     border: none;
 }
 
-.brand {
-    width: 92%;
-    float: left;
-    height: 170px;
-    margin-left: 57px;
-}
+/*.brand {*/
+    /*width: 92%;*/
+    /*float: left;*/
+    /*height: 170px;*/
+    /*margin-left: 57px;*/
+/*}*/
 
 .middle_brand {
     width: 15%;
@@ -746,7 +775,7 @@ li > .slick-active {
 
 .bar_mySelf_ul {
     display: flex;
-    margin-left: 105px;
+    margin-left: 135px;
     font-family: Lato, sans-serif;;
     font-size: 11px;
     text-transform: uppercase;
@@ -762,6 +791,7 @@ li > .slick-active {
 
 .bar_mySelf_ul > li > a {
     color: #393939;
+
 
 }
 
@@ -1125,14 +1155,7 @@ li > .slick-active {
     margin-bottom: 10px;
 
 }
-/*.d30 {*/
-    /*width: 0;*/
-    /*height: 0;*/
-    /*margin-top: 20px;*/
-    /*border-width: 50px 30px 20px;*/
-    /*border-style: solid;*/
-    /*border-color: #E95557 #E95557 transparent;*/
-/*}*/
+
 .midlle-filter>h3{
     text-align: center;
     font-family: Lato, sans-serif;
@@ -1366,17 +1389,17 @@ li > .slick-active {
     height: 40px;
 }
 .wishlist_btn{
-    margin-right: 20px;
+    margin-right: 21px;
 
 
 
 }
 .shopping_search {
-    width: 60%;
+    width: 65%;
     height: auto;
     margin-top: 12px;
-    margin-right: 45px;
-    float: left;
+    margin-right: 25px;
+    float: left;;
 
 }
 .love>img:hover{
@@ -1444,6 +1467,7 @@ input[type=search] {
     height: 200px;
     float: left;
 }
+
 
 .contact_row {
     margin-top: 20px;
@@ -1553,25 +1577,30 @@ input[type=search] {
 }
 
 .brands_prod {
-    margin-top: 5px;
-    margin-bottom: 30px;
+    margin-top: 38px;
+    margin-bottom: 18px;
     width: 100%;
     height: 50px;
     float: left;
+
 }
 
 .brands_ul {
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 34px;
     padding-left: 10px;
 }
 
 .brands_ul > li {
     width: 80px;
-    height: 100%;
+    height: 90%;
     float: left;
 }
-
+.brands_ul>li>a>img{
+    width: 80px;
+    height: 40px;
+    object-fit: cover;
+}
 .brands_ul > li:hover {
 
     -webkit-box-shadow: 10px 10px 34px -6px rgba(0, 0, 0, 0.47);
@@ -1579,10 +1608,6 @@ input[type=search] {
     box-shadow: 10px 10px 34px -6px rgba(0, 0, 0, 0.75);
 }
 
-.brands_ul > li > a > img {
-    width: 100%;
-    height: 100%;
-}
 
 .product-img > img {
     width: 100%;
@@ -1912,7 +1937,19 @@ span.choose {
 .dropdown.active .select > i {
     transform: rotate(-90deg)
 }
-
+.site-result{
+    width: 50%;
+    margin-top: 150px;
+    margin-left: 180px;
+    float: left;
+}
+.cart-result{
+    width: 50%;
+    margin-top: 30px;
+    margin-left: 350px;
+    margin-bottom: 50px;
+    float: left;
+}
 .dropdown .dropdown-menu {
     position: absolute;
     background-color: #fff;
@@ -1936,12 +1973,13 @@ span.choose {
     margin-bottom: 50px;
 }
 .continue{
-   margin-left:  1000px;
+   margin-left:  350px;
 }
 .modal-footer{
     width: 50%;
     margin-left: 250px;
 }
+
 /*.check_quantity{*/
     /*background: yellow;*/
     /*width: 30%;*/
@@ -1951,8 +1989,7 @@ span.choose {
 .table{
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 50px;
-
+    margin-bottom: 70px;
 }
 .dropdown .dropdown-menu li {
     padding: 10px;
@@ -2195,8 +2232,38 @@ span.choose {
     box-shadow: 0 0 0 0.5px #242424;
     transition-duration: 0.3s;
 }
-
-
+.blog{
+    width: 100%;
+    height: auto;
+    float: left;
+}
+.middle-blog{
+    margin-left: 55px;
+    width: 20%;
+    height: 300px;
+    float: left;
+    background: red;
+}
+.field-orders-name{
+    width: 30%;
+    float: left;
+    margin-left: 180px;
+    margin-right: 100px;
+}
+.field-orders-email{
+    width: 30%;
+    float: left;
+}
+.field-orders-phone{
+    width: 30%;
+    float: left;
+    margin-left: 180px;
+    margin-right: 100px;
+}
+.field-orders-address{
+    width: 30%;
+    float: left;
+}
 /*.midlle_small_images img{*/
 /*width: 100%;*/
 /*height: 100%;*/
