@@ -70,9 +70,11 @@ if (!empty($cart)):
             </tbody>
         </table>
         <hr class="reg_hr">
+        <?php $name = \Yii::$app->user->identity->username; $name = strtoupper($name);
+        $email = \Yii::$app->user->identity->email;?>
         <?php $form = ActiveForm::begin() ?>
-        <?= $form->field($order,  'name')?>
-        <?= $form->field($order, 'email')?>
+        <?= $form->field($order,  'name')->textInput(['readonly' => true, 'value' => $name])?>
+        <?= $form->field($order, 'email')->textInput(['readonly' => true, 'value' => $email])?>
         <?= $form->field($order, 'phone')?>
         <?= $form->field($order, 'address')?>
         <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10 continue">
