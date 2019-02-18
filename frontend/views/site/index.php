@@ -11,14 +11,39 @@ $this->title = 'Shophia';
 
 <div class="content">
     <div class="fromSlider">
-
         <div class="text-block">
             <div class="text">
                 <div class="middle-text">
+                    <div class="name-text">MID-SEASON</div>
+                    <div class="sale">SALE</div>
+                    <div class="up"><span>UP TO</span></div>
+                    <div class="pr">50% OFF</div>
+                </div>
 
+            </div>
+            <button class="text-btn"><a href="/products" style="color: white">SHOP NOW</a></button>
+        </div>
+        <div class="text-block">
+            <div class="text">
+                <div class="middle-text">
+                    <div class="name-text">MID-SEASON</div>
+                    <div class="sale">NEW</div>
+                    <div class="up"><span>UP TO</span></div>
+                    <div class="pr">COLLECTION</div>
                 </div>
             </div>
-
+            <button class="text-btn"><a href="/products" style="color: white; text-decoration: none">SHOP NOW</a></button>
+        </div>
+        <div class="text-block">
+            <div class="text">
+                <div class="middle-text">
+                    <div class="name-text">MID-SEASON</div>
+                    <div class="sale">BEST</div>
+                    <div class="up"><span>UP TO</span></div>
+                    <div class="pr">COLLECTION</div>
+                </div>
+            </div>
+            <button class="text-btn"><a href="/products" style="color: white; text-decoration: none">SHOP NOW</a></button>
         </div>
     </div>
     <!--SLIDER-->
@@ -68,7 +93,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="wow bounceInRight"  data-wow-duration="3s">CATEGORIES</h2></div>
+            <div class="title_handPicked"><h2 class="animated bounceInLeft"  data-wow-duration="3s">CATEGORIES</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -114,7 +139,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="wow bounceInRight"  data-wow-duration="3s">Featured Products</h2></div>
+            <div class="title_handPicked"><h2 class="animated bounceInLeft"  data-wow-duration="3s">Featured Products</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -171,7 +196,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked" ><h2 class="wow bounceInLeft"  data-wow-duration="3s">OUR BRAND</h2></div>
+            <div class="title_handPicked" ><h2 class="animated bounceInRight"  data-wow-duration="3s">OUR BRAND</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -205,7 +230,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked wow bounceInRight"  data-wow-duration="3s"><h2>BLOG</h2></div>
+            <div class="title_handPicked animated bounceInLeft"  data-wow-duration="3s"><h2>BLOG</h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>

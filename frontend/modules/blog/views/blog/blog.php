@@ -12,7 +12,9 @@ $this->registerJs(
     });'
 );
 ?>
-<h1><?= $article['title'] ?></h1>
+<div class="site-cat">
+    <img src="<?= \yii\helpers\Url::to('@web/images/rawpixel-769354-unsplash.jpg') ?>" alt="">
+</div>
 <p><?= $article['content']?></p>
 <?php
 ?>

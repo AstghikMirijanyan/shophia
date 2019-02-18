@@ -6,20 +6,22 @@ use Yii;
 use yii\behaviors\SluggableBehavior;
 
 /**
- * This is the models class for table "blog".
+ * This is the model class for table "blog".
  *
  * @property int $id
  * @property string $title
  * @property string $content
- * @property string $created_at
  * @property string $slug
+ * @property string $created_at
+ * @property string $image
  *
  * @property Comments[] $comments
+ * @property Comments[] $comments0
  */
 class Blog extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -40,28 +42,30 @@ class Blog extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['title', 'content','slug'], 'required'],
+            [['title', 'content'], 'required'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
-            [['title'], 'string', 'max' => 255],
+            [['title', 'slug', 'image'], 'string', 'max' => 255],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'content' => Yii::t('app', 'Content'),
-            'created_at' => Yii::t('app', 'Created At'),
+            'id' => 'ID',
+            'title' => 'Title',
+            'content' => 'Content',
+            'slug' => 'Slug',
+            'created_at' => 'Created At',
+            'image' => 'Image',
         ];
     }
 
@@ -69,6 +73,14 @@ class Blog extends \yii\db\ActiveRecord
      * @return \yii\db\ActiveQuery
      */
     public function getComments()
+    {
+        return $this->hasMany(Comments::className(), ['blog_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComments0()
     {
         return $this->hasMany(Comments::className(), ['blog_id' => 'id']);
     }

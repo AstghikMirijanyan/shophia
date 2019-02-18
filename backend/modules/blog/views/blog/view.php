@@ -32,6 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'content:ntext',
             'created_at',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'filter'=> '',
+                'value' => function($model){
+                    return Html::img(\yii\helpers\Url::to('@home/images/uploads/blog/'.$model->image),['width' => '100px','class'=>'img']);
+                }
+            ] ,
         ],
     ]) ?>
 

@@ -2242,10 +2242,11 @@ span.choose {
 }
 .middle-blog{
     margin-left: 55px;
-    width: 20%;
-    height: 300px;
+    width: 28%;
+    height: 550px;
+    margin-bottom: 50px;
     float: left;
-    background: red;
+    background: rgba(239, 239, 239, 0.31);
 }
 .field-orders-name{
     width: 30%;

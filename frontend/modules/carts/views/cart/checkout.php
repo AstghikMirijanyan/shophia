@@ -38,7 +38,7 @@ if (!empty($cart)):
                     <td>
                         <img src="<?= yii\helpers\Url::to('@web/images/uploads/products/' . $item['product']['image']) ?>"
                              style="width: 50px"</td>
-                    <td><h3><a href="<?= Url::to(['/products/product/'.$item['product']['slug']])?>"><?= $item['product']['title'] ?></a></h3></td>
+                    <td><h3><a data-pjax="0" href="<?= Url::to(['/products/product/'.$item['product']['slug']])?>"><?= $item['product']['title'] ?></a></h3></td>
                     <td>
                         <form method="post" action="">
                             <div class="quantity buttons_added check_quantity">

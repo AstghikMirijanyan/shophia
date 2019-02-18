@@ -49,8 +49,8 @@ class ProductsController extends Controller
             }
         }
 
-        $min = Yii::$app->request->get('min', false);
-        $max = Yii::$app->request->get('max', false);
+        $min = Yii::$app->request->get('one', false);
+        $max = Yii::$app->request->get('two', false);
 
         if ($min !== false && $max !== false) {
             $products = $products->andWhere(['between', 'price', $min, $max]);

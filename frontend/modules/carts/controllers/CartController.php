@@ -78,7 +78,6 @@ class CartController extends \yii\web\Controller
 
         }
 
-
         $cart = Cart::find()->with('product')->where(['user_id' => $id])->asArray()->all();
         $order = new Orders();
         if ($order->load(\Yii::$app->request->post())) {

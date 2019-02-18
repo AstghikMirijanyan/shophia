@@ -22,8 +22,23 @@ $(window).on('load', function () {
     $preloader.delay(350).fadeOut('slow');
 });
 
-
 $('.fromSlider .text-block').eq(0).addClass('active').fadeIn(1000);
+
+setInterval('blockAnimate();', 4000);
+
+function blockAnimate() {
+    var length = $('.fromSlider .text-block').length - 1;
+    $('.fromSlider .text-block').each(function(index) {
+        if($(this).hasClass('active') && index != length) {
+            $(this).removeClass('active').fadeOut(1000).next('.text-block').addClass('active').fadeIn(1000);
+            return false;
+        } else if (index == length) {
+            $(this).removeClass('active').fadeOut(1000);
+            $('.fromSlider .text-block').eq(0).addClass('active').fadeIn(1000);
+            return false;
+        }
+    });
+};
 
 
 $(".btn_search").click(function () {
