@@ -85,20 +85,23 @@ if (!empty($cart)):
         <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10 continue">
         <?= Html::submitButton('checkout', ['class' => 'flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4']) ?>
         </div>
-
         <?php $form = ActiveForm::end() ?>
+        <form action="" method="get">
+            <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+                <a href="/carts/cart/checkout?user_id=<?= $item['user_id'] ?> "
+                   class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                    Delete all
+                </a>
+            </div>
+        </form>
+
         <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
             <a href="<?= \yii\helpers\Url::to(['/products']) ?> "
                class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 cont">
                 Continue shop
             </a>
         </div>
-        <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-            <a href="carts/cart/delete?id=<?= $item['id'] ; ?>?> "
-               class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                Delete all
-            </a>
-        </div>
+
     </div>
 <?php else: ?>
     <div class="cart-result">

@@ -70,6 +70,15 @@ class CartController extends \yii\web\Controller
             }
         }
 
+        if (\Yii::$app->request->get('user_id')) {
+            $user_id = \Yii::$app->request->get('user_id');
+            if (!empty($user_id)) {
+                Cart::deleteAll(['user_id' => $user_id]);
+            }
+
+        }
+
+
         $cart = Cart::find()->with('product')->where(['user_id' => $id])->asArray()->all();
         $order = new Orders();
         if ($order->load(\Yii::$app->request->post())) {
@@ -77,12 +86,12 @@ class CartController extends \yii\web\Controller
             $order->user_id = $id;
             if ($order->save(false)) {
                 $this->saveOrederItems($cart, $order->id);
-                \Yii::$app->mailer->compose('order',['cart' => $cart])
+                \Yii::$app->mailer->compose('order', ['cart' => $cart])
                     ->setFrom(['astghik.mirijanyan@gmail.com' => 'Shophia.com'])
                     ->setTo($order->email)
                     ->setSubject('Shop')
                     ->send();
-                foreach ($cart as $item){
+                foreach ($cart as $item) {
                     $user_id = $item['user_id'];
                     Cart::deleteAll(['user_id' => $user_id]);
                     return $this->refresh();
@@ -112,40 +121,6 @@ class CartController extends \yii\web\Controller
             $order_items->save(false);
         }
     }
-
-//    public function actionRemove()
-//    {
-//        $id = \Yii::$app->request->get('id');
-//        if (!empty($id)) {
-//            $cart = Cart::findOne($id);
-//            if (!empty($cart)) {
-//                $cart->delete();
-//
-//                return true;
-//            }
-//        }
-//
-//    }
-
-
-    public function actionDelete() {
-        if (\Yii::$app->request->isAjax) {
-            $product_id = \Yii::$app->request->get('product_id');
-            if (!empty($product_id)) {
-                Cart::deleteAll(['product_id' => $product_id]);
-            }
-            $this->redirect('carts/checkout');
-        }
-        if (\Yii::$app->request->get('user')) {
-            $user_id = \Yii::$app->request->get('user');
-            if (!empty( $user_id)) {
-                Cart::deleteAll(['user_id' => $user_id]);
-            }
-
-            $this->redirect('carts/checkout');
-        }
-    }
-
 
 
 }
