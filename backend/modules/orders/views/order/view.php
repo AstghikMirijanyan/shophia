@@ -37,15 +37,15 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'status',
             [
                 'attribute' => 'status',
-                'value' =>  !$model->status ? '<span class="text-danger">Actively</span>
+                'value' => !$model->status ? '<span class="text-danger">Actively</span>
 ' : '<span class="text-success">Completed order</span> ',
                 'format' => 'raw'
-        ],
+            ],
             'name',
             'email:email',
             'phone',
             'address',
-            'user_id',
+//            'user_id',
         ],
     ]) ?>
     <?php $items = $model->orderItems; ?>
@@ -67,19 +67,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <tr>
                     <td>
-                        <a href="<?= \yii\helpers\Url::to(['/products/product', 'id' => $item->product_id]) ?>"><?= $item['title'] ?></a>
+                        <a href="<?= \yii\helpers\Url::to(['/products/product/view', 'id' => $item['product_id']]) ?>"><?= $item['title'] ?></a>
                     </td>
 
                     <td><?= $item['qty_item'] ?></td>
-
-
                     <td><?= $item['price'] ?></td>
-                    <?php $total = $item['sum_item'] ?>
-                    <td><?= $total ?></td>
+                    <?php $sum = $item['qty_item'] * $item['price'] ?>
+                    <td><?= $sum ?></td>
                 </tr>
+                <?php $total += $sum ?>
 
             <?php endforeach; ?>
+            <tr>
+                <td>TOTAL:</td>
 
+                <td></td>
+                <td></td>
+
+                <td><?= $total ?> </td>
+            </tr>
             </tbody>
         </table>
     </div>

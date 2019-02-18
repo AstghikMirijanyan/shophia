@@ -7,6 +7,8 @@ use yii\helpers\Url;
 
 $this->title = 'Shophia';
 ?>
+
+
 <div class="content">
     <div class="fromSlider">
 
@@ -90,7 +92,7 @@ $this->title = 'Shophia';
                     </div>
                     <div class="hide_coll">
 
-                       <a href="<?= \yii\helpers\Url::to(['/products/'. $category['slug'] ]) ?>" class="plus_btn animated bounceInUp">
+                       <a data-pjax="0" href="<?= \yii\helpers\Url::to(['/products/'. $category['slug'] ]) ?>" class="plus_btn animated bounceInUp">
                        <?php
                        echo $category['title'];
                        ?>
@@ -127,15 +129,29 @@ $this->title = 'Shophia';
         foreach ($feature as $feat){
             ?>
             <div class="middle_summer_collection" >
+  <?php if (!empty($wishlist)){
+      foreach ($wishlist as $item){
+          if ($item['product_id'] === $feat['id']){
+              ?>
+              <div class="index_heart">
+                  <a class="add-to-wishlist wish" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $feat['id'] ?>>
+                      <img src="<?= \yii\helpers\Url::to('@web/images/like.png') ?>" alt="">
+                  </a>
+              </div>
+                <?php
+          } else{
+              ?>
+              <div class="index_heart">
+                  <a class="add-to-wishlist wish" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $feat['id'] ?>>
+                      <img src="<?= \yii\helpers\Url::to('@web/images/heart.png') ?>" alt="">
+                  </a>
+              </div>
+              <?php
+          }
+      }
+  }
 
-                <div class="index_heart">
-                    <a class="add-to-wishlist wish" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $feat['id'] ?>>
-                        <img src="<?= \yii\helpers\Url::to('@web/images/heart.png') ?>" alt="">
-                    </a>
-                </div>
-
-
-
+  ?>
                 <a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>"><img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/'.$feat['image']) ?>" alt=""></a>
             <div class="add_brand">
                 <div class="br_a"><a href="<?= \yii\helpers\Url::to(['carts/cart/add'])?>" data-id =<?= $feat['id']?>" class="add_cart" > $<?= $feat['price']?> <br>+ADD TO CART</a></div>

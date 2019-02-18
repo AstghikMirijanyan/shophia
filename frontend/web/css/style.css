@@ -381,6 +381,9 @@ h1 {
     border-bottom: 50px solid #f0975d;
 
 }
+.active_url{
+    color: #f0975d;
+}
 .brand {
     width: 92%;
     float: left;

@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
     <img src="<?= \yii\helpers\Url::to('@web/images/cart_shop.jpg') ?>" alt="">
 </div>
 <?php
+\yii\widgets\Pjax::begin();
 if (!empty($cart)):
     $sum = 0;
     ?>
@@ -27,7 +28,9 @@ if (!empty($cart)):
             </thead>
             <tbody>
             <?php foreach ($cart as $item):
-                $sum += $item['product']['price'];
+                $sum += $item['price'];
+                $sum += $item['quantity'];
+
                 ?>
 
 
@@ -54,18 +57,20 @@ if (!empty($cart)):
 
                     <td><?= $item['product']['price'] ?></td>
                     <?php  $total =  $item['product']['price'] * $item['quantity']?>
+
                     <td><?= $total ?></td>
-                    <td><span data-id="<?= $item['id'] ?>" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></td>
+                    <?php $allPrice += $total;?>
+                    <td><a href="/carts/cart/checkout?id=<?= $item['id'] ; ?>"><span class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></a></td>
                 </tr>
 
             <?php endforeach; ?>
             <tr>
                 <td colspan="4">Тotal price:</td>
-                <td><?= count($cart) + $item['quantity']?></td>
+                <td><?= $sum ?></td>
             </tr>
             <tr>
                 <td colspan="4">PRICE:</td>
-                <td> <?= $sum += $total ?></td>
+                <td> <?= $allPrice?></td>
             </tr>
             </tbody>
         </table>
@@ -89,7 +94,7 @@ if (!empty($cart)):
             </a>
         </div>
         <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-            <a href="<?= \yii\helpers\Url::to(['/products']) ?> "
+            <a href="carts/cart/delete?id=<?= $item['id'] ; ?>?> "
                class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                 Delete all
             </a>
@@ -99,4 +104,6 @@ if (!empty($cart)):
     <div class="cart-result">
         <h2>Cart empty</h2>
     </div>
-<?php endif; ?>
+<?php endif;
+\yii\widgets\Pjax::end();
+?>

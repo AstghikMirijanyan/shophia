@@ -26,7 +26,6 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
 <main>
     <!--BEGIN HEADER-->
     <header>
@@ -132,6 +131,8 @@ AppAsset::register($this);
         </div>
         <!--END HEADER-->
     </header>
+
+
     <!--    --><?php //= Breadcrumbs::widget([
     //        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     //    ]) ?>

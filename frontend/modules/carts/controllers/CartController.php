@@ -62,6 +62,14 @@ class CartController extends \yii\web\Controller
     {
         $id = \Yii::$app->user->id;
 
+        $cart_id = \Yii::$app->request->get('id');
+        if (!empty($cart_id)) {
+            $cart = Cart::findOne($cart_id);
+            if (!empty($cart)) {
+                $cart->delete();
+            }
+        }
+
         $cart = Cart::find()->with('product')->where(['user_id' => $id])->asArray()->all();
         $order = new Orders();
         if ($order->load(\Yii::$app->request->post())) {
@@ -105,19 +113,19 @@ class CartController extends \yii\web\Controller
         }
     }
 
-    public function actionRemove()
-    {
-        $id = \Yii::$app->request->get('id');
-        if (!empty($id)) {
-            $cart = Cart::findOne($id);
-            if (!empty($cart)) {
-                $cart->delete();
-
-                return true;
-            }
-        }
-
-    }
+//    public function actionRemove()
+//    {
+//        $id = \Yii::$app->request->get('id');
+//        if (!empty($id)) {
+//            $cart = Cart::findOne($id);
+//            if (!empty($cart)) {
+//                $cart->delete();
+//
+//                return true;
+//            }
+//        }
+//
+//    }
 
 
     public function actionDelete() {

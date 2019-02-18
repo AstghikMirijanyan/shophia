@@ -68,25 +68,28 @@ function showCart(cart) {
 
 
 
-$('.table').on('click', '.del-item', function () {
-    var id = $(this).attr('data-id');
-    $.ajax({
-        url: 'carts/cart/remove',
-        data: {id: id},
-        type: 'GET',
-        success: function (res) {
-            if (res){
-                $('data-id').remove();
-            } else {
-                alert('product remove');
-            }
-        },
-
-        error: function () {
-            alert('ERROR');
-        }
-    })
-});
+// $('.table-hover').on('click', '.del-item', function () {
+//     var id = $(this).attr('data-id');
+//     var that = $(this);
+//     $.ajax({
+//         url: 'carts/cart/remove',
+//         data: {id: id},
+//         type: 'POST',
+//         success: function (res) {
+//             console.log(res);
+//             if (res){
+//
+//                 that.closest('tr').remove();
+//             } else {
+//                 alert('product remove');
+//             }
+//         },
+//
+//         error: function () {
+//             alert('ERROR');
+//         }
+//     })
+// });
 
 
 function clearCart() {

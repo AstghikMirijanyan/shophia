@@ -5,6 +5,7 @@ use yii\helpers\Url;
 $this->title = 'Shop';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php \yii\widgets\Pjax::begin(['enablePushState' => true]);?>
 <div class="site-product">
     <div class="site-cat">
         <img src="<?= \yii\helpers\Url::to('@web/images/u.jpg') ?>" alt="">
@@ -20,11 +21,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     if (!empty($categories)) {
                         foreach ($categories as $cat) {
-                            ?>
-                            <li>
-                                <a href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
-                            </li>
-                            <?php
+                            if (!empty($cat['title'])){
+                               if ($cat_slug === $cat['slug']){
+                                   ?>
+                                   <li>
+                                       <a style="color: #f0975d;" href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
+                                   </li>
+                                   <?php
+                               }else{
+                                   ?>
+                                   <li>
+                                       <a href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
+                                   </li>
+                                   <?php
+
+                               }
+                            }
+
                         }
                     }
                     ?>
@@ -75,9 +88,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         <ul class="brands_ul">
                             <li>
                                 <?php if (!empty($cat_slug)) {
+
                                     ?>
 
-                                    <a href="<?= \yii\helpers\Url::to(['/products/' . $cat_slug . '/' . $brand['slug']]) ?>">
+                                    <a  href="<?= \yii\helpers\Url::to(['/products/' . $cat_slug . '/' . $brand['slug']]) ?>">
                                         <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
                                              alt=""></a>
 
@@ -85,12 +99,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 } else {
                                     ?>
-                                    <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"> <img
+                                    <a   href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"> <img
                                                 src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
                                                 alt=""></a>
                                     <?php
                                 }
                                 $cat_slug = '';
+
+
                                 ?>
                             </li>
                         </ul>
@@ -104,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                 <?php
             }
-            \yii\widgets\Pjax::begin(['enablePushState' => false]);
+//            \yii\widgets\Pjax::begin(['enablePushState' => false]);
 
             if (!empty($products)) {
                 foreach ($products as $pr) {
@@ -113,25 +129,31 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="block-product">
                         <div class="ader_product">
 
+
+                            <?php
+                            if (!empty($wishlist)){
+                                foreach ($wishlist as $value){
+                                    if ($value['product_id'] === $pr['id']){
+                                       ?>
                             <a class="love add-to-wishlist" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $pr['id'] ?>>
-                                <?php  if (!empty($wishlist)){
-                                    foreach ($wishlist as $value){
-                                        if ($value['product_id'] === $pr['id']){
-                                            ?>
-                                            <img src="<?= \yii\helpers\Url::to('@web/images/like.png') ?>" alt="">
-
-
-                                            <?php
-                                        }
-
-                                    }
-                                    ?>
-                                    <img src="<?= \yii\helpers\Url::to('@web/images/heart.png') ?>" alt="">
-                                <?php
-                                }
-                                ?>
+                                <img src="<?= \yii\helpers\Url::to('@web/images/like.png') ?>" alt=""
 
                             </a>
+
+                            <?php
+                                    }else{
+                                        ?>
+                                        <a class="love add-to-wishlist" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $pr['id'] ?>>
+                                            <img src="<?= \yii\helpers\Url::to('@web/images/heart.png') ?>" alt=""
+
+                                        </a>
+
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
+
                             <a href="" class="love_b"></a>
                             <a href="" class="heart"></a>
                             <a class="add_cart pr_add animated bounceIn" data-wow-duration="3s"
