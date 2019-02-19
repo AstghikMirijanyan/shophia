@@ -69,10 +69,12 @@ return [
 
                 '' => 'site/index',
                 'blog' => 'blog/blog/index',
+                'article/<slug>' => 'blog/blog/article',
+
                 'wishlist' => 'wishlist/wishlist/index',
                 'carts' => 'carts/cart',
                 'checkout'=>'carts/cart/checkout',
-                'article/<slug>' => 'blog/blog/article',
+
                 'search'=>'products/products',
                 'products/product/carts/cart/<action:\w+>' => 'carts/cart/<action>',
                 'products' => '/products/products',

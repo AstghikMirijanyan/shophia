@@ -47,8 +47,6 @@ class CartController extends \yii\web\Controller
                         }
                     }
                     $this->layout = false;
-//                    $cart_data = Cart::findAll( ['user_id' => $user])->all();
-
                     return $this->render('/cart/index', [
                         'cart' => $cart
                     ]);

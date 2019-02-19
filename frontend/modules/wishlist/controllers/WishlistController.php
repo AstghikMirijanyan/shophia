@@ -6,7 +6,7 @@ use common\models\Products;
 use common\models\User;
 use common\models\Wishlist;
 use common\widgets\Alert;
-use yii\helpers\Json;
+
 
 class WishlistController extends \yii\web\Controller
 {
@@ -19,12 +19,18 @@ class WishlistController extends \yii\web\Controller
         return parent::beforeAction($action);
     }
 
-    public function actionAdd($id)
+    public function actionAdd()
     {
-        $id = \Yii::$app->request->get('id');
+        $state = \Yii::$app->request->get('state');
+        if ($id = \Yii::$app->request->get('id')) {
+            $wishlist = Wishlist::findOne(['product_id' => $id]);
+
+            if (!empty($wishlist)) {
+                $wishlist->delete();
+            }
+        }
 
         if(\Yii::$app->user->isGuest){
-            return \Yii::$app->session->setFlash('ERROR', 'Please Login');
        }else{
             if(!empty($id)){
                 $user = \Yii::$app->user->id;
@@ -44,7 +50,6 @@ class WishlistController extends \yii\web\Controller
                         }
                     }
 
-                    return json_encode(['success' => true,'errors' => $errors]);
 
                 }
             }
@@ -52,6 +57,16 @@ class WishlistController extends \yii\web\Controller
 
 
     }
+//    public function actionRemove(){
+//        $wislist_id = \Yii::$app->request->get('id');
+//        if (!empty($wislist_id)) {
+//            $wishlist = Wishlist::findOne($wislist_id);
+//            if (!empty($wishlist)) {
+//                $wishlist->delete();
+//            }
+//            return true;
+//        }
+//    }
 
     public function actionIndex(){
         $id = \Yii::$app->user->id;
