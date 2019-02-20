@@ -6,6 +6,7 @@ use common\models\Products;
 use common\models\Cart;
 use common\models\Orders;
 use common\models\OrderItems;
+use common\widgets;
 
 
 class CartController extends \yii\web\Controller
@@ -13,7 +14,7 @@ class CartController extends \yii\web\Controller
     public function beforeAction($action)
     {
         if (\Yii::$app->user->isGuest) {
-            return $this->redirect('/login');
+            return $this->redirect('/');
         }
         return parent::beforeAction($action);
     }
@@ -26,7 +27,7 @@ class CartController extends \yii\web\Controller
         $qty = (int)\Yii::$app->request->get('qty');
         $qty = !$qty ? 1 : $qty;
         if (\Yii::$app->user->isGuest) {
-            return \Yii::$app->session->setFlash('ERROR', 'Please Login');
+            \Yii::$app->session->setFlash('error', "Please Login.");
         } else {
             if (!empty($id) && !empty($qty)) {
                 $user = \Yii::$app->user->id;
@@ -91,6 +92,7 @@ class CartController extends \yii\web\Controller
                 foreach ($cart as $item) {
                     $user_id = $item['user_id'];
                     Cart::deleteAll(['user_id' => $user_id]);
+                    \Yii::$app->session->setFlash('success', "Product Added Successfully");
                     return $this->refresh();
                 }
 

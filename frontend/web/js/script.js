@@ -31,21 +31,20 @@ $(document).ready(function () {
     // });
 
 });
-$(".input_class_checkbox").click(function() {
-    var id = $(this).attr('data-id');
-    var state = this.checked ? 1 : 0;
-    console.log(state);
-    $.ajax({
-        url: 'wishlist/wishlist/add',
-        data: {id: id, state: state},
-        type: 'GET',
-        success: function (data) {
-        },
-        error: function () {
-            alert('ERROR');
-        }
-    })
-});
+// $(".input_class_checkbox").click(function() {
+//     var id = $(this).attr('data-id');
+//     var state = this.checked ? 1 : 0;
+//     $.ajax({
+//         url: lang+'/wishlist/wishlist/add',
+//         data: {id: id, state: state},
+//         type: 'GET',
+//         success: function (data) {
+//         },
+//         error: function () {
+//             alert('ERROR');
+//         }
+//     })
+// });
 
 $(window).on('load', function () {
     $preloader = $('.loaderArea');
@@ -98,12 +97,12 @@ function showCart(cart) {
 
 
 $('.add_cart').on('click', function (e) {
-    e.preventDefault();
+    // e.preventDefault();
     var id = $(this).attr('data-id');
         var qty = 1,
     qty = $('#qty').val();
     $.ajax({
-        url: 'carts/cart/add',
+        url: lang+'/carts/cart/add',
         data: {id: id, qty: qty},
         type: 'GET',
         success: function (data) {
@@ -112,27 +111,33 @@ $('.add_cart').on('click', function (e) {
 
         },
         error: function () {
-            alert('ERROR');
+            // alert('ERROR');
         }
     })
 });
 //Wishlist function
-$('.add-to-wishlist').on('click', function (e) {
-    e.preventDefault();
-    var id = $(this).attr('data-id');
-    $.ajax({
-        url :'wishlist/wishlist/add',
-        type:'GET',
-        data:{id : id},
-        success:function(data){
-            $('.popup').html(data);
-        }
-    })
+// $('.add-to-wishlist').on('click', function (e) {
+//     e.preventDefault();
+//     var id = $(this).attr('data-id');
+//     $.ajax({
+//         url :lang+'/wishlist/wishlist/add',
+//         type:'GET',
+//         data:{id : id},
+//         success:function(data){
+//
+//         }
+//     })
+// });
+
+
+$(".wishlist_btn").click(function(){
+    $(".header-cart").toggle(300);
+
 });
 
-
-
-
+// $('body').click(function() {
+//     $('.header-cart').hide(300);
+// });
 function wcqib_refresh_quantity_increments() {
     jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function(a, b) {
         var c = jQuery(b);

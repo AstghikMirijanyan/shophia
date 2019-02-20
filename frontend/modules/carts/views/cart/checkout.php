@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 <div class="site-cat check">
     <img src="<?= \yii\helpers\Url::to('@web/images/cart_shop.jpg') ?>" alt="">
 </div>
+
 <?php
 \yii\widgets\Pjax::begin();
 if (!empty($cart)):
@@ -65,7 +66,7 @@ if (!empty($cart)):
 
             <?php endforeach; ?>
             <tr>
-                <td colspan="4">Тotal price:</td>
+                <td colspan="4">Тotal:</td>
                 <td><?= $sum ?></td>
             </tr>
             <tr>

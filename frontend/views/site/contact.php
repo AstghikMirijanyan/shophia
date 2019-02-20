@@ -11,6 +11,7 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="site-contact">
 
     <div class="site-cat">
@@ -18,7 +19,46 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="contact_row">
-        <div class="contact_map"></div>
+        <div class="contact_map">
+            <div class="distance">
+                <?php
+                if (isset($_POST['submit'])) {
+                    $org = $_POST['org'];
+                    $des = $_POST['des'];
+                    $api = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".$org."&destinations=".$des."&key=AIzaSyBPegktpSITcmnC22rTCKpqbDwlXmOkwZ0");
+                    $data = json_decode($api, true);
+
+                    ?>
+                    <div class="res">
+                        <label><b>Distance: </b></label> <span><?php echo ((int)$data['rows'][0]['elements'][0]['distance']['value'] / 1000).' Km'; ?></span> <br><br>
+                        <label><b>Travel Time: </b></label> <span><?php echo $data['rows'][0]['elements'][0]['duration']['text']; ?></span>
+                    </div>
+                    <?php
+
+                }
+
+                ?>
+                <div class="between">
+                    <h2 class="dis">Calculate the distance between two address</h2>
+                    <div class="inpDiv">
+                        <form action="/contact" id="form" method="post">
+                            from<input type="text" name="org" id="org"/>
+                            to<input type="text" name="des" id="des"/>
+                            <input type="submit" name="submit" id="button" value="calculate">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div id="map">
+
+                    <iframe width="100%" height="650" frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCwHub-YP6RBWFnPzM1AEwwawX9oNq9Iqs&origin=<?= $org; ?>&destination=<?= $des; ?>"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
         <div class="col-contact">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 

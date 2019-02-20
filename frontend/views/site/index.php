@@ -96,7 +96,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="animated bounceInLeft" data-wow-duration="3s">CATEGORIES</h2></div>
+            <div class="title_handPicked"><h2 class="animated bounceInLeft" data-wow-duration="3s"><?= Yii::t('app','CATEGORIES');?></h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -144,8 +144,7 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="animated bounceInLeft" data-wow-duration="3s">Featured
-                    Products</h2></div>
+            <div class="title_handPicked"><h2 class="animated bounceInLeft" data-wow-duration="3s"><?= Yii::t('app','Featured Products');?></h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -155,122 +154,138 @@ $this->title = 'Shophia';
         </div>
     </div>
     <!--SUMMER COLLECTION-->
+<!--    --><?php //if (Yii::$app->session->hasFlash('success')): ?>
+<!--        <div class="alert alert-success alert-dismissable">-->
+<!--            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>-->
+<!--            <!--        <h4><i class="icon fa fa-check"></i>Saved!</h4>-->-->
+<!--            --><?//= Yii::$app->session->getFlash('success') ?>
+<!--        </div>-->
+<!--    --><?php //endif; ?>
+<!---->
+<!---->
+<!--    --><?php //if (Yii::$app->session->hasFlash('error')): ?>
+<!--        <div class="alert alert-danger alert-dismissable">-->
+<!--            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>-->
+<!--            <!--        <h4><i class="icon fa fa-check"></i>Saved!</h4>-->-->
+<!--            --><?//= Yii::$app->session->getFlash('error') ?>
+<!--        </div>-->
+<!--    --><?php //endif; ?>
     <div class="summer_collection">
         <?php
-        foreach ($feature as $feat){
-        ?>
-        <div class="middle_summer_collection">
+        foreach ($feature as $feat) {
+            ?>
+            <div class="middle_summer_collection">
 
-            <div class="index_heart">
+                <div class="index_heart">
 
-                <form action="<?= \yii\helpers\Url::to(['wishlist/wishlist/add'])?>" method="get">
-                    <input id="product_<?= $feat['id']?>" type="checkbox" class="input_class_checkbox" name="wishlist" data-id="<?= $feat['id']?>" value="<?= $feat['id'] ?>">
-                    <label for="product_<?= $feat['id']?>" class="class_checkbox"></label>
-                </form>
-                </div
+                    <form action="<?= \yii\helpers\Url::to(['/wishlist/wishlist/add']) ?>" method="get">
+                        <input id="product_<?= $feat['id'] ?>" type="checkbox" class="input_class_checkbox"
+                               name="wishlist" data-id="<?= $feat['id'] ?>" value="<?= $feat['id'] ?>">
+                        <label for="product_<?= $feat['id'] ?>" class="class_checkbox"></label>
+                    </form>
+                </div>
 
-
-                <a href="<?php echo \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>"><img
-                            src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $feat['image']) ?>" alt=""></a>
+                <a style="cursor: pointer" href="<?= \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>">
+                    <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $feat['image']) ?>" alt="">
+                </a>
                 <div class="add_brand">
-                    <div class="br_a"><a href="<?= \yii\helpers\Url::to(['carts/cart/add']) ?>"
-                                         data-id=<?= $feat['id'] ?>" class=" add_cart" > $<?= $feat['price'] ?> <br>+ADD
-                        TO CART</a></div>
+                    <div class="br_a">
+                        <span data-id=<?= $feat['id'] ?>" class="add_cart" > $<?= $feat['price'] ?> <br><?= Yii::t('app','+ADD TO CART');?></span></div>
 
                 </div>
             </div>
             <?php
-            }
+        }
+        ?>
+    </div>
+    <div class="handPicked">
+        <div class="middle_handPicked line_handPicked">
+            <hr class="reg_hr">
+        </div>
+        <div class="middle_handPicked">
+
+            <div class="rumba rumba_left">
+                <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
+            </div>
+            <div class="title_handPicked"><h2 class="animated bounceInRight" data-wow-duration="3s"><?= Yii::t('app','OUR BRANDS');?></h2>
+            </div>
+            <div class="rumba">
+                <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
+            </div>
+        </div>
+        <div class="middle_handPicked line_handPicked">
+            <hr class="reg_hr">
+        </div>
+    </div>
+    <!--BRANDS-->
+
+    <div class="brand brand_carousel">
+        <?php foreach ($brands as $brand) {
             ?>
-        </div>
-        <div class="handPicked">
-            <div class="middle_handPicked line_handPicked">
-                <hr class="reg_hr">
-            </div>
-            <div class="middle_handPicked">
+            <div class="middle_brand">
 
-                <div class="rumba rumba_left">
-                    <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
-                </div>
-                <div class="title_handPicked"><h2 class="animated bounceInRight" data-wow-duration="3s">OUR BRAND</h2>
-                </div>
-                <div class="rumba">
-                    <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
-                </div>
+                <a href="<?php echo \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>">
+                    <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>" alt="">
+                </a>
             </div>
-            <div class="middle_handPicked line_handPicked">
-                <hr class="reg_hr">
-            </div>
-        </div>
-        <!--BRANDS-->
-
-        <div class="brand brand_carousel">
-            <?php foreach ($brands as $brand) {
-                ?>
-                <div class="middle_brand">
-
-                    <a href="<?php echo \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>">
-                        <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>" alt="">
-                    </a>
-                </div>
-                <?php
-            } ?>
-
-        </div>
-        <div class="handPicked">
-            <div class="middle_handPicked line_handPicked">
-                <hr class="reg_hr">
-            </div>
-            <div class="middle_handPicked">
-                <div class="rumba rumba_left">
-                    <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
-                </div>
-                <div class="title_handPicked animated bounceInLeft" data-wow-duration="3s"><h2>BLOG</h2></div>
-                <div class="rumba">
-                    <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
-                </div>
-            </div>
-            <div class="middle_handPicked line_handPicked">
-                <hr class="reg_hr">
-            </div>
-        </div>
-        <!--CUSTOMERS-->
-        <div class="customers">
-            <div class="middle_customers">
-                <div class="small_customers">
-                    <img src="<?= \yii\helpers\Url::to('@web/images/sandra.png') ?>" alt="stylish">
-                </div>
-                <div class="small_customers">
-                    <div class="txt_cust"></div>
-                    <div class="text_cust">
-                        <div class="sandra_text">
-                            Sed ut perspiciatis <br> unde omnis iste natus error sit voluptatet accusantium doloremque
-                        </div>
-                        <div class="name_stylish">Sandra Dewi</div>
-                        <div class="profession">FASHION STYLISH</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cust">
-                <div class="arrow-up"></div>
-            </div>
-            <div class="middle_customers">
-                <div class="small_customers">
-                    <div class="txt_cust">
-
-                    </div>
-                    <div class="text_cust shaheer_txt">
-                        <div class="sandra_text shaheer_txt">
-
-                            Sed ut perspiciatis <br> unde omnis iste natus error sit voluptatet accusantium doloremque
-                        </div>
-                        <div class="name_stylish">Shaheer Sheikh</div>
-                        <div class="profession">DESIGNER</div>
-                    </div>
-                </div>
-                <img src="<?= \yii\helpers\Url::to('@web/images/shaheer.png') ?>" alt="stylish">
-            </div>
-        </div>
+            <?php
+        } ?>
 
     </div>
-    <!--END CONTENT-->
+    <div class="handPicked">
+        <div class="middle_handPicked line_handPicked">
+            <hr class="reg_hr">
+        </div>
+        <div class="middle_handPicked">
+            <div class="rumba rumba_left">
+                <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
+            </div>
+            <div class="title_handPicked animated bounceInLeft" data-wow-duration="3s"><h2><?= Yii::t('app','BLOG');?></h2></div>
+            <div class="rumba">
+                <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
+            </div>
+        </div>
+        <div class="middle_handPicked line_handPicked">
+            <hr class="reg_hr">
+        </div>
+    </div>
+    <!--CUSTOMERS-->
+    <div class="customers">
+        <div class="middle_customers">
+            <div class="small_customers">
+                <img src="<?= \yii\helpers\Url::to('@web/images/sandra.png') ?>" alt="stylish">
+            </div>
+            <div class="small_customers">
+                <div class="txt_cust"></div>
+                <div class="text_cust">
+                    <div class="sandra_text">
+                        Sed ut perspiciatis <br> unde omnis iste natus error sit voluptatet accusantium doloremque
+                    </div>
+                    <div class="name_stylish">Sandra Dewi</div>
+                    <div class="profession">FASHION STYLISH</div>
+                </div>
+            </div>
+        </div>
+        <div class="cust">
+            <div class="arrow-up"></div>
+        </div>
+        <div class="middle_customers">
+            <div class="small_customers">
+                <div class="txt_cust">
+
+                </div>
+                <div class="text_cust shaheer_txt">
+                    <div class="sandra_text shaheer_txt">
+
+                        Sed ut perspiciatis <br> unde omnis iste natus error sit voluptatet accusantium doloremque
+                    </div>
+                    <div class="name_stylish">Shaheer Sheikh</div>
+                    <div class="profession">DESIGNER</div>
+                </div>
+            </div>
+            <img src="<?= \yii\helpers\Url::to('@web/images/shaheer.png') ?>" alt="stylish">
+        </div>
+    </div>
+
+</div>
+<!--END CONTENT-->

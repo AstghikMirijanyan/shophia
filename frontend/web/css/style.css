@@ -778,7 +778,7 @@ li > .slick-active {
 
 .bar_mySelf_ul {
     display: flex;
-    margin-left: 135px;
+    margin-left: 100px;
     font-family: Lato, sans-serif;;
     font-size: 11px;
     text-transform: uppercase;
@@ -1262,14 +1262,17 @@ li > .slick-active {
 
 .header-cart {
     position: fixed;
-    width: 25%;
+    width: 30%;
     height: auto;
     background: white;
     z-index: 900;
-    margin-top: 88px;
+    margin-top: 79px;
     color: black;
     right: 80px;
     display: none;
+    -webkit-box-shadow: 6px 7px 19px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 19px 1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 19px 1px rgba(0,0,0,0.75);
 
 }
 
@@ -1279,7 +1282,7 @@ li > .slick-active {
     color: white;
     width: 20px;
     height: 20px;
-    margin-top: 10px;
+    margin-top: 0;
     margin-left: -10px;
     position: absolute;
     text-align: center;
@@ -1288,10 +1291,24 @@ li > .slick-active {
 
 .header-cart-wrapitem {
     width: 100%;
-    height: auto;
+    height: 300px;
+    float: left;
+    overflow:scroll;
+    overflow-x:hidden;
 
 }
+.header-cart-wrapitem >li{
+    margin-top: 20px;
+    width: 100%;
+    height: 90px;
+    float: left;
+    margin-bottom: 15px;
 
+
+}
+.wish_del{
+    margin-top: 28px;
+}
 .header-cart-item {
     width: 100%;
     height: 100px;
@@ -1305,23 +1322,30 @@ li > .slick-active {
     height: 100%;
     float: left;
     margin-left: 10px;
-    background: #848484;
+
 }
 
-.header-cart-item img {
+.header-cart-item>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .header-cart-item-txt {
-    width: 65%;
+    width: 50%;
     height: 100%;
+
     float: left;
     color: black;
     text-decoration: none;
 }
+.carzina{
+    margin-top: 20px;
+    width: 10%;
+    height: 30px;
+    float: left;
 
+}
 .header-cart-item-name {
     width: 90%;
     height: 50%;
@@ -2285,6 +2309,53 @@ span.choose {
     width: 24px;
     height: 22px;
     background-image: url("../images/like.png");
+}
+.distance{
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    background: white;
+}
+.between{
+    margin: 0 auto;
+    width: 80%;
+    height: 20%;
+    float: left;
+}
+
+.dis{
+    text-align: center;
+    font-family: Algerian;
+    color: rgba(0, 0, 79, 1);
+}
+.inpDiv{
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+    background: white;
+}
+#map{
+    margin: 20px auto;
+    width: 100%;
+    height: 80%;
+    float: left;
+    border: 1px solid black;
+}
+.res{
+    margin-left: 820px;
+    z-index: 100;
+    width: 15%;
+    height: 20px;
+    /*background: black;*/
+    color: #000024;
+    position: absolute;
+    margin-top: 70px;
+    /*margin-bottom: 50px;*/
+}
+.alert alert-success alert-dismissable{
+    position: absolute;
+    z-index: 10;
+    width: 20px;!important;
 }
 /*.midlle_small_images img{*/
 /*width: 100%;*/

@@ -33,6 +33,14 @@ return [
             'baseUrl' => ''
 
         ],
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                ],
+            ],
+        ],
 
         'user' => [
             'identityClass' => 'common\models\User',
@@ -60,6 +68,9 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class' => 'codemix\localeurls\UrlManager',
+            'languages' => ['en', 'ru','am'],
+            'enableDefaultLanguageUrlCode' => true,
             'rules' => [
 
                 'category' => 'products/products/category',

@@ -20,9 +20,14 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script>
+        lang = "<?= Yii::$app->language;?>";
+    </script>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -45,19 +50,18 @@ AppAsset::register($this);
                 <!--TOP MENU-->
                 <?php
                 $menuItems = [
-                    ['label' => 'Customer Service', 'url' => ['/customer']],
-                    ['label' => 'About', 'url' => ['/about']],
-                    ['label' => 'Contact', 'url' => ['/contact']],
+                    ['label' => Yii::t('app','Customer Service'), 'url' => ['/customer']],
+                    ['label' => Yii::t('app','About'), 'url' => ['/about']],
+                    ['label' => Yii::t('app','Contact'), 'url' => ['/contact']],
 
                 ];
                 if (Yii::$app->user->isGuest) {
-                    $menuItems[] = ['label' => 'Signup', 'url' => ['/signup']];
-                    $menuItems[] = ['label' => 'Login', 'url' => ['/login']];
+                    $menuItems[] = ['label' => Yii::t('app','Signup'), 'url' => ['/signup']];
+                    $menuItems[] = ['label' => Yii::t('app','Login'), 'url' => ['login']];
                 } else {
                     $menuItems[] = '<li>'
                         . Html::beginForm(['/site/logout'], 'post')
-                        . Html::submitButton(
-                            'Logout (' . Yii::$app->user->identity->username . ')',
+                        .  Html::submitButton(Yii::t('app','Logout').' (' . Yii::$app->user->identity->username . ')',
                             ['class' => 'btn btn-link logout'],
                            ['linkOptions' => ['class' => 'myCssClass']]
                         )
@@ -79,9 +83,10 @@ AppAsset::register($this);
                 <?php
 
                 $menuItems = [
-                    ['label' => 'Home', 'url' => ['/index']],
-                    ['label' => 'Shop', 'url' => ['/products']],
-                    ['label' => 'Blog', 'url' => ['/blog']],
+                    ['label' => Yii::t('app','Home'), 'url' => ['/']],
+                    ['label' => Yii::t('app','Shop'), 'url' => ['/products']],
+                    ['label' => Yii::t('app','Blog'), 'url' => ['/blog']],
+
                 ];
                 echo Nav::widget([
                     'options' => ['class' => 'menu_shop'],
@@ -111,21 +116,13 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div>
-                <button class="wishlist_btn">
-                    <a href="<?= \yii\helpers\Url::to('/wishlist') ?>">
-                        <img src="<?= \yii\helpers\Url::to('@web/images/like (1).png') ?>" alt="wishlist"></a></button>
-                <button class="cart_btn" >
-<!--                    onclick="return getCart()-->
+                <?= \frontend\widgets\wishlist\WishlistWidget::widget();?>
+
                     <a href="/checkout"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png') ?>" alt="cart"></a>
-                    </button>
 
-                <span class="header-icons-noti">0</span>
 
-                <span class="header-icons-noti"><?php if (!empty($_SESSION['cart.qty'])) {
-                        echo $_SESSION['cart.qty'];
-                    } else {
-                        echo '0';
-                    } ?></span>
+                <span class="header-icons-noti"><?= \frontend\widgets\cart\CartWidget::widget(); ?></span>
+
 
             </div>
         </div>
