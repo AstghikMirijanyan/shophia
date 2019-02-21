@@ -32,8 +32,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'slug',
             'description:ntext',
-            'larg_image',
-            'small_image',
+
+            [
+                'attribute' => 'larg_image',
+                'format' => 'raw',
+                'filter'=> '',
+                'value' => function($model){
+                    return Html::img(\yii\helpers\Url::to('@home/images/uploads/pages/'.$model->larg_image),['width' => '100px','class'=>'img']);
+                }
+            ] ,
+            [
+                'attribute' => 'small_image',
+                'format' => 'raw',
+                'filter'=> '',
+                'value' => function($model){
+                    return Html::img(\yii\helpers\Url::to('@home/images/uploads/pages/'.$model->small_image),['width' => '100px','class'=>'img']);
+                }
+            ] ,
+
         ],
     ]) ?>
 

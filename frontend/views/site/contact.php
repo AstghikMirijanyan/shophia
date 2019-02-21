@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 if (isset($_POST['submit'])) {
                     $org = $_POST['org'];
                     $des = $_POST['des'];
-                    $api = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".$org."&destinations=".$des."&key=AIzaSyBPegktpSITcmnC22rTCKpqbDwlXmOkwZ0");
+                    $api = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".$org."&destinations=".$des."&key=AIzaSyDbtuTAE3HgjrdjWRBHCf8ZJQWY5kY41mw");
                     $data = json_decode($api, true);
 
                     ?>
@@ -51,11 +51,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div id="map">
-
-                    <iframe width="100%" height="650" frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCwHub-YP6RBWFnPzM1AEwwawX9oNq9Iqs&origin=<?= $org; ?>&destination=<?= $des; ?>"
-                            allowfullscreen>
+                    <iframe
+                            width="580"
+                            height="450"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/directions
+  ?key=AIzaSyDbtuTAE3HgjrdjWRBHCf8ZJQWY5kY41mw
+  &origin=<?= $org?>
+  &destination=<?=$des?>
+  &avoid=tolls|highways">
                     </iframe>
+                    </iframe>
+<!--                    <iframe width="100%" height="650" frameborder="0" style="border:0"-->
+<!--                            src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDbtuTAE3HgjrdjWRBHCf8ZJQWY5kY41mw&origin=--><?//= $org; ?><!--&destination=--><?//= $des; ?><!--"-->
+<!--                            allowfullscreen>-->
+<!--                    </iframe>-->
                 </div>
             </div>
         </div>

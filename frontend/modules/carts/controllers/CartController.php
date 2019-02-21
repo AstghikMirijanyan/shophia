@@ -24,6 +24,7 @@ class CartController extends \yii\web\Controller
     {
 
         $id = \Yii::$app->request->get('id');
+
         $qty = (int)\Yii::$app->request->get('qty');
         $qty = !$qty ? 1 : $qty;
         if (\Yii::$app->user->isGuest) {

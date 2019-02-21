@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
+//            'title',
             'price',
             'sale_price',
-            'content:ntext',
+//            'content:ntext',
             [
                 'attribute' => 'image',
                 'format' => 'raw',

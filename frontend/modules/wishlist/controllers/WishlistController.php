@@ -24,9 +24,9 @@ class WishlistController extends \yii\web\Controller
         $state = \Yii::$app->request->get('state');
         if ($id = \Yii::$app->request->get('id')) {
             $wishlist = Wishlist::findOne(['product_id' => $id]);
-
             if (!empty($wishlist)) {
                 $wishlist->delete();
+                return true;
             }
         }
 

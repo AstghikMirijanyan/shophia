@@ -5,10 +5,12 @@ use yii\helpers\Url;
 $this->title = 'Shop';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?php \yii\widgets\Pjax::begin(['enablePushState' => true]);?>
+<?php \yii\widgets\Pjax::begin(['enablePushState' => true]); ?>
 <div class="site-product">
     <div class="site-cat">
+
         <img src="<?= \yii\helpers\Url::to('@web/images/u.jpg') ?>" alt="">
+
     </div>
     <div class="products">
         <div class="filter">
@@ -21,21 +23,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     if (!empty($categories)) {
                         foreach ($categories as $cat) {
-                            if (!empty($cat['title'])){
-                               if ($cat_slug === $cat['slug']){
-                                   ?>
-                                   <li>
-                                       <a style="color: #f0975d;" href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
-                                   </li>
-                                   <?php
-                               }else{
-                                   ?>
-                                   <li>
-                                       <a href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
-                                   </li>
-                                   <?php
+                            if (!empty($cat['title'])) {
+                                if ($cat_slug === $cat['slug']) {
+                                    ?>
+                                    <li>
+                                        <a style="color: #f0975d;"
+                                           href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
+                                    </li>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <li>
+                                        <a href="<?= \yii\helpers\Url::to(['/products/' . $cat['slug']]) ?>"><?= $cat['title'] ?></a>
+                                    </li>
+                                    <?php
 
-                               }
+                                }
                             }
 
                         }
@@ -51,28 +54,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3 class="fil_pr">Price</h3>
                 <div class="clearfix"></div>
                 <fieldset class="filter-price">
-                    <form method="get" action="<?= \yii\helpers\Url::to(['/products'])?>">
-                    <div class="price-field">
-                        <input type="range" name="min" min="10" max="500" value="10" id="lower">
-                        <input type="range" name="max" min="100" max="500" value="500" id="upper">
-                    </div>
-                    <div class="price-wrap">
-                        <input type="submit" class="price-title" value="FILTER" style="width: 100px">
+                    <form method="get" action="<?= \yii\helpers\Url::to(['/products']) ?>">
+                        <div class="price-field">
+                            <input type="range" name="min" min="10" max="500" value="10" id="lower">
+                            <input type="range" name="max" min="100" max="500" value="500" id="upper">
+                        </div>
+                        <div class="price-wrap">
+                            <input type="submit" class="price-title" value="FILTER" style="width: 100px">
 
-                        <div class="price-container">
-                            <div class="price-wrap-1">
+                            <div class="price-container">
+                                <div class="price-wrap-1">
 
-                                <label for="one">$</label>
-                                <input id="one" name="one">
-                            </div>
-                            <div class="price-wrap_line">-</div>
-                            <div class="price-wrap-2">
-                                <label for="two" >$</label>
-                                <input id="two" name="two">
+                                    <label for="one">$</label>
+                                    <input id="one" name="one">
+                                </div>
+                                <div class="price-wrap_line">-</div>
+                                <div class="price-wrap-2">
+                                    <label for="two">$</label>
+                                    <input id="two" name="two">
 
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </form>
                 </fieldset>
                 <hr class="reg_hr">
@@ -91,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                     ?>
 
-                                    <a  href="<?= \yii\helpers\Url::to(['/products/' . $cat_slug . '/' . $brand['slug']]) ?>">
+                                    <a href="<?= \yii\helpers\Url::to(['/products/' . $cat_slug . '/' . $brand['slug']]) ?>">
                                         <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
                                              alt=""></a>
 
@@ -99,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 } else {
                                     ?>
-                                    <a   href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"> <img
+                                    <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"> <img
                                                 src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
                                                 alt=""></a>
                                     <?php
@@ -120,7 +123,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                 <?php
             }
-//            \yii\widgets\Pjax::begin(['enablePushState' => false]);
+            //            \yii\widgets\Pjax::begin(['enablePushState' => false]);
 
             if (!empty($products)) {
                 foreach ($products as $pr) {
@@ -129,36 +132,31 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="block-product">
                         <div class="ader_product">
 
+                            <div class="love">
+                                <div class="product_heart">
 
-                            <?php
-                            if (!empty($wishlist)){
-                                foreach ($wishlist as $value){
-                                    if ($value['product_id'] === $pr['id']){
-                                       ?>
-                            <a class="love add-to-wishlist" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $pr['id'] ?>>
-                                <img src="<?= \yii\helpers\Url::to('@web/images/like.png') ?>" alt=""
+                                    <form action="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" method="get">
+                                        <input id="product_<?= $pr['id'] ?>" type="checkbox"
+                                               class="input_class_checkbox checkbox-products"
+                                               name="wishlist" data-id="<?= $pr['id'] ?>" value="<?= $pr['id'] ?>">
 
-                            </a>
+                                        <label for="product_<?= $pr['id'] ?>" class="class_checkbox"></label>
+                                    </form>
+                                </div>
+                            </div>
 
-                            <?php
-                                    }else{
-                                        ?>
-                                        <a class="love add-to-wishlist" href="<?= \yii\helpers\Url::to(['wishlist/wishlist/add']) ?>" data-id=<?= $pr['id'] ?>>
-                                            <img src="<?= \yii\helpers\Url::to('@web/images/heart.png') ?>" alt=""
-
-                                        </a>
-
-                                        <?php
-                                    }
-                                }
-                            }
-                            ?>
 
                             <a href="" class="love_b"></a>
                             <a href="" class="heart"></a>
-                            <a class="add_cart pr_add animated bounceIn" data-wow-duration="3s"
-                               href="<?= \yii\helpers\Url::to(['carts/cart/add']) ?>"
-                               data-id=<?= $pr['id'] ?> ><br>+ADD TO CART</a>
+                            <div class="pr_add animated bounceIn" data-wow-duration="3s">
+
+
+                                <a style="color: white; text-decoration: none" data-id="<?= $pr['id'] ?>"
+                                   class="cart_add"><br>+ADD TO CART
+                                </a>
+
+                            </div>
+
 
                         </div>
                         <div class=" product-img">

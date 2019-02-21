@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'cat_id',
             'brand_id',
             'is_new',
-            'slug',
+//            'slug',
             //'is_feature',
             //'available_stock',
             //'quantity',

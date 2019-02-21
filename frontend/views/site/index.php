@@ -181,6 +181,7 @@ $this->title = 'Shophia';
                     <form action="<?= \yii\helpers\Url::to(['/wishlist/wishlist/add']) ?>" method="get">
                         <input id="product_<?= $feat['id'] ?>" type="checkbox" class="input_class_checkbox"
                                name="wishlist" data-id="<?= $feat['id'] ?>" value="<?= $feat['id'] ?>">
+
                         <label for="product_<?= $feat['id'] ?>" class="class_checkbox"></label>
                     </form>
                 </div>

@@ -17,6 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <img src="<?= \yii\helpers\Url::to('@web/images/cust.jpg' )?>" alt="">
         </div>
 
-
+<div class="search_terms">
+    <div class="title_cust"><h2 style="font-size: 30px">Retail Customer Service</h2></div>
+</div>
     </div>
 </div>

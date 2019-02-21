@@ -39,22 +39,23 @@ if (!empty($cart)):
                     <td>
                         <img src="<?= yii\helpers\Url::to('@web/images/uploads/products/' . $item['product']['image']) ?>"
                              style="width: 50px"</td>
-                    <td><h3><a data-pjax="0" href="<?= Url::to(['/products/product/'.$item['product']['slug']])?>"><?= $item['product']['title'] ?></a></h3></td>
-                    <td>
-                        <form method="post" action="">
-                            <div class="quantity buttons_added check_quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="number" step="1" min="1" max="" name="quantity"
-                                       value="<?= $item['quantity'] ?>" id="qty" title="Qty"
-                                       class="input-text qty text" size="4"
-                                       pattern="" inputmode="">
-                                <input type="button" value="+" class="plus">
-                                <div class="size9 trans-0-4 m-t-10 m-b-10">
-                                </div>
-                            </div>
-
-                        </form>
-                    </td>
+                    <td><h3 class="check_h"><a class="check_h" data-pjax="0" style="color:#000; text-decoration: none; font-size: 18px" href="<?= Url::to(['/products/product/'.$item['product']['slug']])?>"><?= $item['product']['title'] ?></a></h3></td>
+<!--                    <td>-->
+<!--                        <form method="post" action="">-->
+<!--                            <div class="quantity buttons_added check_quantity">-->
+<!--                                <input type="button" value="-" class="minus">-->
+<!--                                <input type="number" step="1" min="1" max="" name="quantity"-->
+<!--                                       value="--><?//= $item['quantity'] ?><!--" id="qty" title="Qty"-->
+<!--                                       class="input-text qty text" size="4"-->
+<!--                                       pattern="" inputmode="">-->
+<!--                                <input type="button" value="+" class="plus">-->
+<!--                                <div class="size9 trans-0-4 m-t-10 m-b-10">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!---->
+<!--                        </form>-->
+<!--                    </td>-->
+                    <td><?= $item['quantity']?></td>
 
                     <td><?= $item['product']['price'] ?></td>
                     <?php  $total =  $item['product']['price'] * $item['quantity']?>

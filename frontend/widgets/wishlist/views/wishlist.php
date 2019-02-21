@@ -27,7 +27,7 @@
 
                     <span class="header-cart-item-info">$<?= $wish['product']['price']?></span>
                 </div>
-                     <span> <div class="carzina add_cart" data-id=<?= $wish['product']['id'] ?>><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png') ?>" alt=""></div></span>
+                     <span> <div class="carzina cart_add" data-id=<?= $wish['product']['id'] ?>><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png') ?>" alt=""></div></span>
                      <a href=""><span class="glyphicon glyphicon-remove text-danger del-item wish_del" aria-hidden="true"></span></a>
 
                 </li>

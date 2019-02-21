@@ -395,8 +395,8 @@ h1 {
 }
 .index_heart{
     display: none;
-    width: 23px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
     z-index: 10;
     position: absolute;
     margin-left: 246px;
@@ -578,6 +578,9 @@ footer {
     width: 100%;
     float: left;
     height: 30%;
+}
+.check_h:hover{
+    color:#f0975d ;
 }
 
 .shop {
@@ -1094,7 +1097,13 @@ li > .slick-active {
 .ader_product:hover .pr_add{
     display: block;
 }
-
+.product_heart{
+    width: 25px;
+    height: 25px;
+    z-index: 10;
+    position: absolute;
+    margin-left: 48px;
+}
 .pr_add:hover{
     background: #f09d66;
     cursor: pointer;
@@ -1515,6 +1524,7 @@ input[type=search] {
 .col-contact {
     width: 45%;
     margin-left: 15px;
+    margin-top: 50px;
     height: 100%;
     float: left;
 
@@ -2294,8 +2304,9 @@ span.choose {
 }
 .class_checkbox {
     cursor: pointer;
-    width: 23px;
-    height: 22px;
+    margin-top: 5px;
+    width: 24px;
+    height: 24px;
     border: none;
     background-image: url("../images/heart.png");
 }
@@ -2307,7 +2318,7 @@ span.choose {
 .input_class_checkbox:checked + label {
     cursor: pointer;
     width: 24px;
-    height: 22px;
+    height: 24px;
     background-image: url("../images/like.png");
 }
 .distance{
@@ -2356,6 +2367,30 @@ span.choose {
     position: absolute;
     z-index: 10;
     width: 20px;!important;
+}
+.blog_img{
+    height: 400px;
+}
+.cont_bl{
+
+    width: 90%;
+    margin: 0 auto;
+}
+
+.search_terms{
+    width: 90%;
+    margin: 0 70px;
+    height: 400px;
+    float: left;
+}
+.title_cust{
+    width: 80%;
+    height: 20%;
+    margin-left:100px;
+    font-family: Algerian;
+    margin-top: 20px;
+    float: left;
+    background: white;
 }
 /*.midlle_small_images img{*/
 /*width: 100%;*/

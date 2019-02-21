@@ -15,10 +15,23 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?php
+    if(!empty($model->larg_image)){
+        echo Html::img(\yii\helpers\Url::to('@home/images/uploads/pages/'.$model->larg_image),['width' => '100px','class'=>'img']);
 
-    <?= $form->field($model, 'larg_image')->textInput(['maxlength' => true]) ?>
+    }
+    ?>
+    <?php
+    if(!empty($model->small_image)){
+        echo Html::img(\yii\helpers\Url::to('@home/images/uploads/pages/'.$model->small_image),['width' => '100px','class'=>'img']);
 
-    <?= $form->field($model, 'small_image')->textInput(['maxlength' => true]) ?>
+    }
+    ?>
+
+
+    <?= $form->field($model, 'larg_image')->fileInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'small_image')->fileInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

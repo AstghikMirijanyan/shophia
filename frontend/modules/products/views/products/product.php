@@ -56,6 +56,33 @@
 
             <div class="flex-r-m flex-w p-t-10">
                 <div class="w-size16 flex-m flex-w">
+                    <!--                            <form action="--><?//= \yii\helpers\Url::to(['@web/']) . 'cart/add' ?><!--" method="get">-->
+                    <!--                                <div class="input-group mb-4">-->
+                    <!--                                    <button type="button" class="quantity-left-minus btn" data-type="minus"-->
+                    <!--                                            data-field=""><i-->
+                    <!--                                                class="icon-minus2"></i></button>-->
+                    <!--                                    <input type="text" id="quantity" name="quantity" class="form-control input-number"-->
+                    <!--                                           value="1"-->
+                    <!--                                           max="--><?//= $product['quantity'] ?><!--">-->
+                    <!--                                    <span class="input-group-btn ml-1">-->
+                    <!--                            <input type="hidden" name="id" value="--><?//= $product['id'] ?><!--">-->
+                    <!--                     	</span>-->
+                    <!--                                    <button type="button" class="quantity-right-plus btn" data-type="plus"-->
+                    <!--                                            data-field="">-->
+                    <!--                                        <i class="icon-plus2"></i>-->
+                    <!--                                    </button>-->
+                    <!--                                </div>-->
+                    <!---->
+                    <!--                                <div class="row">-->
+                    <!--                                    <div class="col-sm-12 text-center">-->
+                    <!--                                        <button id="btn" type="submit" class="btn-primary btn-addtocart"><i-->
+                    <!--                                                    class="icon-shopping-cart"></i>Add to Cart-->
+                    <!--                                        </button>-->
+                    <!---->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </form>-->
+
                     <form method="post" action="">
                         <div class="quantity buttons_added">
                             <input type="button" value="-" class="minus">
@@ -65,7 +92,7 @@
                             <input type="button" value="+" class="plus">
                             <div class="size9 trans-0-4 m-t-10 m-b-10">
                                 <!-- Button -->
-                                <a href="<?= \yii\helpers\Url::to(['carts/cart/add'])?>" data-id =<?= $product['id']?> class="add_cart  flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                <a href="<?= \yii\helpers\Url::to(['/carts/cart/add'])?>" data-id =<?= $product['id']?> class="add_cart  flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                                     Add to Cart
                                 </a>
                             </div>

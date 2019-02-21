@@ -8,6 +8,7 @@ use backend\modules\pages\models\PagesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * PageController implements the CRUD actions for Pages model.
@@ -67,6 +68,23 @@ class PageController extends Controller
         $model = new Pages();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $image  = UploadedFile::getInstance($model,'larg_image');
+
+            if (!empty($image)) {
+
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $image->extension;
+
+                $filePath = Yii::getAlias('@frontend').'/web/images/uploads/pages/';
+
+
+                if ($image->saveAs($filePath.$imgName)) {
+                    $model->larg_image = $imgName;
+                }
+
+            }
+
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -85,8 +103,34 @@ class PageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model_image = $model->larg_image;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $image  = UploadedFile::getInstance($model,'large_image');
+
+            if (!empty($image)) {
+
+                $imgName = Yii::$app->security->generateRandomString() . '.' . $image->extension;
+
+                $filePath = Yii::getAlias('@frontend').'/web/images/uploads/pages/';
+                if(!is_dir($filePath)){
+                    mkdir($filePath);
+                }
+
+                $path = $filePath . $model_image;
+                if ($image->saveAs($filePath.$imgName)) {
+                    $model->image = $imgName;
+                    if (file_exists($path) && is_file($path)) {
+                        unlink($path);
+                    }
+                }
+
+            }else{
+                $model->larg_image = $model_image;
+            }
+
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
