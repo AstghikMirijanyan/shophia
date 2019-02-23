@@ -23,30 +23,7 @@ $this->title = 'Shophia';
             </div>
             <button class="text-btn"><a href="/products" style="color: white">SHOP NOW</a></button>
         </div>
-        <div class="text-block">
-            <div class="text">
-                <div class="middle-text">
-                    <div class="name-text">MID-SEASON</div>
-                    <div class="sale">NEW</div>
-                    <div class="up"><span>UP TO</span></div>
-                    <div class="pr">COLLECTION</div>
-                </div>
-            </div>
-            <button class="text-btn"><a href="/products" style="color: white; text-decoration: none">SHOP NOW</a>
-            </button>
-        </div>
-        <div class="text-block">
-            <div class="text">
-                <div class="middle-text">
-                    <div class="name-text">MID-SEASON</div>
-                    <div class="sale">BEST</div>
-                    <div class="up"><span>UP TO</span></div>
-                    <div class="pr">COLLECTION</div>
-                </div>
-            </div>
-            <button class="text-btn"><a href="/products" style="color: white; text-decoration: none">SHOP NOW</a>
-            </button>
-        </div>
+
     </div>
     <!--SLIDER-->
     <div class="slickslider">
@@ -96,7 +73,8 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="animated bounceInLeft" data-wow-duration="3s"><?= Yii::t('app','CATEGORIES');?></h2></div>
+            <div class="title_handPicked"><h2 class="animated bounceInLeft"
+                                              data-wow-duration="3s"><?= Yii::t('app', 'CATEGORIES'); ?></h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -144,7 +122,8 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="animated bounceInLeft" data-wow-duration="3s"><?= Yii::t('app','Featured Products');?></h2></div>
+            <div class="title_handPicked"><h2><?= Yii::t('app', 'Featured Products'); ?></h2>
+            </div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
@@ -153,45 +132,72 @@ $this->title = 'Shophia';
             <hr class="reg_hr">
         </div>
     </div>
-    <!--SUMMER COLLECTION-->
-<!--    --><?php //if (Yii::$app->session->hasFlash('success')): ?>
-<!--        <div class="alert alert-success alert-dismissable">-->
-<!--            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>-->
-<!--            <!--        <h4><i class="icon fa fa-check"></i>Saved!</h4>-->-->
-<!--            --><?//= Yii::$app->session->getFlash('success') ?>
-<!--        </div>-->
-<!--    --><?php //endif; ?>
-<!---->
-<!---->
-<!--    --><?php //if (Yii::$app->session->hasFlash('error')): ?>
-<!--        <div class="alert alert-danger alert-dismissable">-->
-<!--            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>-->
-<!--            <!--        <h4><i class="icon fa fa-check"></i>Saved!</h4>-->-->
-<!--            --><?//= Yii::$app->session->getFlash('error') ?>
-<!--        </div>-->
-<!--    --><?php //endif; ?>
     <div class="summer_collection">
         <?php
         foreach ($feature as $feat) {
             ?>
             <div class="middle_summer_collection">
 
-                <div class="index_heart">
 
-                    <form action="<?= \yii\helpers\Url::to(['/wishlist/wishlist/add']) ?>" method="get">
-                        <input id="product_<?= $feat['id'] ?>" type="checkbox" class="input_class_checkbox"
-                               name="wishlist" data-id="<?= $feat['id'] ?>" value="<?= $feat['id'] ?>">
+                <?php if (!empty($wishlist)) {
+                    foreach ($wishlist as $wish) {
+                        if ($wish['product_id'] === $feat['id']){
+                            ?>
+                            <div class="index_heart">
+                                <form action="<?= \yii\helpers\Url::to(['/wishlist/wishlist/add']) ?>" method="get">
 
-                        <label for="product_<?= $feat['id'] ?>" class="class_checkbox"></label>
-                    </form>
-                </div>
+                                    <input checked id="product_<?= $feat['id'] ?>" type="checkbox"
+                                           class="input_class_checkbox"
+                                           name="wishlist" data-id="<?= $feat['id'] ?>" value="<?= $feat['id'] ?>">
+
+                                    <label for="product_<?= $feat['id'] ?>" class="class_checkbox"></label>
+
+                                </form>
+                            </div>
+                            <?php
+                        }else{
+                            ?>
+                            <div class="index_heart">
+                                <form action="<?= \yii\helpers\Url::to(['/wishlist/wishlist/add']) ?>" method="get">
+
+                                    <input  id="product_<?= $feat['id'] ?>" type="checkbox"
+                                           class="input_class_checkbox"
+                                           name="wishlist" data-id="<?= $feat['id'] ?>" value="<?= $feat['id'] ?>">
+
+                                    <label for="product_<?= $feat['id'] ?>" class="class_checkbox"></label>
+
+                                </form>
+                            </div>
+                            <?php
+                        }
+                    }
+
+
+                }else{
+                    ?>
+                    <div class="index_heart">
+                        <form action="<?= \yii\helpers\Url::to(['/wishlist/wishlist/add']) ?>" method="get">
+
+                            <input  id="product_<?= $feat['id'] ?>" type="checkbox"
+                                    class="input_class_checkbox"
+                                    name="wishlist" data-id="<?= $feat['id'] ?>" value="<?= $feat['id'] ?>">
+
+                            <label for="product_<?= $feat['id'] ?>" class="class_checkbox"></label>
+
+                        </form>
+                    </div>
+                    <?php
+
+                } ?>
+
 
                 <a style="cursor: pointer" href="<?= \yii\helpers\Url::to(['/product/' . $feat['slug']]) ?>">
                     <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $feat['image']) ?>" alt="">
                 </a>
                 <div class="add_brand">
                     <div class="br_a">
-                        <span data-id=<?= $feat['id'] ?>" class="add_cart" > $<?= $feat['price'] ?> <br><?= Yii::t('app','+ADD TO CART');?></span></div>
+                        <span data-id=<?= $feat['id'] ?> class="add_cart" > $<?= $feat['price'] ?>
+                        <br><?= Yii::t('app', '+ADD TO CART'); ?></span></div>
 
                 </div>
             </div>
@@ -208,7 +214,8 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked"><h2 class="animated bounceInRight" data-wow-duration="3s"><?= Yii::t('app','OUR BRANDS');?></h2>
+            <div class="title_handPicked"><h2 class=""
+                                              data-wow-duration="3s"><?= Yii::t('app', 'OUR BRANDS'); ?></h2>
             </div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
@@ -241,7 +248,8 @@ $this->title = 'Shophia';
             <div class="rumba rumba_left">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>
-            <div class="title_handPicked animated bounceInLeft" data-wow-duration="3s"><h2><?= Yii::t('app','BLOG');?></h2></div>
+            <div class="title_handPicked">
+                <h2><?= Yii::t('app', 'BLOG'); ?></h2></div>
             <div class="rumba">
                 <img src="<?= \yii\helpers\Url::to('@web/images/rectangle.png') ?>" alt="">
             </div>

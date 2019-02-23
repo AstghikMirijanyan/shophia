@@ -35,25 +35,25 @@ if (!empty($cart)) {
                 <?php
                 if (!empty($item['product']['sale_price'])) {
                     ?>
-                    <span><?= $item['product']['sale_price'] ?></span>
+                    <span>$<?= $item['product']['sale_price'] ?></span>
                     <?php
                 } else {
                     ?>
-                    <span><?= $item['product']['price'] ?></span>
+                    <span>$<?= $item['product']['price'] ?></span>
                     <?php
                 }
                 ?>
             </td>
-            <td>
+            <td style="padding: 8px; border: 2px solid #ddd">
 
                 <?php
                 if (!empty($item['product']['sale_price'])) {
                     ?>
-                    <span><?= $item['product']['sale_price'] * $item['quantity'] ?></span>
+                    <span>$<?= $item['product']['sale_price'] * $item['quantity'] ?></span>
                     <?php
                 } else {
                     ?>
-                    <span><?= $item['product']['price'] * $item['quantity'] ?></span>
+                    <span>$<?= $item['product']['price'] * $item['quantity'] ?></span>
                     <?php
                 }
                 ?>
@@ -61,8 +61,8 @@ if (!empty($cart)) {
         </tr>
     <?php endforeach; ?>
     <tr>
-        <td style="padding: 8px; border: 2px solid #ddd" colspan="3">Total price:</td>
-        <td style="padding: 8px; border: 2px solid #ddd"><?= $total ?></td>
+        <td style="padding: 8px; border: 2px solid #343434; font-weight: bold" colspan="3">Total price:</td>
+        <td style="padding: 8px; border: 2px solid #151515; font-weight: bold">$<?= $total ?></td>
     </tr>
     </tbody>
     </table>

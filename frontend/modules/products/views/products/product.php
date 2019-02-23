@@ -1,5 +1,6 @@
+
 <div class="site-cat">
-    <img src="<?= \yii\helpers\Url::to('@web/images/contact.jpg') ?>" alt="">
+    <img src="<?= \yii\helpers\Url::to('@web/images/imagesg.jpg') ?>" alt="">
 </div>
 
 <div class="one_product">
@@ -17,6 +18,19 @@
         <div class="larg_image">
             <img src="<?= \yii\helpers\Url::to('@web/images/uploads/products/' . $product->image) ?>"" alt="">
         </div>
+
+
+<!--        <img class="xzoom" src="--><?//= \yii\helpers\Url::to('@web/images/uploads/products/' . $product->image) ?><!--" xoriginal="--><?//= \yii\helpers\Url::to('@web/images/uploads/products/' . $product->image) ?><!--" />-->
+<?php //foreach ($product->pictures as $picture){
+//    ?>
+<!--    <div class="xzoom-thumbs">-->
+<!--        <a href="--><?//= \yii\helpers\Url::to('@web/images/uploads/products/' . $picture->image) ?><!--">-->
+<!--            <img class="xzoom-gallery" width="80" src="--><?//= \yii\helpers\Url::to('@web/images/uploads/products/' . $picture->image) ?><!--"  xpreview="--><?//= \yii\helpers\Url::to('@web/images/uploads/products/' . $picture->image) ?><!--">-->
+<!--        </a>-->
+<!--    </div>-->
+<!--        --><?php
+//}?>
+
     </div>
 
     <div class="one_product_image">
@@ -56,32 +70,7 @@
 
             <div class="flex-r-m flex-w p-t-10">
                 <div class="w-size16 flex-m flex-w">
-                    <!--                            <form action="--><?//= \yii\helpers\Url::to(['@web/']) . 'cart/add' ?><!--" method="get">-->
-                    <!--                                <div class="input-group mb-4">-->
-                    <!--                                    <button type="button" class="quantity-left-minus btn" data-type="minus"-->
-                    <!--                                            data-field=""><i-->
-                    <!--                                                class="icon-minus2"></i></button>-->
-                    <!--                                    <input type="text" id="quantity" name="quantity" class="form-control input-number"-->
-                    <!--                                           value="1"-->
-                    <!--                                           max="--><?//= $product['quantity'] ?><!--">-->
-                    <!--                                    <span class="input-group-btn ml-1">-->
-                    <!--                            <input type="hidden" name="id" value="--><?//= $product['id'] ?><!--">-->
-                    <!--                     	</span>-->
-                    <!--                                    <button type="button" class="quantity-right-plus btn" data-type="plus"-->
-                    <!--                                            data-field="">-->
-                    <!--                                        <i class="icon-plus2"></i>-->
-                    <!--                                    </button>-->
-                    <!--                                </div>-->
-                    <!---->
-                    <!--                                <div class="row">-->
-                    <!--                                    <div class="col-sm-12 text-center">-->
-                    <!--                                        <button id="btn" type="submit" class="btn-primary btn-addtocart"><i-->
-                    <!--                                                    class="icon-shopping-cart"></i>Add to Cart-->
-                    <!--                                        </button>-->
-                    <!---->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </form>-->
+
 
                     <form method="post" action="">
                         <div class="quantity buttons_added">

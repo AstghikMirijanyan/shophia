@@ -23,4 +23,5 @@ class WishlistWidget extends Widget
         ]);
 
     }
+
 }

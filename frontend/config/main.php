@@ -73,11 +73,9 @@ return [
             'enableDefaultLanguageUrlCode' => true,
             'rules' => [
 
-                'category' => 'products/products/category',
                 'brand/<slug:\w+>' => 'products/brand',
                 'product/<slug>' => 'products/products/product',
                 'products/product/<slug>' => 'products/products/product',
-
                 '' => 'site/index',
                 'blog' => 'blog/blog/index',
                 'article/<slug>' => 'blog/blog/article',
@@ -85,15 +83,13 @@ return [
                 'wishlist' => 'wishlist/wishlist/index',
                 'carts' => 'carts/cart',
                 'checkout'=>'carts/cart/checkout',
-
                 'search'=>'products/products',
                 'products/product/carts/cart/<action:\w+>' => 'carts/cart/<action>',
+                '<language:(ru|en|am)/<language:(ru|en|am)>/<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                 'products' => '/products/products',
                 'products/<slug>' => 'products/products',
                 'products/<slug>/<brand>' => 'products/products',
                 '<action>' => 'site/<action>',
-//                'show' => '/carts/cart/show',
-//                'category/<slug>' => 'products/products/category'
             ],
         ],
 

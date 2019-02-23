@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Contact;
 use common\models\Wishlist;
 use Yii;
 use yii\base\InvalidParamException;
@@ -16,6 +17,7 @@ use common\models\Products;
 use common\models\Brands;
 use common\models\Categories;
 use frontend\models\ContactForm;
+
 
 /**
  * Site controller
@@ -74,6 +76,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+
+
     public function actionIndex()
     {
         $feature = Products::find()->where(['is_feature'=>'1'])->orderBy(['id'=>SORT_DESC])->limit(8)->asArray()->all();
@@ -134,10 +138,13 @@ class SiteController extends Controller
     {
 
         $model = new ContactForm();
-
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+
+
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending your message.');
             }
@@ -149,6 +156,7 @@ class SiteController extends Controller
             ]);
         }
     }
+
 
     /**
      * Displays contact page.
@@ -236,11 +244,6 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
-    }
-
-    public function actionCustomer()
-    {
-        return $this->render('customer');
     }
 
     public function actionCategories()

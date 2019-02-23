@@ -2,13 +2,15 @@
 
 namespace frontend\models;
 
+use common\models\Contact;
 use Yii;
 use yii\base\Model;
+use yii\db\ActiveRecord;
 
 /**
  * ContactForm is the models behind the contact form.
  */
-class ContactForm extends Model
+class ContactForm extends ActiveRecord
 {
     public $name;
     public $email;
@@ -19,7 +21,10 @@ class ContactForm extends Model
 
     /**
      * {@inheritdoc}
+
      */
+
+
     public function rules()
     {
         return [
@@ -56,5 +61,13 @@ class ContactForm extends Model
             ->setSubject($this->subject)
             ->setTextBody($this->body)
             ->send();
+
+        $contact = new Contact();
+        $contact->name = $this->name;
+        $contact->email = $this->email;
+        $contact->subject = $this->subject;
+        $contact->body =$this->body;
+        $contact->save();
+
     }
 }

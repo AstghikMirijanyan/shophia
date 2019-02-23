@@ -21,7 +21,6 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -44,26 +43,39 @@ AppAsset::register($this);
             </div>
             <div class="middle"></div>
 
+
             <div class="bar_mySelf">
 
+                <div class="languages">
+                </div>
+                <div class="choose_languages">
+                    <div class="lang_div">
+                        <a href="/am">AM</a>
 
+                        <a href="/en">EN</a>
+
+                        <a href="/ru">RU</a>
+                    </div>
+
+
+                </div>
                 <!--TOP MENU-->
                 <?php
                 $menuItems = [
-                    ['label' => Yii::t('app','Customer Service'), 'url' => ['/customer']],
-                    ['label' => Yii::t('app','About'), 'url' => ['/about']],
-                    ['label' => Yii::t('app','Contact'), 'url' => ['/contact']],
+
+                    ['label' => Yii::t('app', 'About'), 'url' => ['/about']],
+                    ['label' => Yii::t('app', 'Contact'), 'url' => ['/contact']],
 
                 ];
                 if (Yii::$app->user->isGuest) {
-                    $menuItems[] = ['label' => Yii::t('app','Signup'), 'url' => ['/signup']];
-                    $menuItems[] = ['label' => Yii::t('app','Login'), 'url' => ['login']];
+                    $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/signup']];
+                    $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['login']];
                 } else {
                     $menuItems[] = '<li>'
                         . Html::beginForm(['/site/logout'], 'post')
-                        .  Html::submitButton(Yii::t('app','Logout').' (' . Yii::$app->user->identity->username . ')',
+                        . Html::submitButton(Yii::t('app', 'Logout') . ' (' . Yii::$app->user->identity->username . ')',
                             ['class' => 'btn btn-link logout'],
-                           ['linkOptions' => ['class' => 'myCssClass']]
+                            ['linkOptions' => ['class' => 'myCssClass']]
                         )
                         . Html::endForm()
                         . '</li>';
@@ -77,15 +89,16 @@ AppAsset::register($this);
                 ?>
             </div>
         </div>
+
         <div class="menu">
 
             <nav>
                 <?php
 
                 $menuItems = [
-                    ['label' => Yii::t('app','Home'), 'url' => ['/']],
-                    ['label' => Yii::t('app','Shop'), 'url' => ['/products']],
-                    ['label' => Yii::t('app','Blog'), 'url' => ['/blog']],
+                    ['label' => Yii::t('app', 'Home'), 'url' => ['/']],
+                    ['label' => Yii::t('app', 'Shop'), 'url' => ['/products']],
+                    ['label' => Yii::t('app', 'Blog'), 'url' => ['/blog']],
 
                 ];
                 echo Nav::widget([
@@ -116,9 +129,9 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div>
-                <?= \frontend\widgets\wishlist\WishlistWidget::widget();?>
+                <?= \frontend\widgets\wishlist\WishlistWidget::widget(); ?>
 
-                    <a href="/checkout"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png') ?>" alt="cart"></a>
+                <a href="/checkout"><img src="<?= \yii\helpers\Url::to('@web/images/icon-header-02.png') ?>" alt="cart"></a>
 
 
                 <span class="header-icons-noti"><?= \frontend\widgets\cart\CartWidget::widget(); ?></span>
@@ -133,7 +146,8 @@ AppAsset::register($this);
     <!--    --><?php //= Breadcrumbs::widget([
     //        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     //    ]) ?>
-    <!--        --><? //= Alert::widget() ?>
+    <?= Alert::widget() ?>
+
 
     <?= $content ?>
     <!--FOOTER-->
@@ -143,11 +157,11 @@ AppAsset::register($this);
                 <div class="shop">
                     <div class="footer-title">SHOPS</div>
                     <ul class="block">
-                        <li><a href="#">New In</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Men</a></li>
+                        <li><a href="/products/">New In</a></li>
+                        <li><a href="/products/women">Women</a></li>
+                        <li><a href="/products/men">Men</a></li>
                         <li><a href="#">Shoes</a></li>
-                        <li><a href="#">Bags &amp; Accessories</a></li>
+                        <li><a href="/accessories">Bags &amp; Accessories</a></li>
                         <li><a href="#">TopBrands</a></li>
                         <li><a href="#">Sale &amp; Special Offers</a></li>
                     </ul>
@@ -155,35 +169,30 @@ AppAsset::register($this);
                 <div class="shop">
                     <div class="footer-title">INFORMATION</div>
                     <ul class="block">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="/about">About us</a></li>
                         <li><a href="#">New Collection</a></li>
                         <li><a href="#">Best Sellers</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="/blog">Blog</a></li>
                     </ul>
                 </div>
-                <div class="shop">
-                    <div class="footer-title">CUSTOMER SERVICE</div>
-                    <ul class="block">
-                        <li><a href="#">Search Terms</a></li>
-                        <li><a href="#">Advanced Search</a></li>
-                        <li><a href="#">Orders and Returns</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">RSS</a></li>
-                        <li><a href="#">Help &amp; FAQs</a></li>
-                        <li><a href="#">Consultant</a></li>
-                        <li><a href="#">Store Locations</a></li>
-                    </ul>
-                </div>
+
             </div>
             <div class="info_footer">
                 <div class="soc_footer">
                     <div class="footer-title">STAY CONNECTED</div>
                     <div class="social_contact">
-                        <div class="soc-img"><a href=""><img src="<?= \yii\helpers\Url::to('@web/images/socialimages/facebook.png') ?>" alt=""></a></div>
-                        <div class="soc-img"><a href=""><img src="<?= \yii\helpers\Url::to('@web/images/socialimages/instagram.png') ?>" alt=""></a></div>
-                        <div class="soc-img"><a href=""><img src="<?= \yii\helpers\Url::to('@web/images/socialimages/twitter.png') ?>" alt=""></a></div>
-                        <div class="soc-img"><a href=""><img src="<?= \yii\helpers\Url::to('@web/images/socialimages/linkedin.png') ?>" alt=""></a></div>
+                        <div class="soc-img"><a href=""><img
+                                        src="<?= \yii\helpers\Url::to('@web/images/socialimages/facebook.png') ?>"
+                                        alt=""></a></div>
+                        <div class="soc-img"><a href=""><img
+                                        src="<?= \yii\helpers\Url::to('@web/images/socialimages/instagram.png') ?>"
+                                        alt=""></a></div>
+                        <div class="soc-img"><a href=""><img
+                                        src="<?= \yii\helpers\Url::to('@web/images/socialimages/twitter.png') ?>"
+                                        alt=""></a></div>
+                        <div class="soc-img"><a href=""><img
+                                        src="<?= \yii\helpers\Url::to('@web/images/socialimages/linkedin.png') ?>"
+                                        alt=""></a></div>
 
                     </div>
                     <div class="subscribe">
@@ -225,7 +234,9 @@ AppAsset::register($this);
             </div>
         </div>
         <!--END FOOTER-->
+
     </footer>
+
     <?php
     \yii\bootstrap\Modal::begin([
         'header' => '<h2>Product successfully added to your cart</h2>',

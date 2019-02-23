@@ -93,12 +93,12 @@ class CartController extends \yii\web\Controller
                 foreach ($cart as $item) {
                     $user_id = $item['user_id'];
                     Cart::deleteAll(['user_id' => $user_id]);
-                    \Yii::$app->session->setFlash('success', "Product Added Successfully");
+                    \Yii::$app->session->setFlash('success', "Thank you for shopping. We will contact you soon.");
                     return $this->refresh();
                 }
 
             } else {
-                \Yii::$app->session->setFlash('ERROR', 'YOUR ERROR');
+                \Yii::$app->session->setFlash('error', 'YOUR ERROR');
             }
         }
         return $this->render('checkout', [

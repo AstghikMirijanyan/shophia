@@ -1,6 +1,8 @@
 <?php
 namespace backend\controllers;
 
+use common\models\Cart;
+use common\models\Products;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -60,7 +62,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $feature = Products::find()->where(['is_feature'=>'1'])->orderBy(['id'=>SORT_DESC])->limit(8)->asArray()->all();
+
+        return $this->render('index',
+            ['featured'=> $feature]);
     }
 
     /**

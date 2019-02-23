@@ -31,6 +31,7 @@ class WishlistController extends \yii\web\Controller
         }
 
         if(\Yii::$app->user->isGuest){
+            \Yii::$app->session->setFlash('error', 'Please login');
        }else{
             if(!empty($id)){
                 $user = \Yii::$app->user->id;
@@ -49,24 +50,21 @@ class WishlistController extends \yii\web\Controller
                             $errors[] = $new_wish->errors;
                         }
                     }
-
-
                 }
             }
         }
 
 
     }
-//    public function actionRemove(){
-//        $wislist_id = \Yii::$app->request->get('id');
-//        if (!empty($wislist_id)) {
-//            $wishlist = Wishlist::findOne($wislist_id);
-//            if (!empty($wishlist)) {
-//                $wishlist->delete();
-//            }
-//            return true;
-//        }
-//    }
+    public function actionRemove(){
+        $wish_id = \Yii::$app->request->get('id');
+        if (!empty($wish_id)) {
+            $wish = Wishlist::findOne($wish_id);
+            if (!empty($wish)) {
+                $wish->delete();
+            }
+        }
+    }
 
     public function actionIndex(){
         $id = \Yii::$app->user->id;

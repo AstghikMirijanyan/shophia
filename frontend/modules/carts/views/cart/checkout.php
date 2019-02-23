@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="site-cat check">
-    <img src="<?= \yii\helpers\Url::to('@web/images/cart_shop.jpg') ?>" alt="">
+    <img src="<?= \yii\helpers\Url::to('@web/images/chechkout.jpg') ?>" alt="">
 </div>
 
 <?php
