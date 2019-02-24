@@ -45,6 +45,9 @@ return [
         'contacts' => [
             'class' => 'backend\modules\contacts\Module',
         ],
+        'wishlists' => [
+            'class' => 'backend\modules\wishlists\Module',
+        ],
     ],
     'components' => [
         'request' => [

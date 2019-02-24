@@ -41,7 +41,8 @@
                     ['label' => 'Info', 'icon' => 'info', 'url' => ['/info/info']],
                     ['label' => 'Pages', 'icon' => 'leanpub', 'url' => ['/pages/page']],
                     ['label' => 'Rules', 'icon' => 'line-chart', 'url' => ['/rules/rule']],
-                    ['label' => 'Messages', 'icon' => 'line-chart', 'url' => ['/contacts/contact']],
+                    ['label' => 'Messages', 'icon' => 'envelope', 'url' => ['/contacts/contact']],
+                    ['label' => 'Wishlist', 'icon' => 'heart', 'url' => ['/wishlists/wishlist']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Some tools',

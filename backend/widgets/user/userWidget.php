@@ -11,8 +11,14 @@ use common\models\User;
 
 class userWidget extends \yii\bootstrap\Widget
 {
+    public $info;
+
     public function run()
     {
-        $users = User::find()->orderBy(['title' => 4]);
+        $users = User::find()->asArray()->all();
+
+        return $this->render('user',[
+            'user' => $users
+        ]);
     }
 }
