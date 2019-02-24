@@ -55,19 +55,21 @@ class ContactForm extends ActiveRecord
      */
     public function sendEmail($email)
     {
-        return Yii::$app->mailer->compose()
-            ->setTo($email)
-            ->setFrom([$this->email => $this->name])
-            ->setSubject($this->subject)
-            ->setTextBody($this->body)
-            ->send();
-
         $contact = new Contact();
         $contact->name = $this->name;
         $contact->email = $this->email;
         $contact->subject = $this->subject;
         $contact->body =$this->body;
         $contact->save();
+
+        return Yii::$app->mailer->compose()
+            ->setTo($email)
+            ->setFrom(['astghik.mirijanyan@gmail.com' => $this->name])
+            ->setSubject($this->subject)
+            ->setTextBody($this->body)
+            ->send();
+
+
 
     }
 }

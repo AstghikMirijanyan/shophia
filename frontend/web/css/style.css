@@ -1595,8 +1595,8 @@ input[type=search] {
     width: 50%;
     height: 100%;
     float: left;
+    margin-top: 20px;
     padding: 15px;
-
 }
 
 .col-contact {

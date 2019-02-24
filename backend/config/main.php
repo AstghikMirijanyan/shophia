@@ -42,6 +42,9 @@ return [
         'orderitems' => [
             'class' => 'backend\modules\orderitems\Module',
         ],
+        'contacts' => [
+            'class' => 'backend\modules\contacts\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -51,7 +54,7 @@ return [
         'assetManager' => [
             'bundles' => [
                 'dmstr\web\AdminLteAsset' => [
-                    'skin' => 'skin-green-light',
+                    'skin' => 'skin-purple',
                 ],
             ],
         ],

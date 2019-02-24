@@ -24,4 +24,6 @@ class WishlistWidget extends Widget
 
     }
 
+
+
 }

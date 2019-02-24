@@ -15,54 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-contact">
 
     <div class="site-cat">
-        <img src="<?= \yii\helpers\Url::to('@web/images/contact.jpg' )?>" alt="">
+        <img src="<?= \yii\helpers\Url::to('@web/images/C_3_M01_16_imgMedia_it.jpg' )?>" alt="">
     </div>
 
     <div class="contact_row">
         <div class="contact_map">
-            <div class="distance">
-                <?php
-                if (isset($_POST['submit'])) {
-                    $org = $_POST['org'] ;
-                    $des = $_POST['des'];
-                    $api = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".$org."&destinations=".$des."&key=AIzaSyDbtuTAE3HgjrdjWRBHCf8ZJQWY5kY41mw");
-                    $data = json_decode($api, true);
-
-                    ?>
-                    <div class="res">
-                        <label><b>Distance: </b></label> <span><?php echo ((int)$data['rows'][0]['elements'][0]['distance']['value'] / 1000).' Km'; ?></span> <br><br>
-                        <label><b>Travel Time: </b></label> <span><?php echo $data['rows'][0]['elements'][0]['duration']['text']; ?></span>
-                    </div>
-                    <?php
-
-                }
-
-                ?>
-                <div class="between">
-                    <h2 class="dis">Calculate the distance between two address</h2>
-                    <div class="inpDiv">
-                        <form action="/contact" id="form" method="post">
-                            from<input type="text" name="org" id="org"/>
-                            to<input type="text" name="des" id="des"/>
-                            <input type="submit" name="submit" id="button" value="calculate">
-                        </form>
-                    </div>
-
-                </div>
-
-                <div id="map">
-                    <iframe
-                            width="580"
-                            height="450"
-                            frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDbtuTAE3HgjrdjWRBHCf8ZJQWY5kY41mw&origin=<?= $org ?>&destination=<?=$des?>&avoid=tolls|highways">
-                    </iframe>
-<!--                    <iframe width="100%" height="650" frameborder="0" style="border:0"-->
-<!--                            src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDbtuTAE3HgjrdjWRBHCf8ZJQWY5kY41mw&origin=--><?//= $org; ?><!--&destination=--><?//= $des; ?><!--"-->
-<!--                            allowfullscreen>-->
-<!--                    </iframe>-->
-                </div>
-            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.441147079428!2d43.845026214818446!3d40.79629874039209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041fbebe00c88a5%3A0x5a8ea8dc70b0bdfc!2zNSBQcm9zaHlhbiBTdHJlZXQsIEd5dW1yaSwg0JDRgNC80LXQvdC40Y8!5e0!3m2!1sru!2s!4v1551000583033" width="660" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
         <div class="col-contact">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>

@@ -64,6 +64,7 @@ class WishlistController extends \yii\web\Controller
                 $wish->delete();
             }
         }
+        return $this->redirect('/index');
     }
 
     public function actionIndex(){

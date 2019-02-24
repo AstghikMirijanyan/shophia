@@ -1,6 +1,6 @@
 
 <div class="site-cat">
-    <img src="<?= \yii\helpers\Url::to('@web/images/imagesg.jpg') ?>" alt="">
+    <img src="<?= \yii\helpers\Url::to('@web/images/images.jpg') ?>" alt="">
 </div>
 
 <div class="one_product">
