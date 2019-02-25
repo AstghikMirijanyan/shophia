@@ -21,7 +21,6 @@ class WishlistController extends \yii\web\Controller
 
     public function actionAdd()
     {
-        $state = \Yii::$app->request->get('state');
         if ($id = \Yii::$app->request->get('id')) {
             $wishlist = Wishlist::findOne(['product_id' => $id]);
             if (!empty($wishlist)) {
@@ -54,7 +53,6 @@ class WishlistController extends \yii\web\Controller
             }
         }
 
-
     }
     public function actionRemove(){
         $wish_id = \Yii::$app->request->get('id');
@@ -64,7 +62,7 @@ class WishlistController extends \yii\web\Controller
                 $wish->delete();
             }
         }
-        return $this->redirect('/index');
+        return $this->redirect('/');
     }
 
     public function actionIndex(){

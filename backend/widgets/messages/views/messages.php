@@ -9,12 +9,12 @@
                     foreach ($messages as $message) {
                         ?>
                         <li><!-- start message -->
-                            <a href="#">
+                            <a href="">
                                 <div class="pull-left">
                                     <?= $message['name']?>
                                 </div>
                                 <h4>
-                                    <?= $message['body']?>
+                                    <?= substr($message['body'],0,10).'...';?>
                                     <small><i class="fa fa-clock-o"></i> <?= $message['created_at']?></small>
                                 </h4>
                                 <p><?= $message['email'] ?></p>

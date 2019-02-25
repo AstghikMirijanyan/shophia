@@ -1607,6 +1607,9 @@ input[type=search] {
     float: left;
 
 }
+.del-wish{
+    top: 25px;!important;
+}
 
 #contact-form {
     width: 100%;
@@ -2405,7 +2408,16 @@ span.choose {
     background-repeat: no-repeat;
     background-image: url("../images/heart.png");
 }
-
+.checkbox-products{
+    display: none;
+    cursor: pointer;
+}
+.checkbox-products:checked + label {
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    background-image: url("../images/like.png");
+}
 .input_class_checkbox {
     display: none;
     cursor: pointer;

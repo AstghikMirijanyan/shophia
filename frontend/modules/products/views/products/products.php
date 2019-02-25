@@ -9,12 +9,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-product">
 
     <div class="site-cat">
-        <img src="<?= \yii\helpers\Url::to('@web/images/Shopping.jpg') ?>" alt="">
+        <img src="<?= \yii\helpers\Url::to('@web/images/shop-1.jpg') ?>" alt="">
     </div>
     <div class="products">
         <div class="filter">
             <div class="all-categories animated">
-                <h2 >Categories</h2>
+                <h2>Categories</h2>
                 <ul class="middle_cat">
                     <li><a href="<?= \yii\helpers\Url::to(['/products/']) ?>">All</a></li>
                     <?php
@@ -47,10 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="midlle-filter">
 
-                <h2 >Filters</h2>
+                <h2>Filters</h2>
                 <hr class="reg_hr">
 
                 <h3 class="fil_pr">Price</h3>
+
+                <input type="hidden" name="slug" value="<?= $cat_slug ?>">
                 <div class="clearfix"></div>
                 <fieldset class="filter-price">
                     <form method="get" action="<?= \yii\helpers\Url::to(['/products']) ?>">
@@ -104,13 +106,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                     ?>
 
-                                    <a href="<?= \yii\helpers\Url::to(['/products/' . $brand['slug']]) ?>"> <img
-                                                src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
+
+                                    <a href="<?= \yii\helpers\Url::to( ['/products/'.$brand['slug']]) ?>">
+
+                                        <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
                                                 alt=""></a>
                                     <?php
+                                    $cat_slug='';
+
                                 }
-
-
 
                                 ?>
                             </li>
@@ -137,46 +141,52 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <div class="love">
 
-                                <?php if (!empty($wishlist)){
-                                    foreach ($wishlist as $wish){
-                                        if ($wish['product_id']=== $pr['id']){
+                                <?php if (!empty($wishlist)) {
+                                    foreach ($wishlist as $wish) {
+                                        if ($wish['product_id'] === $pr['id']) {
                                             ?>
                                             <div class="product_heart">
 
-                                                <form action="<?= \yii\helpers\Url::to(['@web/wishlist/wishlist/add']) ?>" method="get">
+                                                <form action="<?= \yii\helpers\Url::to(['@web/wishlist/wishlist/add']) ?>"
+                                                      method="get">
                                                     <input checked id="product_<?= $pr['id'] ?>" type="checkbox"
-                                                           class="input_class_checkbox checkbox-products"
-                                                           name="wishlist" data-id="<?= $pr['id'] ?>" value="<?= $pr['id'] ?>">
+                                                           class="checkbox-products"
+                                                           name="wishlist" data-id="<?= $pr['id'] ?>"
+                                                           value="<?= $pr['id'] ?>">
 
-                                                    <label for="product_<?= $pr['id'] ?>" class="class_checkbox"></label>
+                                                    <label for="product_<?= $pr['id'] ?>"
+                                                           class="class_checkbox"></label>
                                                 </form>
                                             </div>
-                                <?php
-                                        }
-                                        else{
+                                            <?php
+                                        } else {
                                             ?>
                                             <div class="product_heart">
-                                                <form action="<?= \yii\helpers\Url::to(['@web/wishlist/wishlist/add']) ?>" method="get">
+                                                <form action="<?= \yii\helpers\Url::to(['@web/wishlist/wishlist/add']) ?>"
+                                                      method="get">
 
-                                                    <input  id="product_<?= $pr['id'] ?>" type="checkbox"
-                                                            class="input_class_checkbox"
-                                                            name="wishlist" data-id="<?= $pr['id'] ?>" value="<?= $pr['id'] ?>">
+                                                    <input id="product_<?= $pr['id'] ?>" type="checkbox"
+                                                           class="checkbox-products"
+                                                           name="wishlist" data-id="<?= $pr['id'] ?>"
+                                                           value="<?= $pr['id'] ?>">
 
-                                                    <label for="product_<?= $pr['id'] ?>" class="class_checkbox"></label>
+                                                    <label for="product_<?= $pr['id'] ?>"
+                                                           class="class_checkbox"></label>
 
                                                 </form>
                                             </div>
                                             <?php
                                         }
                                     }
-                                }else{
+                                } else {
                                     ?>
                                     <div class="product_heart">
-                                        <form action="<?= \yii\helpers\Url::to(['@web/wishlist/wishlist/add']) ?>" method="get">
+                                        <form action="<?= \yii\helpers\Url::to(['@web/wishlist/wishlist/add']) ?>"
+                                              method="get">
 
-                                            <input  id="product_<?= $pr['id'] ?>" type="checkbox"
-                                                    class="input_class_checkbox"
-                                                    name="wishlist" data-id="<?= $pr['id'] ?>" value="<?= $pr['id'] ?>">
+                                            <input id="product_<?= $pr['id'] ?>" type="checkbox"
+                                                   class="checkbox-products"
+                                                   name="wishlist" data-id="<?= $pr['id'] ?>" value="<?= $pr['id'] ?>">
 
                                             <label for="product_<?= $pr['id'] ?>" class="class_checkbox"></label>
 
@@ -195,8 +205,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="pr_add animated bounceIn" data-wow-duration="3s">
 
 
-                                <a href="<?= \yii\helpers\Url::to([ 'carts/cart/add' ])?>" style="color: white; text-decoration: none" data-id="<?= $pr['id'] ?>"
-                                   class="add_cart"><br>+ADD TO CART
+                                <a href="<?= \yii\helpers\Url::to(['carts/cart/add']) ?>"
+                                   style="color: white; text-decoration: none" data-id="<?= $pr['id'] ?>"
+                                   class="cart_add"><br>+ADD TO CART
                                 </a>
 
                             </div>

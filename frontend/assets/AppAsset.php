@@ -21,11 +21,11 @@ class AppAsset extends AssetBundle
 
     ];
     public $js = [
-        'js/wow.min.js',
+
         'js/slick.js',
         'js/xzoom.js',
         'js/script.js',
-
+        'js/wow.min.js'
 
     ];
     public $depends = [

@@ -28,6 +28,7 @@ AppAsset::register($this);
         lang = "<?= Yii::$app->language;?>";
     </script>
 </head>
+
 <body>
 <?php $this->beginBody() ?>
 <main>

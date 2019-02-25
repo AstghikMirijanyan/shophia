@@ -52,25 +52,6 @@ $(document).ready(function () {
         })
     });
 
-
-    $(".checkbox-products").click(function() {
-        var id = $(this).attr('data-id');
-        var state = this.checked ? 1 : 0;
-        $.ajax({
-            url:'/wishlist/wishlist/add',
-            data: {id: id, state: state},
-            type: 'GET',
-            success: function (data) {
-                showCart(data);
-            },
-            error: function () {
-
-            }
-        })
-    });
-
-
-
     $(".btn_search").click(function () {
         if ($('.search_input.active').length && $(".search_input").val() !== '') {
             $(this).closest('form').submit();
@@ -88,6 +69,27 @@ $(document).ready(function () {
         autoplay: true,
         autoplaySpeed: 3000,
     });
+
+
+    $(".checkbox-products").click(function() {
+        var id = $(this).attr('data-id');
+        var state = this.checked ? 1 : 0;
+        $.ajax({
+            url:'wishlist/wishlist/add',
+            data: {id: id, state: state},
+            type: 'GET',
+            success: function (data) {
+                window.location.reload();
+
+            },
+            error: function () {
+
+            }
+        })
+    });
+
+
+
 
 
     function showCart(cart) {
@@ -154,34 +156,6 @@ $('.content').click(function () {
 
 });
 
-
-
-
-
-
-// $(window).on('load', function () {
-//     $preloader = $('.loaderArea');
-//     $loader = $preloader.find('.loader');
-//     $loader.fadeOut();
-//     $preloader.delay(350).fadeOut('slow');
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function wcqib_refresh_quantity_increments() {
     jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function(a, b) {
         var c = jQuery(b);
@@ -205,53 +179,37 @@ String.prototype.getDecimals || (String.prototype.getDecimals = function() {
     b && "" !== b && "NaN" !== b || (b = 0), "" !== c && "NaN" !== c || (c = ""), "" !== d && "NaN" !== d || (d = 0), "any" !== e && "" !== e && void 0 !== e && "NaN" !== parseFloat(e) || (e = 1), jQuery(this).is(".plus") ? c && b >= c ? a.val(c) : a.val((b + parseFloat(e)).toFixed(e.getDecimals())) : d && b <= d ? a.val(d) : b > 0 && a.val((b - parseFloat(e)).toFixed(e.getDecimals())), a.trigger("change")
 });
 
-// $('.dropdown').click(function () {
-//     $(this).attr('tabindex', 1).focus();
-//     $(this).toggleClass('active');
-//     $(this).find('.dropdown-menu').slideToggle(300);
-// });
-// $('.dropdown').focusout(function () {
-//     $(this).removeClass('active');
-//     $(this).find('.dropdown-menu').slideUp(300);
-// });
-// $('.dropdown .dropdown-menu li').click(function () {
-//     $(this).parents('.dropdown').find('span').text($(this).text());
-//     $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-// });
+var lowerSlider = document.querySelector('#lower');
+var  upperSlider = document.querySelector('#upper');
 
-// var lowerSlider = document.querySelector('#lower');
-// var  upperSlider = document.querySelector('#upper');
-//
-// document.querySelector('#two').value=upperSlider.value;
-// document.querySelector('#one').value=lowerSlider.value;
-//
-// var  lowerVal = parseInt(lowerSlider.value);
-// var upperVal = parseInt(upperSlider.value);
-//
-// upperSlider.oninput = function () {
-//     lowerVal = parseInt(lowerSlider.value);
-//     upperVal = parseInt(upperSlider.value);
-//
-//     if (upperVal < lowerVal + 4) {
-//         lowerSlider.value = upperVal - 4;
-//         if (lowerVal == lowerSlider.min) {
-//             upperSlider.value = 4;
-//         }
-//     }
-//     document.querySelector('#two').value=this.value
-// };
-//
-// lowerSlider.oninput = function () {
-//     lowerVal = parseInt(lowerSlider.value);
-//     upperVal = parseInt(upperSlider.value);
-//     if (lowerVal > upperVal - 4) {
-//         upperSlider.value = lowerVal + 4;
-//         if (upperVal == upperSlider.max) {
-//             lowerSlider.value = parseInt(upperSlider.max) - 4;
-//         }
-//     }
-//     document.querySelector('#one').value=this.value
-// };
+document.querySelector('#two').value=upperSlider.value;
+document.querySelector('#one').value=lowerSlider.value;
 
+var  lowerVal = parseInt(lowerSlider.value);
+var upperVal = parseInt(upperSlider.value);
 
+upperSlider.oninput = function () {
+    lowerVal = parseInt(lowerSlider.value);
+    upperVal = parseInt(upperSlider.value);
+
+    if (upperVal < lowerVal + 4) {
+        lowerSlider.value = upperVal - 4;
+        if (lowerVal == lowerSlider.min) {
+            upperSlider.value = 4;
+        }
+    }
+    document.querySelector('#two').value=this.value
+};
+
+lowerSlider.oninput = function () {
+    lowerVal = parseInt(lowerSlider.value);
+    upperVal = parseInt(upperSlider.value);
+    if (lowerVal > upperVal - 4) {
+        upperSlider.value = lowerVal + 4;
+        if (upperVal == upperSlider.max) {
+            lowerSlider.value = parseInt(upperSlider.max) - 4;
+        }
+    }
+    document.querySelector('#one').value=this.value
+};
 new WOW().init();

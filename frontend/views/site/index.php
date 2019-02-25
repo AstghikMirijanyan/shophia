@@ -37,7 +37,7 @@ $this->title = 'Shophia';
     <!--END SLIDER-->
     <div class="support">
         <div class="middle_support">
-            <div class="left">
+            <div class="left wow bounceInLeft" >
                 <div class="triangle_img"><img src="<?= \yii\helpers\Url::to('@web/images/pilote.png') ?>" alt=""></div>
                 <div class="terms">
                     <div class="title-terms">FREE SHIPPING</div>
@@ -46,7 +46,7 @@ $this->title = 'Shophia';
             </div>
         </div>
         <div class="middle_support">
-            <div class="center">
+            <div class="center wow bounceInUp">
                 <div class="triangle"><img src="<?= \yii\helpers\Url::to('@web/images/clack.png') ?>" alt=""></div>
                 <div class="terms center_terms">
                     <div class="title-terms">30-DAYS RETURNS</div>
@@ -55,7 +55,7 @@ $this->title = 'Shophia';
             </div>
         </div>
         <div class="middle_support">
-            <div class="right">
+            <div class="right wow bounceInRight">
                 <div class="triangle triangle_right"><img src="<?= \yii\helpers\Url::to('@web/images/ball.png') ?>"
                                                           alt=""></div>
                 <div class="terms center_terms">
@@ -89,8 +89,8 @@ $this->title = 'Shophia';
             foreach ($categories as $category) {
 
                 ?>
-                <div class="middle_collection">
-                    <div class="small_collection">
+                <div class="middle_collection wow bounceInUp">
+                    <div class="small_collection ">
 
                         <img src="<?= \yii\helpers\Url::to('@web/images/uploads/categories/' . $category['image']) ?>"
                              alt="">
@@ -270,7 +270,7 @@ $this->title = 'Shophia';
                     <div class="sandra_text">
                         Sed ut perspiciatis <br> unde omnis iste natus error sit voluptatet accusantium doloremque
                     </div>
-                    <div class="name_stylish">Sandra Dewi</div>
+                    <div class="name_stylish"><a style="color:#000;" href="/blog">Sandra Dewi</a></div>
                     <div class="profession">FASHION STYLISH</div>
                 </div>
             </div>
@@ -288,7 +288,7 @@ $this->title = 'Shophia';
 
                         Sed ut perspiciatis <br> unde omnis iste natus error sit voluptatet accusantium doloremque
                     </div>
-                    <div class="name_stylish">Shaheer Sheikh</div>
+                    <div class="name_stylish"><a style="color: black" href="/blog">Shaheer Sheikh</a></div>
                     <div class="profession">DESIGNER</div>
                 </div>
             </div>

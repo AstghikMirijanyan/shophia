@@ -39,7 +39,7 @@ use yii\helpers\Html;
                             <ul class="menu">
                                 <li>
                                     <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        <i class="fa fa-users text-aqua"></i> <?= \backend\widgets\user\userWidget::widget(['info' => 'user_count']);?>  registred users
                                     </a>
                                 </li>
                                 <li>
@@ -50,20 +50,16 @@ use yii\helpers\Html;
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="fa fa-users text-red"></i> 5 new members joined
+                                        <i class="fa fa-users text-red"></i><?= \backend\widgets\user\userWidget::widget(['info' => 'wishlist_count']);?> new fevored products
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#">
-                                        <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                                        <i class="fa fa-shopping-cart text-green"></i> <?= \backend\widgets\user\userWidget::widget(['info' => 'order_count']);?> sales made
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user text-red"></i> You changed your username
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="footer"><a href="#">View all</a></li>
