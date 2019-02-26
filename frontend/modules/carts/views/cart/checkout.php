@@ -40,21 +40,7 @@ if (!empty($cart)):
                         <img src="<?= yii\helpers\Url::to('@web/images/uploads/products/' . $item['product']['image']) ?>"
                              style="width: 50px"</td>
                     <td><h3 class="check_h"><a class="check_h" data-pjax="0" style="color:#000; text-decoration: none; font-size: 18px" href="<?= Url::to(['/products/product/'.$item['product']['slug']])?>"><?= $item['product']['title'] ?></a></h3></td>
-<!--                    <td>-->
-<!--                        <form method="post" action="">-->
-<!--                            <div class="quantity buttons_added check_quantity">-->
-<!--                                <input type="button" value="-" class="minus">-->
-<!--                                <input type="number" step="1" min="1" max="" name="quantity"-->
-<!--                                       value="--><?//= $item['quantity'] ?><!--" id="qty" title="Qty"-->
-<!--                                       class="input-text qty text" size="4"-->
-<!--                                       pattern="" inputmode="">-->
-<!--                                <input type="button" value="+" class="plus">-->
-<!--                                <div class="size9 trans-0-4 m-t-10 m-b-10">-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!---->
-<!--                        </form>-->
-<!--                    </td>-->
+
                     <td><?= $item['quantity']?></td>
 
                     <td><?= $item['product']['price'] ?></td>
@@ -88,6 +74,42 @@ if (!empty($cart)):
         <?= Html::submitButton('checkout', ['class' => 'flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4']) ?>
         </div>
         <?php $form = ActiveForm::end() ?>
+
+        <form id="paypal_checkout" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+            <input name="cmd" value="_cart" type="hidden">
+            <input name="upload" value="1" type="hidden">
+            <input name="no_note" value="tyty" type="hidden">
+            <input name="bn" value="PP-BuyNowBF" type="hidden">
+            <input name="tax" value="0" type="hidden">
+            <input name="rm" value="2" type="hidden">
+
+            <input name="business" value="jeremy@jdmweb.com" type="hidden">
+            <input name="handling_cart" value="1" type="hidden">
+            <input name="currency_code" value="USD" type="hidden">
+            <input name="lc" value="GB" type="hidden">
+            <input name="return" value="<?= \yii\helpers\Url::to(['/']) . '/carts/cart' ?>" type="hidden">
+            <input name="cbt" value="<?= \yii\helpers\Url::to(['/']) . '/site/' ?>" type="hidden">
+            <input name="cancel_return" value="<?= \yii\helpers\Url::to(['/']) . '/carts/cart' ?>" type="hidden">
+            <input name="custom" value="" type="hidden">
+
+
+            <?php  foreach ($cart as $value){
+                ?>
+                <div id="item_1" class="itemwrap">
+                    <input name="item_name_1" value="<?php $value['product']['title']?>" type="hidden">
+                    <input name="quantity_1" value="<?php $value['quantity']?>" type="hidden">
+                    <input name="amount_1" value="<?php $value['price']?>" type="hidden">
+                    <input name="shipping_1" value="0" type="hidden">
+                </div>
+                <?php
+            }?>
+
+            <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+
+            <input id="ppcheckoutbtn" value="Paypal" class="button flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
+
+            </div>
+        </form>
         <form action="" method="get">
             <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                 <a href="/carts/cart/checkout?user_id=<?= $item['user_id'] ?> "

@@ -35,21 +35,18 @@ class userWidget extends \yii\bootstrap\Widget
           $wishlist_count = count($wishlist);
           return $wishlist_count;
       }
+      if($this->info == 'all_count'){
+          $users = User::find()->asArray()->all();
+          $user_count = count($users);
+          $orders = Orders::find()->asArray()->all();
+          $order_count = count($orders);
+          $wishlist = Wishlist::find()->asArray()->all();
+          $wishlist_count = count($wishlist);
+          $all_count= $user_count + $order_count +$wishlist_count;
+          return $all_count;
+      }
 
 
     }
 }
 
-
-//
-//public $action;
-//
-//public function run(){
-//
-//    if(!empty($this->action)){
-//        if($this->action == 'email'){
-//            $info = Info::find()->where(['type'=>'email'])->asArray()->one();
-//        }elseif($this->action == 'info'){
-//            $info = Info::find()->where(['type'=>'info'])->asArray()->one();
-//        }elseif($this->action == 'phone'){
-//            $info = Info::find()->where(['type'=>'phone'])->asArray()->one();

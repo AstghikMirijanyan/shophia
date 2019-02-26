@@ -46,27 +46,6 @@
         <p class="s-text8 p-t-10">
            <?= $product['content']?>
         </p>
-<!---->
-<!--                <div class="container">-->
-<!--                    <span class="choose">Choose Size</span>-->
-<!---->
-<!--                    <div class="dropdown">-->
-<!--                        <div class="select">-->
-<!--                            <span>Select Size</span>-->
-<!--                            <i class="fa fa-chevron-left"></i>-->
-<!--                        </div>-->
-<!--                        <input type="hidden" name="gender">-->
-<!--                        <ul class="dropdown-menu">-->
-<!--                            <li id="Size_S">Size S</li>-->
-<!--                            <li id="Size_M">Size M</li>-->
-<!--                            <li id="Size_L">Size L</li>-->
-<!--                            <li id="Size_XL">Size XL</li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!---->
-<!--                    <span class="msg"></span>-->
-<!--                </div>-->
-
 
             <div class="flex-r-m flex-w p-t-10">
                 <div class="w-size16 flex-m flex-w">

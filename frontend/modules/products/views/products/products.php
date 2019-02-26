@@ -101,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                              alt=""></a>
 
                                     <?php
-
+                                    $cat_slug = '';
                                 } else {
 
                                     ?>
@@ -112,7 +112,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <img src="<?= \yii\helpers\Url::to('@web/images/uploads/brands/' . $brand['image']) ?>"
                                                 alt=""></a>
                                     <?php
-                                    $cat_slug='';
+
 
                                 }
 
@@ -121,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </ul>
                         <?php
                     }
-                    $cat_slug = '';
+
                 } ?>
             </div>
             <?php
